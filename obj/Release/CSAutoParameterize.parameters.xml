@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AlmacenesConnectionString-Web.config Connection String" description="AlmacenesConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=localhost;Initial Catalog=GoFactoring;Persist Security Info=True;User ID=sa;Password=WuD5etus" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\fs\\source\\repos\\GoWebForms\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AlmacenesConnectionString']/@connectionString" />
+  </parameter>
+</parameters>
