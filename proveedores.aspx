@@ -161,50 +161,34 @@
                         </div>
                     </div>
                     <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
-                        <!--<li class="nav-item">
-                            <a href="home.aspx" class="nav-link">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#funciones" class="nav-link">Funciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#calculadora" class="nav-link">Calculadora</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#estadisticas" class="nav-link">Estadísticas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#aliados" class="nav-link">Aliados</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" data-toggle="dropdown">
-                                <span class="nav-link-inner-text mr-1">Soporte</span>
-                                <i class="fas fa-angle-down nav-link-arrow"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg">
-                                <div class="col-auto px-0" data-dropdown-content>
-                                    <div class="list-group list-group-flush">-->
-                                        <!--<a href="#"
-                                            class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
-                                            <span class="icon icon-sm icon-secondary"><i class="fas fa-file-alt"></i></span>
-                                            <div class="ml-4">
-                                                <span class="text-dark d-block">Abrir ticket</span>
-                                            </div>
-                                        </a>-->
-                                        <!--<a href="#faqs"
-                                           class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
-                                            <span class="icon icon-sm icon-primary">
-                                                <i class="fas fa-microphone-alt"></i>
-                                            </span>
-                                            <div class="ml-4">
-                                                <span class="text-dark d-block">FAQs</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>-->
+                  
                     </ul>
+
+                      <div class="btn-group">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Funciones
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
+                                    <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
+                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li id="li_formulas" runat="server"><a class="dropdown-item" href="Formulas.aspx">Formulas</a></li>
+                                    <li id="li_variables" runat="server"><a class="dropdown-item" href="Variables.aspx">Variables</a></li>
+                                    <li id="li_parameters" runat="server"><a class="dropdown-item" href="Parametros.aspx">Parámetros</a></li>
+                                </ul>
+                            </div>
+                            <button runat="server" id="BtnUser" class="btn btn-sm btn-primary" title="">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <button runat="server" id="BtnLogout" class="btn btn-sm btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
+                                <i class="fas fa-sign-out-alt"></i>Salir
+                            </button>
+                        </div>
+
                 </div>
                 <div class="d-lg-block @@cta_button_classes js-login">
                     <!--<a href="ingresar.aspx" class="btn btn-sm btn-docs btn-outline-white animate-up-2"><i class="fas fa-sign-in-alt"></i> Ingresar</a>

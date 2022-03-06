@@ -99,12 +99,30 @@
                         <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                         </ul>
 
-                        <button runat="server" id="BtnUser" class="btn btn-primary" title="">
-                            <i class="fas fa-user"></i>
-                        </button>
-                        <button runat="server" id="BtnLogout" class="btn btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
-                            <i class="fas fa-sign-out-alt"></i>Salir
-                        </button>
+                          <div class="btn-group">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Funciones
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
+                                    <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
+                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li id="li_formulas" runat="server"><a class="dropdown-item" href="Formulas.aspx">Formulas</a></li>
+                                    <li id="li_variables" runat="server"><a class="dropdown-item" href="Variables.aspx">Variables</a></li>
+                                    <li id="li_parameters" runat="server"><a class="dropdown-item" href="Parametros.aspx">Parámetros</a></li>
+                                </ul>
+                            </div>
+                            <button runat="server" id="BtnUser" class="btn btn-sm btn-primary" title="">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <button runat="server" id="BtnLogout" class="btn btn-sm btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
+                                <i class="fas fa-sign-out-alt"></i>Salir
+                            </button>
+                        </div>
 
 
                         <div class="d-lg-block @@cta_button_classes js-login1">

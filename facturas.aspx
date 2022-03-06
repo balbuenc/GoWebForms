@@ -41,6 +41,8 @@
         <meta property="og:description" content="Fintech Solutions" />
         <meta property="og:site_name" content="Fintech Solutions" />
 
+
+
         <!-- Favicon -->
         <link rel="icon" href="../assets/img/favicon/favicon.png" type="image/png" />
 
@@ -55,7 +57,6 @@
 
         <!-- Front CSS -->
         <link type="text/css" href="../css/front.css" rel="stylesheet" />
-
 
         <style>
             a.button {
@@ -103,7 +104,7 @@
     </head>
 
     <body>
-        <header class="header-global">
+        <header class="header-global" runat="server">
             <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-primary">
                 <div class="container">
                     <a class="navbar-brand @@logo_classes" href="../../home.aspx">
@@ -128,12 +129,41 @@
                         <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                         </ul>
 
-                        <button runat="server" id="BtnUser" class="btn btn-primary" title="">
-                            <i class="fas fa-user"></i>
-                        </button>
-                        <button runat="server" id="BtnLogout" class="btn btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
-                            <i class="fas fa-sign-out-alt"></i>Salir
-                        </button>
+
+
+
+
+                        <div class="btn-group">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Funciones
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
+                                    <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
+                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li id="li_formulas" runat="server"><a class="dropdown-item" href="Formulas.aspx">Formulas</a></li>
+                                    <li id="li_variables" runat="server"><a class="dropdown-item" href="Variables.aspx">Variables</a></li>
+                                    <li id="li_parameters" runat="server"><a class="dropdown-item" href="Parametros.aspx">Parámetros</a></li>
+                                </ul>
+                            </div>
+                            <button runat="server" id="BtnUser" class="btn btn-sm btn-primary" title="">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <button runat="server" id="BtnLogout" class="btn btn-sm btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
+                                <i class="fas fa-sign-out-alt"></i>Salir
+                            </button>
+                        </div>
+
+
+
+
+
+
+
 
 
                         <div class="d-lg-block @@cta_button_classes js-login1">
@@ -242,11 +272,11 @@
                     DataKeyNames="id_factura"
                     OnItemDataBound="FacturaListView_ItemDataBound"
                     OnItemCommand="ListView_ItemCommand"
-                     OnPreRender="FacturaListView_PreRender"
+                    OnPreRender="FacturaListView_PreRender"
                     OnDataBound="FacturaListView_DataBound">
                     <LayoutTemplate>
                         <div class="table table-responsive">
-                            <table class="table table-sm  table-striped  table-hover small"  >
+                            <table class="table table-sm  table-striped  table-hover small">
                                 <caption>
                                     <h3><span class="badge">FACTURAS</span></h3>
                                 </caption>
@@ -589,7 +619,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">FEC. EMISIÓN</div>
-                                                        <div class="col-9"> 
+                                                        <div class="col-9">
                                                             <asp:TextBox ID="txtfecha_emision" runat="server" Text='<%# Bind("fecha_emision", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
                                                         </div>
                                                     </div>
@@ -608,13 +638,13 @@
                                                     <div class="row">
                                                         <div class="col-3">FEC. COBRO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date"/>
+                                                            <asp:TextBox ID="txtfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">MONTO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtmonto" runat="server" Text='<%# Bind("monto") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Number"  />
+                                                            <asp:TextBox ID="txtmonto" runat="server" Text='<%# Bind("monto") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Number" />
                                                         </div>
                                                     </div>
 

@@ -17,7 +17,7 @@ namespace GoWebForms
         protected DataTable FeatureMatrix;
         int CanView = 1;
         int CanInsert = 2;
-        int CanUpdate = 3; 
+        int CanUpdate = 3;
         int CanDelete = 4;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -38,12 +38,49 @@ namespace GoWebForms
                 btn = (System.Web.UI.HtmlControls.HtmlButton)this.FindControl("BtnUser");
                 btn.Attributes["title"] = Session["UserRole"].ToString();
 
+
+
                 //Obtengo la Matriz permisos para el modulo segun el Rol del usuario
                 FeatureMatrix = GetFeatureMatrix(Session["UserRole"].ToString(), "facturas");
+
+                //Seteo el menu segun el rol del usuario
+                SetFunctionsMenu();
             }
         }
 
-        protected DataRow GetFeatureValue( string Feature)
+        protected void SetFunctionsMenu()
+        {
+            if (Session["UserRole"].ToString() == "INVERSOR")
+            {
+                li_formulas.Visible = true;
+                li_variables.Visible = true;
+                li_parameters.Visible = true;
+                li_cliente.Visible = true;
+                li_providers.Visible = true;
+                li_invoices.Visible = true;
+
+            }
+            else if (Session["UserRole"].ToString() == "CLIENTE")
+            {
+                li_formulas.Visible = false;
+                li_variables.Visible = false;
+                li_parameters.Visible = false;
+                li_cliente.Visible = true;
+                li_providers.Visible = true;
+                li_invoices.Visible = true;
+            }
+            else if(Session["UserRole"].ToString() == "PROVEEDOR")
+            {
+                li_formulas.Visible = false;
+                li_variables.Visible = false;
+                li_parameters.Visible = false;
+                li_cliente.Visible = true;
+                li_providers.Visible = false;
+                li_invoices.Visible = true;
+            }
+        }
+
+        protected DataRow GetFeatureValue(string Feature)
         {
             string expression = "Feature =  " + Feature;
             DataRow[] foundRows;
@@ -525,7 +562,7 @@ namespace GoWebForms
                 cmd.CommandText = "go.sp_generate_simulation";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-               
+
 
 
 
