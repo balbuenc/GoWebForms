@@ -140,12 +140,12 @@
         </header>
         <main>
 
-            <div class="preloader bg-soft flex-column justify-content-center align-items-center">
+           <%-- <div class="preloader bg-soft flex-column justify-content-center align-items-center">
                 <div class="loader-element">
                     <span class="loader-animated-dot"></span>
                     <img src="../assets/img/brand/gofactoring.png" height="40" alt="">
                 </div>
-            </div>
+            </div>--%>
 
             <!-- Hero -->
             <section class="section-header pb-8 pb-lg-8 mb-4 mb-lg-6 bg-primary text-white">
