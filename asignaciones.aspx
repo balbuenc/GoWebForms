@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="variables.aspx.cs" Inherits="GoWebForms.variables" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="asignaciones.aspx.cs" Inherits="GoWebForms.asignaciones" %>
 
 <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <head>
         <!-- Primary Meta Tags -->
-        <title>GoFactoring</title>
+        <title>Fintech Solutions</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="title" content="Impact - About Page">
@@ -41,6 +41,8 @@
         <meta property="og:description" content="Fintech Solutions" />
         <meta property="og:site_name" content="Fintech Solutions" />
 
+
+
         <!-- Favicon -->
         <link rel="icon" href="../assets/img/favicon/favicon.png" type="image/png" />
 
@@ -56,7 +58,6 @@
         <!-- Front CSS -->
         <link type="text/css" href="../css/front.css" rel="stylesheet" />
 
-
         <style>
             a.button {
                 border: solid;
@@ -70,11 +71,40 @@
                 padding: 5px;
                 cursor: pointer;
             }
+
+            /*  table {
+                color: #666;
+                font-size: 12px;
+                background: #124;
+                border: #ccc 1px solid;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+                table td {
+                    padding: 10px;
+                    border-top: 1px solid #ffffff;
+                    border-bottom: 1px solid #e0e0e0;
+                    border-left: 1px solid #e0e0e0;
+                    background: #fafafa;
+                    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+                    background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+                    width: 6.9in;
+                }
+
+            th {
+                cursor: pointer;
+            }*/
         </style>
+
+
     </head>
 
     <body>
-        <header class="header-global">
+        <header class="header-global" runat="server">
             <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-primary">
                 <div class="container">
                     <a class="navbar-brand @@logo_classes" href="../../home.aspx">
@@ -99,13 +129,17 @@
                         <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                         </ul>
 
-                         <div class="btn-group">
+
+
+
+
+                        <div class="btn-group">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                     Funciones
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
+                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Asignaciones.aspx">Proveedores</a></li>
                                     <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
                                     <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
                                     <li>
@@ -126,6 +160,13 @@
                         </div>
 
 
+
+
+
+
+
+
+
                         <div class="d-lg-block @@cta_button_classes js-login1">
                         </div>
                     </div>
@@ -141,12 +182,7 @@
         </header>
         <main>
 
-         <%--   <div class="preloader bg-soft flex-column justify-content-center align-items-center">
-                <div class="loader-element">
-                    <span class="loader-animated-dot"></span>
-                    <img src="../assets/img/brand/gofactoring.png" height="40" alt="">
-                </div>
-            </div>--%>
+
 
             <!-- Hero -->
             <section class="section-header pb-8 pb-lg-8 mb-4 mb-lg-6 bg-primary text-white">
@@ -158,7 +194,7 @@
                 </div>
                 <div class="pattern bottom"></div>
             </section>
-            <section class="container-fluid">
+            <section class="container">
                 <div class="page-header encabezado small">
                     <div class="container-fluid">
                         <asp:Panel runat="server" DefaultButton="SearchBtn">
@@ -178,8 +214,9 @@
                                 </div>
                                 <div class="col-2">
                                     <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control" Font-Size="Small">
-                                        <asp:ListItem Text="Variable" Value="VARIABLE"></asp:ListItem>
-                                        <asp:ListItem Text="Descripcion" Value="VARIABLE"></asp:ListItem>
+
+                                        <asp:ListItem Text="PROVEEDOR" Value="PROVEEDOR"></asp:ListItem>
+                                        <asp:ListItem Text="CLIENTE" Value="CLIENTE"></asp:ListItem>
 
                                     </asp:DropDownList>
                                 </div>
@@ -192,12 +229,13 @@
                                                 <i class="fas fa-search fa-sm" style="padding:5px"></i>
                                                 </div>
                                         </asp:LinkButton>
-                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Variable" Font-Size="Small">
+                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Asignacion" Font-Size="Small">
                                                 <div class="form-row">
-                                                <asp:Label  Text="Agregar Variable" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
+                                                <asp:Label  Text="Agregar Asignacion" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                                 </div>
                                         </asp:LinkButton>
+
                                     </div>
                                 </div>
 
@@ -210,7 +248,7 @@
                 </div>
 
                 <div class="row pie small" style="padding-left: 15px">
-                    <asp:DataPager ID="VariableDataPager" runat="server" PagedControlID="VariableListView" PageSize="10">
+                    <asp:DataPager ID="AsignacionDataPager" runat="server" PagedControlID="AsignacionListView" PageSize="20">
                         <Fields>
                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -219,25 +257,22 @@
                     </asp:DataPager>
                 </div>
 
-                <asp:ListView ID="VariableListView"
+                <asp:ListView ID="AsignacionListView"
                     runat="server"
-                    DataSourceID="VariableDS"
-                    DataKeyNames="cod_variable"
+                    DataSourceID="AsignacionDS"
+                    DataKeyNames="id_proveedor"
                     OnItemCommand="ListView_ItemCommand">
                     <LayoutTemplate>
                         <div class="table table-responsive">
                             <table class="table table-sm  table-striped  table-hover small">
                                 <caption>
-                                    <h3><span class="badge">VARIABLES</span></h3>
+                                    <h3><span class="badge">ASIGNACIONES</span></h3>
                                 </caption>
                                 <thead class="table-dark" id="tbl_head" runat="server">
-                                    <th id="tblhead_cod_variable" runat="server">COD</th>
-                                    <th id="tblhead_descripcion" runat="server">DESCRIPCION</th>
-                                    <th id="tblhead_abreviado" runat="server">VARIABLE</th>
-                                    <th id="tblhead_select_campo" runat="server">CAMPO</th>
-                                    <th id="tblhead_from_tabla" runat="server">OBJECTO</th>
-                                    <th id="tblhead_where_condicion" runat="server">CONDICION</th>
-                                    <th id="tblhead_campo_funcionario" runat="server">FACTURA</th>
+                                    <th id="tblhead_id_asignacion" runat="server">ID</th>
+                                    <th id="tblhead_id_formula" runat="server">FORMULA</th>
+                                    <th id="tblhead_id_cliente" runat="server">CLIENTE</th>
+                                    <th id="tblhead_id_proveedor" runat="server">PROVEEDOR</th>
                                     <th>...</th>
                                     <th>...</th>
                                     <th>...</th>
@@ -250,39 +285,33 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
-                                <asp:Label ID="lblcod_variable" runat="server" Text='<%# Eval("cod_variable") %>' /></td>
-                            <td>
-                                <asp:Label ID="lbldescripcion" runat="server" Text='<%# Eval("descripcion") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblabreviado" runat="server" Text='<%# Eval("abreviado") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblselect_campo" runat="server" Text='<%# Eval("select_campo") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblfrom_tabla" runat="server" Text='<%# Eval("from_tabla") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblwhere_condicion" runat="server" Text='<%# Eval("where_condicion") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblcampo_funcionario" runat="server" Text='<%# Eval("campo_funcionario") %>' /></td>
+                            <td id="clm_id_asignacion" runat="server">
+                                <asp:Label ID="lblid_asignacion" runat="server" Text='<%# Eval("id_asignacion") %>' /></td>
+                            <td id="clm_id_formula" runat="server">
+                                <asp:Label ID="lblid_formula" runat="server" Text='<%# Eval("formula") %>' /></td>
+                            <td id="clm_id_cliente" runat="server">
+                                <asp:Label ID="lblid_cliente" runat="server" Text='<%# Eval("cliente") %>' /></td>
+                            <td id="clm_id_proveedor" runat="server">
+                                <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
 
 
                             <td>
-                                <asp:LinkButton runat="server" ID="EditVariableBtn" CommandName="Editar" CommandArgument='<%# Eval("cod_variable")%>' ToolTip="Editar">
+                                <asp:LinkButton runat="server" ID="EditAsignacionBtn" CommandName="Editar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Editar">
                                     <i class="fa fa-keyboard fa-sm"></i>
                                 </asp:LinkButton>
                             </td>
 
                             <td>
-                                <asp:LinkButton runat="server" ID="RequestVariableBtn" CommandName="Solicitar" CommandArgument='<%# Eval("cod_variable")%>' ToolTip="Quiero factorizar" Visible="false">
+                                <asp:LinkButton runat="server" ID="RequestAsignacionBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Quiero factorizar" Visible="false">
                                     <i class="fas fa-american-sign-language-interpreting"></i>
                                 </asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="FactoringVariableBtn" CommandName="Factorizar" CommandArgument='<%# Eval("cod_variable")%>' ToolTip="Factorizar" Visible="false">
+                                <asp:LinkButton runat="server" ID="FactoringAsignacionBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Factorizar" Visible="false">
                                     <i class="fas fa-vote-yea"></i>
                                 </asp:LinkButton>
                             </td>
 
                             <td>
-                                <asp:LinkButton runat="server" ID="DeleteVariableBtn" CommandName="Eliminar" CommandArgument='<%# Eval("cod_variable")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
+                                <asp:LinkButton runat="server" ID="DeleteAsignacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
                                     <i class="fas fa-trash-alt"></i>
                                 </asp:LinkButton>
                             </td>
@@ -296,18 +325,42 @@
                 </asp:ListView>
 
                 <!-- #region Modals -->
-                <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+
+                <div id="messageModal" class="modal modal-primary" tabindex="-1"  role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <b id="messageModalLabel">Error.</b>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <asp:Label ID="ModalErrorLabel" runat="server" Text="Mensaje de error."/>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+
+
+                </div>
+
+                <div id="addModal" class="modal fade" tabindex="-1" role="dialog"  aria-labelledby="addModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <b id="addModalLabel">Agregar un nuevo Variable.</b>
+                                        <b id="addModalLabel">Agregar un nuevo Asignacion.</b>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body">
-                                        <asp:FormView ID="InsertFormView" runat="server" DataSourceID="VariableDS" Width="100%"
-                                            CellPadding="4" DataKeyNames="cod_variable" ForeColor="#333333"
+                                        <asp:FormView ID="InsertFormView" runat="server" DataSourceID="AsignacionDS" Width="100%"
+                                            CellPadding="4" DataKeyNames="id_proveedor" ForeColor="#333333"
                                             DefaultMode="Insert"
                                             OnItemInserted="FormView1_ItemInserted">
                                             <EditItemTemplate>
@@ -316,51 +369,46 @@
                                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                             <InsertItemTemplate>
                                                 <div class="container-fluid">
-
+                                                   
                                                     <div class="row">
-                                                        <div class="col-3">COD.</div>
+                                                        <div class="col-3"><b>FORMULA</b></div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtcod_variable" runat="server" Text='<%# Bind("cod_variable") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
+                                                            <asp:DropDownList ID="IdFormulaDDL"
+                                                                runat="server"
+                                                                DataSourceID="FormulasDS_DDL"
+                                                                DataTextField="formula"
+                                                                DataValueField="id_formula"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_formula") %>'>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">DESCRIPCION</div>
+                                                        <div class="col-3"><b>CLIENTE</b></div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:DropDownList ID="IdClienteDDL"
+                                                                runat="server"
+                                                                DataSourceID="ClientesDS_DDL"
+                                                                DataTextField="cliente"
+                                                                DataValueField="id_cliente"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_cliente") %>'>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">VARIABLE</div>
+                                                        <div class="col-3"><b>PROVEEDOR</b></div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtabreviado" runat="server" Text='<%# Bind("abreviado") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:DropDownList ID="IdProveedoreDDL"
+                                                                runat="server"
+                                                                DataSourceID="ProveedoresDS_DDL"
+                                                                DataTextField="proveedor"
+                                                                DataValueField="id_proveedor"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_proveedor") %>'>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-3">CAMPO</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtselect_campo" runat="server" Text='<%# Bind("select_campo") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">OBJETO</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtfrom_tabla" runat="server" Text='<%# Bind("from_tabla") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">CONDICION</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtwhere_condicion" runat="server" Text='<%# Bind("where_condicion") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">FACTURA</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtcampo_funcionario" runat="server" Text='<%# Bind("campo_funcionario") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-
-
 
                                                 </div>
 
@@ -392,52 +440,61 @@
                             <ContentTemplate>
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <b id="editModalLabel">Modificar Variable.</b>
+                                        <b id="editModalLabel">Modificar Asignacion.</b>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
                                     <div class="modal-body">
                                         <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                            CellPadding="4" DataKeyNames="cod_variable" ForeColor="#333333"
+                                            CellPadding="4" DataKeyNames="id_proveedor" ForeColor="#333333"
                                             DefaultMode="Edit"
                                             OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                             <EditItemTemplate>
                                                 <div class="container-fluid">
                                                     <div class="row">
-                                                        <div class="col-3">cod_variable</div>
+                                                        <div class="col-3">ID</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtcod_variable" runat="server" Text='<%# Bind("cod_variable") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtid_asignacion" runat="server" Text='<%# Bind("id_asignacion") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">descripcion</div>
+                                                        <div class="col-3"><b>FORMULA</b></div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:DropDownList ID="IdFormulaDDL"
+                                                                runat="server"
+                                                                DataSourceID="FormulasDS_DDL"
+                                                                DataTextField="formula"
+                                                                DataValueField="id_formula"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_formula") %>'>
+                                                            </asp:DropDownList>
+                                                        </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">abreviado</div>
+                                                        <div class="col-3"><b>CLIENTE</b></div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtabreviado" runat="server" Text='<%# Bind("abreviado") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:DropDownList ID="IdClienteDDL"
+                                                                runat="server"
+                                                                DataSourceID="ClientesDS_DDL"
+                                                                DataTextField="cliente"
+                                                                DataValueField="id_cliente"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_cliente") %>'>
+                                                            </asp:DropDownList>
+                                                        </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">select_campo</div>
+                                                        <div class="col-3"><b>PROVEEDOR</b></div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtselect_campo" runat="server" Text='<%# Bind("select_campo") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:DropDownList ID="IdProveedoreDDL"
+                                                                runat="server"
+                                                                DataSourceID="ProveedoresDS_DDL"
+                                                                DataTextField="proveedor"
+                                                                DataValueField="id_proveedor"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_proveedor") %>'>
+                                                            </asp:DropDownList>
+                                                        </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-3">from_tabla</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtfrom_tabla" runat="server" Text='<%# Bind("from_tabla") %>' CssClass="form-control" Font-Size="X-Small" /></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">where_condicion</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtwhere_condicion" runat="server" Text='<%# Bind("where_condicion") %>' CssClass="form-control" Font-Size="X-Small" /></div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">campo_funcionario</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtcampo_funcionario" runat="server" Text='<%# Bind("campo_funcionario") %>' CssClass="form-control" Font-Size="X-Small" /></div>
-                                                    </div>
-
 
                                                 </div>
 
@@ -469,28 +526,23 @@
 
                 <!-- #endregion -->
                 <!-- #region DataSources -->
-                <asp:SqlDataSource ID="VariableDS"
+                <asp:SqlDataSource ID="AsignacionDS"
                     runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    InsertCommand="go.sp_VariableS_insert" InsertCommandType="StoredProcedure"
-                    SelectCommand="go.sp_Variables_get_all" SelectCommandType="StoredProcedure">
+                    InsertCommand="go.sp_Asignaciones_insert" InsertCommandType="StoredProcedure"
+                    SelectCommand="go.sp_Asignaciones_get_all" SelectCommandType="StoredProcedure">
                     <DeleteParameters>
-                        <asp:Parameter Name="cod_variable" Type="Int32" />
+                        <asp:Parameter Name="id_proveedor" Type="Int32" />
                     </DeleteParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="descripcion" Type="String" />
-                        <asp:Parameter Name="abreviado" Type="String" />
-                        <asp:Parameter Name="select_campo" Type="String" />
-                        <asp:Parameter Name="from_tabla" Type="String" />
-                        <asp:Parameter Name="where_condicion" Type="String" />
-                        <asp:Parameter Name="campo_funcionario" Type="String" />
+                        <asp:Parameter Name="id_formula" Type="Int32" />
+                        <asp:Parameter Name="id_cliente" Type="Int32" />
+                        <asp:Parameter Name="id_proveedor" Type="Int32" />
                     </InsertParameters>
                     <UpdateParameters>
-                        <asp:Parameter Name="descripcion" Type="String" />
-                        <asp:Parameter Name="abreviado" Type="String" />
-                        <asp:Parameter Name="select_campo" Type="String" />
-                        <asp:Parameter Name="from_tabla" Type="String" />
-                        <asp:Parameter Name="where_condicion" Type="String" />
-                        <asp:Parameter Name="campo_funcionario" Type="String" />
+                        <asp:Parameter Name="id_asignacion" Type="Int32" />
+                        <asp:Parameter Name="id_formula" Type="Int32" />
+                        <asp:Parameter Name="id_cliente" Type="Int32" />
+                        <asp:Parameter Name="id_proveedor" Type="Int32" />
                     </UpdateParameters>
                     <SelectParameters>
                         <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
@@ -498,6 +550,14 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
 
+                <asp:SqlDataSource ID="FormulasDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select id_formula, titulo as formula from go.formulas order by 1  " SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="ClientesDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select id_cliente, upper(razon_social) as cliente from go.clientes order by razon_social" SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="ProveedoresDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select id_proveedor, upper(razon_social) as proveedor from go.proveedores order by razon_social" SelectCommandType="Text"></asp:SqlDataSource>
 
                 <!-- #endregion -->
             </section>
@@ -673,7 +733,7 @@
 
                 excessFactoring_ = (amount_.value - amount_.value * 0.98);
 
-                // Calculating Totals in Proveedores section
+                // Calculating Totals in Asignaciones section
 
                 totalFactoringCost_ = excessFactoring_ + totalOrdering_ + totalFactoring_;
 
@@ -872,9 +932,9 @@
                 let innerBodyHtml = "";
 
                 response.forEach(invoice => {
-                    const { cod_variable, razon_social, ruc, fecha_alta, direccion } = invoice;
+                    const { id_proveedor, razon_social, ruc, fecha_alta, direccion } = invoice;
 
-                    innerBodyHtml = innerBodyHtml + `<tr> <td>${cod_variable}</td> <td>${ruc}</td> <td>${razon_social}</td>     <td type='date'>${fecha_alta}</td> <td>${direccion}</td>   <td><a href="/Proveedores.html?client=${cod_variable}" class="button">Ver proveedores</a></td>  <tr>`;
+                    innerBodyHtml = innerBodyHtml + `<tr> <td>${id_proveedor}</td> <td>${ruc}</td> <td>${razon_social}</td>     <td type='date'>${fecha_alta}</td> <td>${direccion}</td>   <td><a href="/Asignaciones.html?client=${id_proveedor}" class="button">Ver proveedores</a></td>  <tr>`;
                 });
 
                 tableBodyElem.innerHTML = innerBodyHtml;

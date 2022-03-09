@@ -87,6 +87,15 @@ namespace GoWebForms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_parameters;
 
         /// <summary>
+        /// Control li_asignaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_asignaciones;
+
+        /// <summary>
         /// Control BtnUser.
         /// </summary>
         /// <remarks>
@@ -211,5 +220,23 @@ namespace GoWebForms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ProveedorDS;
+
+        /// <summary>
+        /// Control PaisesDS_DDL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource PaisesDS_DDL;
+
+        /// <summary>
+        /// Control ClientesDS_DDL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ClientesDS_DDL;
     }
 }

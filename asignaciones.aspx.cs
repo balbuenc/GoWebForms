@@ -12,7 +12,7 @@ using System.Web.UI.HtmlControls;
 
 namespace GoWebForms
 {
-    public partial class proveedores : System.Web.UI.Page
+    public partial class asignaciones : System.Web.UI.Page
     {
         protected DataTable FeatureMatrix;
      
@@ -38,7 +38,7 @@ namespace GoWebForms
 
 
                 //Obtengo la Matriz permisos para el modulo segun el Rol del usuario
-                FeatureMatrix = GetFeatureMatrix(Session["UserRole"].ToString(), "Proveedores");
+                FeatureMatrix = GetFeatureMatrix(Session["UserRole"].ToString(), "Asignaciones");
 
                 //Seteo el menu segun el rol del usuario
                 SetFunctionsMenu();
@@ -136,20 +136,26 @@ namespace GoWebForms
             if (e.Exception != null)
             {
                 ErrorLabel.Text = "Error : " + e.Exception.Message;
+                ModalErrorLabel.Text = ErrorLabel.Text;
+              
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+                "$('#messageModal').modal('show');", true);
 
                 e.ExceptionHandled = true;
             }
             else
             {
                 ErrorLabel.Text = "Inserted Successfully";
+                Response.Redirect("Asignaciones.aspx");
             }
 
-            Response.Redirect("Proveedores.aspx");
+            
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Proveedores.aspx");
+            Response.Redirect("Asignaciones.aspx");
         }
         protected void EditFormView_ModeChanging(object sender, FormViewModeEventArgs e)
         {
@@ -167,10 +173,10 @@ namespace GoWebForms
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ProveedorDS.ConnectionString);
+            SqlConnection con = new SqlConnection(AsignacionDS.ConnectionString);
 
-            cmd = new SqlCommand("go.[sp_Proveedores_get_Proveedor]", con);
-            cmd.Parameters.Add(new SqlParameter("@id_proveedor", ID));
+            cmd = new SqlCommand("go.[sp_Asignaciones_get_Asignacion]", con);
+            cmd.Parameters.Add(new SqlParameter("@id_asignacion", ID));
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter adp = new SqlDataAdapter();
@@ -192,10 +198,10 @@ namespace GoWebForms
         {
 
             SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(ProveedorDS.ConnectionString);
+            SqlConnection con = new SqlConnection(AsignacionDS.ConnectionString);
 
-            cmd = new SqlCommand("go.[sp_Proveedores_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@id_proveedor", ID));
+            cmd = new SqlCommand("go.[sp_Asignaciones_delete]", con);
+            cmd.Parameters.Add(new SqlParameter("@id_asignacion", ID));
 
 
 
@@ -219,37 +225,25 @@ namespace GoWebForms
             try
             {
                 //Obtengo los valores de los campos a editar
-                TextBox txtid_proveedor = (TextBox)EditFormView.FindControl("txtid_proveedor");
-                TextBox txtnombres = (TextBox)EditFormView.FindControl("txtnombres");
-                TextBox txtapellidos = (TextBox)EditFormView.FindControl("txtapellidos");
-                TextBox txtruc = (TextBox)EditFormView.FindControl("txtruc");
-                TextBox txtdireccion = (TextBox)EditFormView.FindControl("txtdireccion");
+                TextBox txtid_asignacion = (TextBox)EditFormView.FindControl("txtid_asignacion");
                 DropDownList IdClientesDDL = (DropDownList)EditFormView.FindControl("IdClientesDDL");
-                DropDownList IdPaisesDDL = (DropDownList)EditFormView.FindControl("IdPaisesDDL");
-                TextBox txtrazon_social = (TextBox)EditFormView.FindControl("txtrazon_social");
-                TextBox txtemail = (TextBox)EditFormView.FindControl("txtemail");
-                TextBox txttelefono = (TextBox)EditFormView.FindControl("txttelefono");
-
+                DropDownList IdFormulasDDL = (DropDownList)EditFormView.FindControl("IdFormulasDDL");
+                DropDownList IdProveedoresDDL = (DropDownList)EditFormView.FindControl("IdProveedoresDDL");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
-                SqlConnection conn = new SqlConnection(ProveedorDS.ConnectionString);
+                SqlConnection conn = new SqlConnection(AsignacionDS.ConnectionString);
 
                 cmd.Connection = conn;
 
-                cmd.CommandText = "go.sp_Proveedores_update";
+                cmd.CommandText = "go.sp_Asignaciones_update";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@id_proveedor", txtid_proveedor.Text);
-                cmd.Parameters.AddWithValue("@nombres", txtnombres.Text);
-                cmd.Parameters.AddWithValue("@apellidos", txtapellidos.Text);
-                cmd.Parameters.AddWithValue("@ruc", txtruc.Text);
-                cmd.Parameters.AddWithValue("@direccion", txtdireccion.Text);
-                cmd.Parameters.AddWithValue("@id_pais", IdPaisesDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@id_asignacion", txtid_asignacion.Text);
+                
+                cmd.Parameters.AddWithValue("@id_formula", IdFormulasDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@id_cliente", IdClientesDDL.SelectedValue);
-                cmd.Parameters.AddWithValue("@razon_social", txtrazon_social.Text);
-                cmd.Parameters.AddWithValue("@email", txtemail.Text);
-                cmd.Parameters.AddWithValue("@telefono", txttelefono.Text);
+                cmd.Parameters.AddWithValue("@id_proveedor", IdProveedoresDDL.SelectedValue);
 
 
 
@@ -261,7 +255,7 @@ namespace GoWebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Proveedors.aspx");
+                Response.Redirect("Asignacions.aspx");
 
 
             }
@@ -276,7 +270,7 @@ namespace GoWebForms
         {
             EditFormView.ChangeMode(FormViewMode.ReadOnly);
 
-            ProveedorListView.DataBind();
+            AsignacionListView.DataBind();
 
         }
         protected void ListView_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -294,7 +288,7 @@ namespace GoWebForms
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
-                ProveedorListView.DataBind();
+                AsignacionListView.DataBind();
             }
            
         }
@@ -302,7 +296,7 @@ namespace GoWebForms
         protected DataTable GetFeatureMatrix(string role, string module)
         {
             SqlCommand cmd = new SqlCommand();
-            SqlConnection conn = new SqlConnection(ProveedorDS.ConnectionString);
+            SqlConnection conn = new SqlConnection(AsignacionDS.ConnectionString);
             DataSet ds = new DataSet();
             try
             {

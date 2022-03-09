@@ -281,6 +281,7 @@
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
+    <Content Include="asignaciones.aspx" />
     <Content Include="proveedores.aspx" />
     <Content Include="formulas.aspx" />
     <Content Include="parametros.aspx" />
@@ -2114,6 +2115,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="asignaciones.aspx.cs">
+      <DependentUpon>asignaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="asignaciones.aspx.designer.cs">
+      <DependentUpon>asignaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="proveedores.aspx.cs">
       <DependentUpon>proveedores.aspx</DependentUpon>

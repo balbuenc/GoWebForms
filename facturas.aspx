@@ -148,6 +148,7 @@
                                     <li id="li_formulas" runat="server"><a class="dropdown-item" href="Formulas.aspx">Formulas</a></li>
                                     <li id="li_variables" runat="server"><a class="dropdown-item" href="Variables.aspx">Variables</a></li>
                                     <li id="li_parameters" runat="server"><a class="dropdown-item" href="Parametros.aspx">Parámetros</a></li>
+                                    <li id="li_asignaciones" runat="server"><a class="dropdown-item" href="Asignaciones.aspx">Asignaciones</a></li>
                                 </ul>
                             </div>
                             <button runat="server" id="BtnUser" class="btn btn-sm btn-primary" title="">
@@ -530,14 +531,14 @@
                                                             <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                   <%-- <div class="row">
                                                         <div class="col-3">
                                                             DESCUENTO
                                                         </div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
-                                                    </div>
+                                                    </div>--%>
 
                                                 </div>
 

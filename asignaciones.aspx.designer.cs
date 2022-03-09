@@ -11,7 +11,7 @@ namespace GoWebForms
 {
 
 
-    public partial class facturas
+    public partial class asignaciones
     {
 
         /// <summary>
@@ -150,15 +150,6 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.LinkButton AddRegistroBtn;
 
         /// <summary>
-        /// Control SimulationBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SimulationBtn;
-
-        /// <summary>
         /// Control ErrorLabel.
         /// </summary>
         /// <remarks>
@@ -168,22 +159,40 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
 
         /// <summary>
-        /// Control FacturaDataPager.
+        /// Control AsignacionDataPager.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager FacturaDataPager;
+        protected global::System.Web.UI.WebControls.DataPager AsignacionDataPager;
 
         /// <summary>
-        /// Control FacturaListView.
+        /// Control AsignacionListView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView FacturaListView;
+        protected global::System.Web.UI.WebControls.ListView AsignacionListView;
+
+        /// <summary>
+        /// Control UpdatePanel3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+
+        /// <summary>
+        /// Control ModalErrorLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ModalErrorLabel;
 
         /// <summary>
         /// Control UpdatePanel1.
@@ -222,39 +231,39 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.FormView EditFormView;
 
         /// <summary>
-        /// Control FacturaDS.
+        /// Control AsignacionDS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FacturaDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource AsignacionDS;
 
         /// <summary>
-        /// Control FacturaInsertDS_DDL.
+        /// Control FormulasDS_DDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FacturaInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource FormulasDS_DDL;
 
         /// <summary>
-        /// Control ProveedorInsertDS_DDL.
+        /// Control ClientesDS_DDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource ClientesDS_DDL;
 
         /// <summary>
-        /// Control MonedaInsertDS_DDL.
+        /// Control ProveedoresDS_DDL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource MonedaInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource ProveedoresDS_DDL;
     }
 }
