@@ -99,7 +99,7 @@
                         <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                         </ul>
 
-                         <div class="btn-group">
+                        <div class="btn-group">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                     Funciones
@@ -141,7 +141,7 @@
         </header>
         <main>
 
-           <%-- <div class="preloader bg-soft flex-column justify-content-center align-items-center">
+            <%-- <div class="preloader bg-soft flex-column justify-content-center align-items-center">
                 <div class="loader-element">
                     <span class="loader-animated-dot"></span>
                     <img src="../assets/img/brand/gofactoring.png" height="40" alt="">
@@ -261,12 +261,10 @@
                             </td>
 
                             <td>
-                                <asp:LinkButton runat="server" ID="RequestFormulaBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_formula")%>' ToolTip="Quiero factorizar" Visible="false">
+                                <asp:LinkButton runat="server" ID="FormulaSettingsBtn" CommandName="Settings" CommandArgument='<%# Eval("id_formula")%>' ToolTip="Configuraciones" >
                                     <i class="fas fa-american-sign-language-interpreting"></i>
                                 </asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="FactoringFormulaBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_formula")%>' ToolTip="Factorizar" Visible="false">
-                                    <i class="fas fa-vote-yea"></i>
-                                </asp:LinkButton>
+                               
                             </td>
 
                             <td>
@@ -409,6 +407,62 @@
 
                 </div>
 
+                <div id="FormulaSettingsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <b id="FormulaSettingsModalLabel">Modificar Formula.</b>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <asp:ListView ID="FormulaSettingsListView"
+                                            runat="server"
+                                            DataSourceID="FormulaSettingsDS"
+                                            DataKeyNames="id_formula,cod_variable">
+                                            <LayoutTemplate>
+                                                <div class="table table-responsive">
+                                                    <table class="table table-sm  table-striped  table-hover small">
+                                                        <caption>
+                                                            <h3><span class="badge">Variables</span></h3>
+                                                        </caption>
+                                                        <thead class="table-dark" id="tbl_head" runat="server">
+                                                            <th>Variable</th>
+                                                            <th>Descripción</th>
+                                                            <th>Valor</th>
+                                                            
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr runat="server" id="itemPlaceholder" />
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </LayoutTemplate>
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td>
+                                                        <asp:Label ID="lblid_formula" runat="server" Text='<%# Eval("variable") %>' /></td>
+                                                      <td>
+                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("descripcion") %>' /></td>
+                                                    <td>
+                                                        <asp:TextBox ID="lbltitulo" runat="server" Text='<%# Eval("valor") %>' Enabled='<%# Convert.ToBoolean ( Eval("es_variable") )%>'  /></td>
+                                                    <td>
+                                                       
+                                                    </td>
+                                            </ItemTemplate>
+                                        </asp:ListView>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+
+
+                </div>
+
                 <!-- #endregion -->
                 <!-- #region DataSources -->
                 <asp:SqlDataSource ID="FormulaDS"
@@ -423,13 +477,29 @@
                         <asp:Parameter Name="formula" Type="String" />
                     </InsertParameters>
                     <UpdateParameters>
-                           <asp:Parameter Name="id_formula" Type="Int32" />
+                        <asp:Parameter Name="id_formula" Type="Int32" />
                         <asp:Parameter Name="titulo" Type="String" />
                         <asp:Parameter Name="formula" Type="String" />
                     </UpdateParameters>
                     <SelectParameters>
                         <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
                         <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="FormulaSettingsDS"
+                    runat="server"
+                    ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="[go].[get_formula_settings]" SelectCommandType="StoredProcedure">
+                    <DeleteParameters>
+                    </DeleteParameters>
+                    <InsertParameters>
+                    </InsertParameters>
+                    <UpdateParameters>
+                    </UpdateParameters>
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="id_formula" DefaultValue="1" />
+
                     </SelectParameters>
                 </asp:SqlDataSource>
 

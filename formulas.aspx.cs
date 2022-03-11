@@ -14,7 +14,7 @@ namespace GoWebForms
 {
     public partial class formulas : System.Web.UI.Page
     {
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             System.Web.UI.HtmlControls.HtmlButton btn;
@@ -144,7 +144,7 @@ namespace GoWebForms
             Response.Redirect("ingresar.aspx", true);
         }
 
-       
+
 
         protected void GetRecordToUpdate(String ID)
         {
@@ -257,15 +257,18 @@ namespace GoWebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                "$('#editModal').modal('show');", true);
 
-
-
+            }
+            else if (e.CommandName == "Settings")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+                "$('#FormulaSettingsModal').modal('show');", true);
             }
             else if (e.CommandName == "Eliminar")
             {
                 DeleteRecord(e.CommandArgument.ToString());
                 FormulaListView.DataBind();
             }
-          
+
         }
     }
 }
