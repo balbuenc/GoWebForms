@@ -260,6 +260,7 @@ namespace GoWebForms
             }
             else if (e.CommandName == "Settings")
             {
+                HiddenIdFormula.Value = e.CommandArgument.ToString();   
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#FormulaSettingsModal').modal('show');", true);
             }

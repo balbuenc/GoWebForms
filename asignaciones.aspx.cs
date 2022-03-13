@@ -15,7 +15,7 @@ namespace GoWebForms
     public partial class asignaciones : System.Web.UI.Page
     {
         protected DataTable FeatureMatrix;
-     
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -66,7 +66,7 @@ namespace GoWebForms
                 li_providers.Visible = true;
                 li_invoices.Visible = true;
             }
-            else if(Session["UserRole"].ToString() == "PROVEEDOR")
+            else if (Session["UserRole"].ToString() == "PROVEEDOR")
             {
                 li_formulas.Visible = false;
                 li_variables.Visible = false;
@@ -137,7 +137,7 @@ namespace GoWebForms
             {
                 ErrorLabel.Text = "Error : " + e.Exception.Message;
                 ModalErrorLabel.Text = ErrorLabel.Text;
-              
+
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#messageModal').modal('show');", true);
@@ -150,7 +150,7 @@ namespace GoWebForms
                 Response.Redirect("Asignaciones.aspx");
             }
 
-            
+
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
@@ -168,7 +168,7 @@ namespace GoWebForms
             Response.Redirect("ingresar.aspx", true);
         }
 
-    
+
         protected void GetRecordToUpdate(String ID)
         {
 
@@ -196,23 +196,31 @@ namespace GoWebForms
 
         protected void DeleteRecord(String ID)
         {
-
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection con = new SqlConnection(AsignacionDS.ConnectionString);
-
-            cmd = new SqlCommand("go.[sp_Asignaciones_delete]", con);
-            cmd.Parameters.Add(new SqlParameter("@id_asignacion", ID));
+            try
+            {
 
 
+                SqlCommand cmd = new SqlCommand();
+                SqlConnection con = new SqlConnection(AsignacionDS.ConnectionString);
 
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            con.Open();
-            cmd.ExecuteNonQuery();
+                cmd = new SqlCommand("go.[sp_Asignaciones_delete]", con);
+                cmd.Parameters.Add(new SqlParameter("@id_asignacion", ID));
 
 
 
-            con.Close();
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         protected void EditFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
@@ -240,7 +248,7 @@ namespace GoWebForms
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@id_asignacion", txtid_asignacion.Text);
-                
+
                 cmd.Parameters.AddWithValue("@id_formula", IdFormulasDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@id_cliente", IdClientesDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@id_proveedor", IdProveedoresDDL.SelectedValue);
@@ -290,7 +298,7 @@ namespace GoWebForms
                 DeleteRecord(e.CommandArgument.ToString());
                 AsignacionListView.DataBind();
             }
-           
+
         }
 
         protected DataTable GetFeatureMatrix(string role, string module)
@@ -331,6 +339,6 @@ namespace GoWebForms
             }
         }
 
-        
+
     }
 }

@@ -260,7 +260,7 @@
                 <asp:ListView ID="AsignacionListView"
                     runat="server"
                     DataSourceID="AsignacionDS"
-                    DataKeyNames="id_proveedor"
+                    DataKeyNames="id_asignacion"
                     OnItemCommand="ListView_ItemCommand">
                     <LayoutTemplate>
                         <div class="table table-responsive">
@@ -274,7 +274,7 @@
                                     <th id="tblhead_id_cliente" runat="server">CLIENTE</th>
                                     <th id="tblhead_id_proveedor" runat="server">PROVEEDOR</th>
                                     <th>...</th>
-                                    <th>...</th>
+                                  
                                     <th>...</th>
                                 </thead>
                                 <tbody>
@@ -296,22 +296,15 @@
 
 
                             <td>
-                                <asp:LinkButton runat="server" ID="EditAsignacionBtn" CommandName="Editar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Editar">
+                                <asp:LinkButton runat="server" ID="EditAsignacionBtn" CommandName="Editar" CommandArgument='<%# Eval("id_asignacion")%>' ToolTip="Editar">
                                     <i class="fa fa-keyboard fa-sm"></i>
                                 </asp:LinkButton>
                             </td>
 
-                            <td>
-                                <asp:LinkButton runat="server" ID="RequestAsignacionBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Quiero factorizar" Visible="false">
-                                    <i class="fas fa-american-sign-language-interpreting"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="FactoringAsignacionBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Factorizar" Visible="false">
-                                    <i class="fas fa-vote-yea"></i>
-                                </asp:LinkButton>
-                            </td>
+                          
 
                             <td>
-                                <asp:LinkButton runat="server" ID="DeleteAsignacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_proveedor")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
+                                <asp:LinkButton runat="server" ID="DeleteAsignacionBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_asignacion")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
                                     <i class="fas fa-trash-alt"></i>
                                 </asp:LinkButton>
                             </td>
@@ -360,7 +353,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <asp:FormView ID="InsertFormView" runat="server" DataSourceID="AsignacionDS" Width="100%"
-                                            CellPadding="4" DataKeyNames="id_proveedor" ForeColor="#333333"
+                                            CellPadding="4" DataKeyNames="id_asignacion" ForeColor="#333333"
                                             DefaultMode="Insert"
                                             OnItemInserted="FormView1_ItemInserted">
                                             <EditItemTemplate>
@@ -373,7 +366,7 @@
                                                     <div class="row">
                                                         <div class="col-3"><b>FORMULA</b></div>
                                                         <div class="col-9">
-                                                            <asp:DropDownList ID="IdFormulaDDL"
+                                                            <asp:DropDownList ID="IdFormulasDDL"
                                                                 runat="server"
                                                                 DataSourceID="FormulasDS_DDL"
                                                                 DataTextField="formula"
@@ -386,7 +379,7 @@
                                                     <div class="row">
                                                         <div class="col-3"><b>CLIENTE</b></div>
                                                         <div class="col-9">
-                                                            <asp:DropDownList ID="IdClienteDDL"
+                                                            <asp:DropDownList ID="IdClientesDDL"
                                                                 runat="server"
                                                                 DataSourceID="ClientesDS_DDL"
                                                                 DataTextField="cliente"
@@ -399,7 +392,7 @@
                                                     <div class="row">
                                                         <div class="col-3"><b>PROVEEDOR</b></div>
                                                         <div class="col-9">
-                                                            <asp:DropDownList ID="IdProveedoreDDL"
+                                                            <asp:DropDownList ID="IdProveedoresDDL"
                                                                 runat="server"
                                                                 DataSourceID="ProveedoresDS_DDL"
                                                                 DataTextField="proveedor"
@@ -445,7 +438,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                            CellPadding="4" DataKeyNames="id_proveedor" ForeColor="#333333"
+                                            CellPadding="4" DataKeyNames="id_asignacion" ForeColor="#333333"
                                             DefaultMode="Edit"
                                             OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                             <EditItemTemplate>
@@ -459,7 +452,7 @@
                                                     <div class="row">
                                                         <div class="col-3"><b>FORMULA</b></div>
                                                         <div class="col-9">
-                                                            <asp:DropDownList ID="IdFormulaDDL"
+                                                            <asp:DropDownList ID="IdFormulasDDL"
                                                                 runat="server"
                                                                 DataSourceID="FormulasDS_DDL"
                                                                 DataTextField="formula"
@@ -472,7 +465,7 @@
                                                     <div class="row">
                                                         <div class="col-3"><b>CLIENTE</b></div>
                                                         <div class="col-9">
-                                                            <asp:DropDownList ID="IdClienteDDL"
+                                                            <asp:DropDownList ID="IdClientesDDL"
                                                                 runat="server"
                                                                 DataSourceID="ClientesDS_DDL"
                                                                 DataTextField="cliente"
@@ -485,7 +478,7 @@
                                                     <div class="row">
                                                         <div class="col-3"><b>PROVEEDOR</b></div>
                                                         <div class="col-9">
-                                                            <asp:DropDownList ID="IdProveedoreDDL"
+                                                            <asp:DropDownList ID="IdProveedoresDDL"
                                                                 runat="server"
                                                                 DataSourceID="ProveedoresDS_DDL"
                                                                 DataTextField="proveedor"
@@ -531,7 +524,7 @@
                     InsertCommand="go.sp_Asignaciones_insert" InsertCommandType="StoredProcedure"
                     SelectCommand="go.sp_Asignaciones_get_all" SelectCommandType="StoredProcedure">
                     <DeleteParameters>
-                        <asp:Parameter Name="id_proveedor" Type="Int32" />
+                        <asp:Parameter Name="id_asignacion" Type="Int32" />
                     </DeleteParameters>
                     <InsertParameters>
                         <asp:Parameter Name="id_formula" Type="Int32" />

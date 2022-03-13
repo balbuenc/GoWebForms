@@ -159,6 +159,7 @@
                 <div class="pattern bottom"></div>
             </section>
             <section class="container">
+                <asp:HiddenField ID="HiddenIdFormula" runat="server" Visible="false" />
                 <div class="page-header encabezado small">
                     <div class="container-fluid">
                         <asp:Panel runat="server" DefaultButton="SearchBtn">
@@ -303,24 +304,14 @@
                                             <InsertItemTemplate>
                                                 <div class="container-fluid">
 
-                                                    <div class="row">
-                                                        <div class="col-3">COD</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtid_formula" runat="server" Text='<%# Eval("id_formula") %>' CssClass="form-control mitad" Enabled="false" />
-                                                        </div>
-                                                    </div>
+                                                   
                                                     <div class="row">
                                                         <div class="col-3">TITULO</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-3">FORMULA</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" />
-                                                        </div>
-                                                    </div>
+                                                   
                                                 </div>
                                                 <hr />
                                                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
@@ -471,7 +462,7 @@
                     </DeleteParameters>
                     <InsertParameters>
                         <asp:Parameter Name="titulo" Type="String" />
-                        <asp:Parameter Name="formula" Type="String" />
+                    
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="id_formula" Type="Int32" />
@@ -495,7 +486,7 @@
                     <UpdateParameters>
                     </UpdateParameters>
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="id_formula" DefaultValue="1" />
+                        <asp:ControlParameter ControlID="HiddenIdFormula" PropertyName="Value" Name="id_formula"  />
 
                     </SelectParameters>
                 </asp:SqlDataSource>
