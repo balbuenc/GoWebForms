@@ -158,7 +158,7 @@
                 </div>
                 <div class="pattern bottom"></div>
             </section>
-            <section class="container-fluid">
+            <section class="container">
                 <div class="page-header encabezado small">
                     <div class="container-fluid">
                         <asp:Panel runat="server" DefaultButton="SearchBtn">
@@ -261,10 +261,10 @@
                             </td>
 
                             <td>
-                                <asp:LinkButton runat="server" ID="FormulaSettingsBtn" CommandName="Settings" CommandArgument='<%# Eval("id_formula")%>' ToolTip="Configuraciones" >
-                                    <i class="fas fa-american-sign-language-interpreting"></i>
+                                <asp:LinkButton runat="server" ID="FormulaSettingsBtn" CommandName="Settings" CommandArgument='<%# Eval("id_formula")%>' ToolTip="Configuraciones">
+                                   <i class="fas fa-pen"></i>
                                 </asp:LinkButton>
-                               
+
                             </td>
 
                             <td>
@@ -306,25 +306,22 @@
                                                     <div class="row">
                                                         <div class="col-3">COD</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtid_formula" runat="server" Text='<%# Eval("id_formula") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtid_formula" runat="server" Text='<%# Eval("id_formula") %>' CssClass="form-control mitad" Enabled="false" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">TITULO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">FORMULA</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                                 <hr />
                                                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
                                                 <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
@@ -366,19 +363,19 @@
                                                     <div class="row">
                                                         <div class="col-3">COD</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtid_formula" runat="server" Text='<%# Eval("id_formula") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtid_formula" runat="server" Text='<%# Eval("id_formula") %>' CssClass="form-control mitad" Enabled="false" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">TITULO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">FORMULA</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
 
@@ -428,10 +425,10 @@
                                                             <h3><span class="badge">Variables</span></h3>
                                                         </caption>
                                                         <thead class="table-dark" id="tbl_head" runat="server">
+                                                            <th>#</th>
                                                             <th>Variable</th>
-                                                            <th>Descripción</th>
                                                             <th>Valor</th>
-                                                            
+                                                            <th>Descripción</th>
                                                         </thead>
                                                         <tbody>
                                                             <tr runat="server" id="itemPlaceholder" />
@@ -441,19 +438,19 @@
                                             </LayoutTemplate>
                                             <ItemTemplate>
                                                 <tr>
+                                                      <td>
+                                                        <asp:Label ID="lblcod_variable" runat="server" Text='<%# Eval("cod_variable") %>' /></td>
                                                     <td>
                                                         <asp:Label ID="lblid_formula" runat="server" Text='<%# Eval("variable") %>' /></td>
-                                                      <td>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("descripcion") %>' /></td>
                                                     <td>
-                                                        <asp:TextBox ID="lbltitulo" runat="server" Text='<%# Eval("valor") %>' Enabled='<%# Convert.ToBoolean ( Eval("es_variable") )%>'  /></td>
+                                                        <asp:TextBox ID="txtvalor" runat="server" Text='<%# Eval("valor") %>' Enabled='<%# Convert.ToBoolean ( Eval("es_variable") )%>' /></td>
                                                     <td>
-                                                       
-                                                    </td>
+                                                        <asp:Label ID="lbldescripcion" runat="server" Text='<%# Eval("descripcion") %>' /></td>
                                             </ItemTemplate>
                                         </asp:ListView>
                                     </div>
                                     <div class="modal-footer">
+                                          <asp:LinkButton ID="FormulaSettingsAcceptButton" runat="server" CausesValidation="False"  OnClick="FormulaSettingsAcceptButton_Click" Text="Aceptar" CssClass="btn btn-success" />
                                     </div>
                                 </div>
                             </ContentTemplate>

@@ -270,5 +270,48 @@ namespace GoWebForms
             }
 
         }
+
+        protected void FormulaSettingsAcceptButton_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in FormulaSettingsListView.Items)
+            {
+                Label lblcod_variable = (Label)item.FindControl("lblcod_variable");
+                if (lblcod_variable != null)
+                {
+                    try
+                    {
+                        //Obtengo los valores de los campos a editar
+                        TextBox txtvalor = (TextBox)item.FindControl("txtvalor");
+
+                        SqlConnection conn = new SqlConnection(FormulaDS.ConnectionString);
+                        SqlCommand cmd = new SqlCommand();
+
+                        cmd.Connection = conn;
+
+                        cmd.CommandText = "go.sp_update_formula_parameter";
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@cod_variable", lblcod_variable.Text);
+                        cmd.Parameters.AddWithValue("@valor", txtvalor.Text);
+                        
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        conn.Close();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "",
+            "$('#FormulaSettingsModal').modal('hide');", true);
+
+        }
     }
 }

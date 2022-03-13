@@ -99,7 +99,7 @@
                         <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
                         </ul>
 
-                         <div class="btn-group">
+                        <div class="btn-group">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                     Funciones
@@ -141,7 +141,7 @@
         </header>
         <main>
 
-         <%--   <div class="preloader bg-soft flex-column justify-content-center align-items-center">
+            <%--   <div class="preloader bg-soft flex-column justify-content-center align-items-center">
                 <div class="loader-element">
                     <span class="loader-animated-dot"></span>
                     <img src="../assets/img/brand/gofactoring.png" height="40" alt="">
@@ -232,8 +232,9 @@
                                 </caption>
                                 <thead class="table-dark" id="tbl_head" runat="server">
                                     <th id="tblhead_cod_variable" runat="server">COD</th>
+                                    <th id="Th1" runat="server">VARIABLE</th>
                                     <th id="tblhead_descripcion" runat="server">DESCRIPCION</th>
-                                    <th id="tblhead_abreviado" runat="server">VARIABLE</th>
+                                    <th id="tblhead_abreviado" runat="server">ABR.</th>
                                     <th id="tblhead_select_campo" runat="server">CAMPO</th>
                                     <th id="tblhead_from_tabla" runat="server">OBJECTO</th>
                                     <th id="tblhead_where_condicion" runat="server">CONDICION</th>
@@ -252,6 +253,8 @@
                         <tr>
                             <td>
                                 <asp:Label ID="lblcod_variable" runat="server" Text='<%# Eval("cod_variable") %>' /></td>
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("variable") %>' /></td>
                             <td>
                                 <asp:Label ID="lbldescripcion" runat="server" Text='<%# Eval("descripcion") %>' /></td>
                             <td>
@@ -320,48 +323,57 @@
                                                     <div class="row">
                                                         <div class="col-3">COD.</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtcod_variable" runat="server" Text='<%# Bind("cod_variable") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">DESCRIPCION</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtcod_variable" runat="server" Text='<%# Bind("cod_variable") %>' CssClass="form-control mitad" Enabled="false"  />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">VARIABLE</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtabreviado" runat="server" Text='<%# Bind("abreviado") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtvariable" runat="server" Text='<%# Bind("variable") %>' CssClass="form-control"  />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-3">DESCRIPCION</div>
+                                                        <div class="col-9">
+                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control"  />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-3">ABREVIADO</div>
+                                                        <div class="col-9">
+                                                            <asp:TextBox ID="txtabreviado" runat="server" Text='<%# Bind("abreviado") %>' CssClass="form-control"  />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">CAMPO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtselect_campo" runat="server" Text='<%# Bind("select_campo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtselect_campo" runat="server" Text='<%# Bind("select_campo") %>' CssClass="form-control"  />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">OBJETO</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtfrom_tabla" runat="server" Text='<%# Bind("from_tabla") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtfrom_tabla" runat="server" Text='<%# Bind("from_tabla") %>' CssClass="form-control"  />
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">CONDICION</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtwhere_condicion" runat="server" Text='<%# Bind("where_condicion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:TextBox ID="txtwhere_condicion" runat="server" Text='<%# Bind("where_condicion") %>' CssClass="form-control"  />
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">FACTURA</div>
+                                                        <div class="col-3">CAMPO FACTURA</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtcampo_funcionario" runat="server" Text='<%# Bind("campo_funcionario") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                            <asp:DropDownList ID="IdCampoFuncionarioDDL"
+                                                                runat="server"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("campo_funcionario") %>'>
+                                                                <asp:ListItem Text="SI" Value="S"></asp:ListItem>
+                                                                <asp:ListItem Text="NO" Value="N"></asp:ListItem>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
-
-
-
                                                 </div>
 
                                                 <hr />
@@ -405,40 +417,57 @@
                                                     <div class="row">
                                                         <div class="col-3">cod_variable</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtcod_variable" runat="server" Text='<%# Bind("cod_variable") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtcod_variable" runat="server" Text='<%# Bind("cod_variable") %>' Enabled="false" CssClass="form-control mitad"  />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-3">variable</div>
+                                                        <div class="col-9">
+                                                            <asp:TextBox ID="txtvariable" runat="server" Text='<%# Bind("variable") %>' CssClass="form-control"  />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">descripcion</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control"  />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">abreviado</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtabreviado" runat="server" Text='<%# Bind("abreviado") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtabreviado" runat="server" Text='<%# Bind("abreviado") %>' CssClass="form-control"  />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">select_campo</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtselect_campo" runat="server" Text='<%# Bind("select_campo") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtselect_campo" runat="server" Text='<%# Bind("select_campo") %>' CssClass="form-control"  />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">from_tabla</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtfrom_tabla" runat="server" Text='<%# Bind("from_tabla") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtfrom_tabla" runat="server" Text='<%# Bind("from_tabla") %>' CssClass="form-control"  />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">where_condicion</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtwhere_condicion" runat="server" Text='<%# Bind("where_condicion") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:TextBox ID="txtwhere_condicion" runat="server" Text='<%# Bind("where_condicion") %>' CssClass="form-control"  />
+                                                        </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">campo_funcionario</div>
+                                                        <div class="col-3">CAMPO FACTURA</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtcampo_funcionario" runat="server" Text='<%# Bind("campo_funcionario") %>' CssClass="form-control" Font-Size="X-Small" /></div>
+                                                            <asp:DropDownList ID="IdCampoFuncionarioDDL"
+                                                                runat="server"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("campo_funcionario") %>'>
+                                                                <asp:ListItem Text="SI" Value="S"></asp:ListItem>
+                                                                <asp:ListItem Text="NO" Value="N"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
                                                     </div>
-
-
                                                 </div>
 
                                                 <hr />
@@ -483,6 +512,7 @@
                         <asp:Parameter Name="from_tabla" Type="String" />
                         <asp:Parameter Name="where_condicion" Type="String" />
                         <asp:Parameter Name="campo_funcionario" Type="String" />
+                        <asp:Parameter Name="variable" Type="String" />
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="descripcion" Type="String" />
@@ -491,6 +521,7 @@
                         <asp:Parameter Name="from_tabla" Type="String" />
                         <asp:Parameter Name="where_condicion" Type="String" />
                         <asp:Parameter Name="campo_funcionario" Type="String" />
+                        <asp:Parameter Name="variable" Type="String" />
                     </UpdateParameters>
                     <SelectParameters>
                         <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />

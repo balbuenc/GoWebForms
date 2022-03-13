@@ -209,7 +209,8 @@ namespace GoWebForms
                 TextBox txtselect_campo = (TextBox)EditFormView.FindControl("txtselect_campo");
                 TextBox txtfrom_tabla = (TextBox)EditFormView.FindControl("txtfrom_tabla");
                 TextBox txtwhere_condicion = (TextBox)EditFormView.FindControl("txtwhere_condicion");
-                TextBox txtcampo_funcionario = (TextBox)EditFormView.FindControl("txtcampo_funcionario");
+                DropDownList IdCampoFuncionarioDDL = (DropDownList)EditFormView.FindControl("IdCampoFuncionarioDDL");
+                TextBox txtvariable = (TextBox)EditFormView.FindControl("txtvariable");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
@@ -227,8 +228,8 @@ namespace GoWebForms
                 cmd.Parameters.AddWithValue("@select_campo", txtselect_campo.Text);
                 cmd.Parameters.AddWithValue("@from_tabla", txtfrom_tabla.Text);
                 cmd.Parameters.AddWithValue("@where_condicion", txtwhere_condicion.Text);
-                cmd.Parameters.AddWithValue("@campo_funcionario", txtcampo_funcionario.Text);
-
+                cmd.Parameters.AddWithValue("@campo_funcionario", IdCampoFuncionarioDDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@variable", txtvariable.Text);
 
 
                 conn.Open();
