@@ -233,7 +233,7 @@
                                 <thead class="table-dark" id="tbl_head" runat="server">
                                     <th id="tblhead_id_formula" runat="server">CO</th>
                                     <th id="tblhead_titulo" runat="server">TITULO</th>
-                                    <th id="tblhead_formula" runat="server">FORMULA</th>
+                                    <%--<th id="tblhead_formula" runat="server">FORMULA</th>--%>
 
                                     <th>...</th>
                                     <th>...</th>
@@ -251,8 +251,8 @@
                                 <asp:Label ID="lblid_formula" runat="server" Text='<%# Eval("id_formula") %>' /></td>
                             <td>
                                 <asp:Label ID="lbltitulo" runat="server" Text='<%# Eval("titulo") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblformula" runat="server" Text='<%# Eval("formula") %>' /></td>
+                          <%--  <td>
+                                <asp:Label ID="lblformula" runat="server" Text='<%# Eval("formula") %>' /></td>--%>
 
 
                             <td>
@@ -363,7 +363,7 @@
                                                             <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row" style="visibility:hidden">
                                                         <div class="col-3">FORMULA</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" />
