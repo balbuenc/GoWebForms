@@ -220,5 +220,14 @@ namespace GoWebForms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource ParametroDS;
+
+        /// <summary>
+        /// Control FormulasDS_DDL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource FormulasDS_DDL;
     }
 }

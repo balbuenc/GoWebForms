@@ -209,7 +209,7 @@
                 </div>
 
                 <div class="row pie small" style="padding-left: 15px">
-                    <asp:DataPager ID="ParametroDataPager" runat="server" PagedControlID="ParametroListView" PageSize="10">
+                    <asp:DataPager ID="ParametroDataPager" runat="server" PagedControlID="ParametroListView" PageSize="30">
                         <Fields>
                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -230,10 +230,10 @@
                                     <h3><span class="badge">PARAMETROS</span></h3>
                                 </caption>
                                 <thead class="table-dark" id="tbl_head" runat="server">
-                                    <th id="tblhead_id_parametro" runat="server">COD</th>
-                                    <th id="tblhead_parametro" runat="server">PARAMETRO</th>
+                                    <th id="tblhead_id_parametro" runat="server">ID</th>
+                                    <th id="tblhead_parametro" runat="server">PARÁMETRO</th>
                                     <th id="tblhead_valor" runat="server">VALOR</th>
-
+                                    <th id="Th1" runat="server">FÓRMULA</th>
                                     <th>...</th>
                                     <th>...</th>
                                     <th>...</th>
@@ -252,7 +252,8 @@
                                 <asp:Label ID="lblparametro" runat="server" Text='<%# Eval("parametro") %>' /></td>
                             <td>
                                 <asp:Label ID="lblvalor" runat="server" Text='<%# Eval("valor") %>' /></td>
-
+                              <td>
+                                <asp:Label ID="lblformula" runat="server" Text='<%# Eval("formula") %>' /></td>
 
                             <td>
                                 <asp:LinkButton runat="server" ID="EditParametroBtn" CommandName="Editar" CommandArgument='<%# Eval("id_parametro")%>' ToolTip="Editar">
@@ -306,24 +307,36 @@
                                                 <div class="container-fluid">
 
                                                     <div class="row">
-                                                        <div class="col-3">id_parametro</div>
+                                                        <div class="col-3">ID</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtid_parametro" runat="server" Text='<%# Bind("id_parametro") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">parametro</div>
+                                                        <div class="col-3">PARÁMETRO</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtparametro" runat="server" Text='<%# Bind("parametro") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">valor</div>
+                                                        <div class="col-3">VALOR</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtvalor" runat="server" Text='<%# Bind("valor") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
-
+                                                     <div class="row">
+                                                        <div class="col-3"><b>FORMULA</b></div>
+                                                        <div class="col-9">
+                                                            <asp:DropDownList ID="IdFormulaDDL"
+                                                                runat="server"
+                                                                DataSourceID="FormulasDS_DDL"
+                                                                DataTextField="formula"
+                                                                DataValueField="id_formula"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_formula") %>'>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <hr />
@@ -365,24 +378,36 @@
                                             <EditItemTemplate>
                                                 <div class="container-fluid">
                                                     <div class="row">
-                                                        <div class="col-3">id_parametro</div>
+                                                        <div class="col-3">ID</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtid_parametro" runat="server" Text='<%# Bind("id_parametro") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">parametro</div>
+                                                        <div class="col-3">PARÁMETRO</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtparametro" runat="server" Text='<%# Bind("parametro") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-3">valor</div>
+                                                        <div class="col-3">VALOR</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txtvalor" runat="server" Text='<%# Bind("valor") %>' CssClass="form-control" Font-Size="X-Small" />
                                                         </div>
                                                     </div>
-
+                                                     <div class="row">
+                                                        <div class="col-3">FÓRMULA</div>
+                                                        <div class="col-9">
+                                                            <asp:DropDownList ID="IdFormulaDDL"
+                                                                runat="server"
+                                                                DataSourceID="FormulasDS_DDL"
+                                                                DataTextField="formula"
+                                                                DataValueField="id_formula"
+                                                                CssClass="form-control form-control-sm"
+                                                                SelectedValue='<%# Bind("id_formula") %>'>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
 
 
                                                 </div>
@@ -426,11 +451,13 @@
                       
                         <asp:Parameter Name="parametro" Type="String" />
                         <asp:Parameter Name="valor" Type="String" />
+                        <asp:Parameter Name="id_formula" Type="Int32" />
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="id_parametro" Type="Int32" />
                         <asp:Parameter Name="parametro" Type="String" />
                         <asp:Parameter Name="valor" Type="String" />
+                        <asp:Parameter Name="id_formula" Type="Int32" />
                     </UpdateParameters>
                     <SelectParameters>
                         <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
@@ -438,6 +465,8 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
 
+                 <asp:SqlDataSource ID="FormulasDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select id_formula, upper(titulo) as formula from go.formulas" SelectCommandType="Text"></asp:SqlDataSource>
 
                 <!-- #endregion -->
             </section>

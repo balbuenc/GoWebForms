@@ -211,7 +211,7 @@ namespace GoWebForms
                 TextBox txtwhere_condicion = (TextBox)EditFormView.FindControl("txtwhere_condicion");
                 DropDownList IdCampoFuncionarioDDL = (DropDownList)EditFormView.FindControl("IdCampoFuncionarioDDL");
                 TextBox txtvariable = (TextBox)EditFormView.FindControl("txtvariable");
-
+                DropDownList IdFormulaDDL = (DropDownList)EditFormView.FindControl("IdFormulaDDL");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
@@ -230,7 +230,7 @@ namespace GoWebForms
                 cmd.Parameters.AddWithValue("@where_condicion", txtwhere_condicion.Text);
                 cmd.Parameters.AddWithValue("@campo_funcionario", IdCampoFuncionarioDDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@variable", txtvariable.Text);
-
+                cmd.Parameters.AddWithValue("@id_formula", IdFormulaDDL.SelectedValue);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();

@@ -205,6 +205,7 @@ namespace GoWebForms
                 TextBox txtid_parametro = (TextBox)EditFormView.FindControl("txtid_parametro");
                 TextBox txtparametro = (TextBox)EditFormView.FindControl("txtparametro");
                 TextBox txtvalor = (TextBox)EditFormView.FindControl("txtvalor");
+                DropDownList IdFormulaDDL = (DropDownList)EditFormView.FindControl("IdFormulaDDL");
 
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
@@ -219,6 +220,7 @@ namespace GoWebForms
                 cmd.Parameters.AddWithValue("@id_parametro", txtid_parametro.Text);
                 cmd.Parameters.AddWithValue("@parametro", txtparametro.Text);
                 cmd.Parameters.AddWithValue("@valor", txtvalor.Text);
+                cmd.Parameters.AddWithValue("@id_formula", IdFormulaDDL.SelectedValue);
 
 
 

@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="row pie small" style="padding-left: 15px">
-                    <asp:DataPager ID="FormulaDataPager" runat="server" PagedControlID="FormulaListView" PageSize="10">
+                    <asp:DataPager ID="FormulaDataPager" runat="server" PagedControlID="FormulaListView" PageSize="30">
                         <Fields>
                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -233,7 +233,7 @@
                                 <thead class="table-dark" id="tbl_head" runat="server">
                                     <th id="tblhead_id_formula" runat="server">CO</th>
                                     <th id="tblhead_titulo" runat="server">TITULO</th>
-                                    <%--<th id="tblhead_formula" runat="server">FORMULA</th>--%>
+                                    <th id="tblhead_formula" runat="server">FORMULA</th>
 
                                     <th>...</th>
                                     <th>...</th>
@@ -304,14 +304,14 @@
                                             <InsertItemTemplate>
                                                 <div class="container-fluid">
 
-                                                   
+
                                                     <div class="row">
                                                         <div class="col-3">TITULO</div>
                                                         <div class="col-9">
                                                             <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
-                                                   
+
                                                 </div>
                                                 <hr />
                                                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
@@ -363,10 +363,10 @@
                                                             <asp:TextBox ID="txttitulo" runat="server" Text='<%# Bind("titulo") %>' CssClass="form-control" />
                                                         </div>
                                                     </div>
-                                                    <div class="row" >
+                                                    <div class="row">
                                                         <div class="col-3">FORMULA</div>
                                                         <div class="col-9">
-                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" />
+                                                            <asp:TextBox ID="txtformula" runat="server" Text='<%# Bind("formula") %>' CssClass="form-control" TextMode="MultiLine" Height="40px" />
                                                         </div>
                                                     </div>
 
@@ -429,7 +429,7 @@
                                             </LayoutTemplate>
                                             <ItemTemplate>
                                                 <tr>
-                                                      <td>
+                                                    <td>
                                                         <asp:Label ID="lblcod_variable" runat="server" Text='<%# Eval("cod_variable") %>' /></td>
                                                     <td>
                                                         <asp:Label ID="lblid_formula" runat="server" Text='<%# Eval("variable") %>' /></td>
@@ -441,7 +441,7 @@
                                         </asp:ListView>
                                     </div>
                                     <div class="modal-footer">
-                                          <asp:LinkButton ID="FormulaSettingsAcceptButton" runat="server" CausesValidation="False"  OnClick="FormulaSettingsAcceptButton_Click" Text="Aceptar" CssClass="btn btn-success" />
+                                        <asp:LinkButton ID="FormulaSettingsAcceptButton" runat="server" CausesValidation="False" OnClick="FormulaSettingsAcceptButton_Click" Text="Aceptar" CssClass="btn btn-success" />
                                     </div>
                                 </div>
                             </ContentTemplate>
@@ -462,7 +462,7 @@
                     </DeleteParameters>
                     <InsertParameters>
                         <asp:Parameter Name="titulo" Type="String" />
-                    
+
                     </InsertParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="id_formula" Type="Int32" />
@@ -486,7 +486,7 @@
                     <UpdateParameters>
                     </UpdateParameters>
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="HiddenIdFormula" PropertyName="Value" Name="id_formula"  />
+                        <asp:ControlParameter ControlID="HiddenIdFormula" PropertyName="Value" Name="id_formula" />
 
                     </SelectParameters>
                 </asp:SqlDataSource>
