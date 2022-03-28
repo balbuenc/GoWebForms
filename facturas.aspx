@@ -202,6 +202,15 @@
             <section class="container-fluid">
                 <div class="page-header encabezado small">
                     <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="label label-info" style="text-align:right"><h5>Importación de facturas</h5></div>
+                            </div>
+                            <div class="col-4">
+                                <asp:FileUpload ID="FileUpload1" runat="server" />
+                                <asp:Button ID="btnImport" runat="server" Text="Import"  OnClick="ImportCSV" />
+                            </div>
+                        </div>
                         <asp:Panel runat="server" DefaultButton="SearchBtn">
                             <div class="row">
                                 <div class="col-4 font-weight-bold">
@@ -257,10 +266,7 @@
                         <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
                     </div>
                 </div>
-                <div class="row">
-                    <asp:FileUpload ID="FileUpload1" runat="server" />
-                    <asp:Button ID="btnImport" runat="server" Text="Import" OnClick="ImportCSV" />
-                </div>
+
                 <div class="row pie small" style="padding-left: 15px">
                     <asp:DataPager ID="FacturaDataPager" runat="server" PagedControlID="FacturaListView" PageSize="20">
                         <Fields>
