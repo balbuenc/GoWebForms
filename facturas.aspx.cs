@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
+using System.IO;
+using System.Web.Security;
+using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace GoWebForms
 {
@@ -69,7 +67,7 @@ namespace GoWebForms
                 li_providers.Visible = true;
                 li_invoices.Visible = true;
             }
-            else if(Session["UserRole"].ToString() == "PROVEEDOR")
+            else if (Session["UserRole"].ToString() == "PROVEEDOR")
             {
                 li_formulas.Visible = false;
                 li_variables.Visible = false;
@@ -579,5 +577,66 @@ namespace GoWebForms
                 throw ex;
             }
         }
+
+
+
+        // Import CSV Data 
+        // Funtions for here implements CSV file upload tos SQL
+        //
+
+        protected void ImportCSV(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(FacturaDS.ConnectionString);
+
+            //Upload and save the file
+            string csvPath = Server.MapPath("~/Files/") + Path.GetFileName(FileUpload1.PostedFile.FileName);
+            FileUpload1.SaveAs(csvPath);
+
+            //Create a DataTable.
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[7] { 
+                new DataColumn("Proveedor", typeof(string)),
+                new DataColumn("NroFactura", typeof(string)),
+                new DataColumn("Cliente",typeof(string)),
+                new DataColumn("Emision",typeof(DateTime)) ,
+                new DataColumn("Vencimiento",typeof(DateTime)),
+                new DataColumn("Monto",typeof(decimal)),
+                new DataColumn("Moneda",typeof(string))
+            });
+
+            //Read the contents of CSV file.
+            string csvData = File.ReadAllText(csvPath);
+
+            //Execute a loop over the rows.
+            foreach (string row in csvData.Split('\n'))
+            {
+                if (!string.IsNullOrEmpty(row))
+                {
+                    dt.Rows.Add();
+                    int i = 0;
+
+                    //Execute a loop over the columns.
+                    foreach (string cell in row.Split(';'))
+                    {
+                        dt.Rows[dt.Rows.Count - 1][i] = cell;
+                        i++;
+                    }
+                }
+            }
+
+            using (var command = new SqlCommand("[go].[sp_import_facturas_csv]") { CommandType = CommandType.StoredProcedure })
+            {
+                command.Connection = conn;
+                command.Parameters.Add(new SqlParameter("@FacturaTableType", dt));
+                conn.Open();
+
+                int result = command.ExecuteNonQuery();
+
+                conn.Close();
+            }
+
+            Response.Redirect("facturas.aspx");
+        }
+
     }
 }
