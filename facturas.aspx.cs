@@ -568,8 +568,15 @@ namespace GoWebForms
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
-
-                Response.Redirect("facturas.aspx");
+                if(Request.QueryString["pageNumber"] != null)
+                {
+                    Response.Redirect("facturas.aspx?pageNumber=" + Request.QueryString["pageNumber"]);
+                }
+                else
+                {
+                    Response.Redirect("facturas.aspx?pageNumber=1" );
+                }
+               
 
             }
             catch (Exception ex)

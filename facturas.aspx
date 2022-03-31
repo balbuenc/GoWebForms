@@ -268,7 +268,7 @@
                 </div>
 
                 <div class="row pie small" style="padding-left: 15px">
-                    <asp:DataPager ID="FacturaDataPager" runat="server" PagedControlID="FacturaListView" PageSize="20">
+                    <asp:DataPager ID="FacturaDataPager" runat="server" PagedControlID="FacturaListView" QueryStringField="pageNumber" PageSize="30">
                         <Fields>
                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -341,7 +341,7 @@
                             <td id="clm_concepto" runat="server">
                                 <asp:Label ID="lblconcepto" runat="server" Text='<%# Eval("concepto") %>' /></td>
                             <td id="clm_porcentaje_adelanto" runat="server">
-                                <asp:Label ID="lblporcentaje_adelanto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("porcentaje_adelanto")) %>' /></td>
+                                <asp:Label ID="lblporcentaje_adelanto" runat="server" Text='<%#:string.Format("{0:N2}", Eval("porcentaje_adelanto")) %>' /></td>
                             <td id="clm_monto_adelanto" runat="server">
                                 <asp:Label ID="lblmonto_adelanto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto_adelanto"))  %>' /></td>
                             <td id="clm_descuento" runat="server">
