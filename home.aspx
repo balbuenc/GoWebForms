@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head> 
     <!-- Primary Meta Tags -->
-<title>Fintech Solutions</title>
+<title>GoFactoring</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Fintech Solutions">

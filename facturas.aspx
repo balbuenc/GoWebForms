@@ -4,7 +4,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <head>
         <!-- Primary Meta Tags -->
-        <title>Fintech Solutions</title>
+        <title>GoFactoring</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="title" content="Impact - About Page">
@@ -104,7 +104,7 @@
     </head>
 
     <body>
-        <header class="header-global" runat="server">
+        <header class="header-global navbar-theme-primary" runat="server">
             <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-primary">
                 <div class="container">
                     <a class="navbar-brand @@logo_classes" href="../../home.aspx">
@@ -127,8 +127,7 @@
                             </div>
                         </div>
 
-                        <%--<ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
-                        </ul>--%>
+                      
 
 
                         <div class="btn-group">
@@ -173,35 +172,35 @@
         </header>
         <main>
             <!-- Hero -->
-            <section class="section-header pb-8 pb-lg-8 mb-4 mb-lg-6 bg-primary text-white">
+            <section class="section-header pb-2 pb-lg-2 mb-2 mb-lg-2 text-white">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 text-center">
                         </div>
                     </div>
                 </div>
-                <div class="pattern bottom"></div>
+               <%-- <div class="pattern bottom"></div>--%>
             </section>
 
             <div class="container-fluid" id="MainContainer">
                 <div class="row" id="PageControlNavigator">
                     <div class="col-6">
                         <div class="btn-group btn-shadow">
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="PendientesButton" ToolTip="Facturas pendientes" Font-Size="Small" OnClick="PendientesButton_Click">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="PendientesButton" ToolTip="Facturas pendientes" Font-Size="Small">
                                                 <div class="form-row">
                                                 <asp:Label Text="Pendientes" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label>
                                                     <i class="fas fa-file-invoice" style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="FactorizadasButton" ToolTip="Facturas factorizadas" Font-Size="Small" OnClick="FactorizadasButton_Click">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="CobranzassButton" ToolTip="Facturas factorizadas" Font-Size="Small" >
                                                 <div class="form-row">
-                                                <asp:Label  Text="Factorizadas" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
+                                                <asp:Label  Text="Cobranzas" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-file-invoice-dollar"  style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="CobranzasButton" ToolTip="Cobranzas" Font-Size="Small" OnClick="CobranzasButton_Click">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="ConicliacionesButton" ToolTip="Cobranzas" Font-Size="Small">
                                                 <div class="form-row">
-                                                <asp:Label  Text="Cobranzas" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
+                                                <asp:Label  Text="Conciliación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-receipt"  style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>

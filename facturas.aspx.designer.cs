@@ -123,22 +123,22 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.LinkButton PendientesButton;
 
         /// <summary>
-        /// Control FactorizadasButton.
+        /// Control CobranzassButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton FactorizadasButton;
+        protected global::System.Web.UI.WebControls.LinkButton CobranzassButton;
 
         /// <summary>
-        /// Control CobranzasButton.
+        /// Control ConicliacionesButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CobranzasButton;
+        protected global::System.Web.UI.WebControls.LinkButton ConicliacionesButton;
 
         /// <summary>
         /// Control MultiViewPager.

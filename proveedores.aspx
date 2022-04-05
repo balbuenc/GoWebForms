@@ -4,7 +4,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <head>
         <!-- Primary Meta Tags -->
-        <title>Fintech Solutions</title>
+        <title>GoFactoring</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="title" content="Impact - About Page">
@@ -104,7 +104,7 @@
     </head>
 
     <body>
-        <header class="header-global" runat="server">
+        <header class="header-global navbar-theme-primary" runat="server">
             <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-primary">
                 <div class="container">
                     <a class="navbar-brand @@logo_classes" href="../../home.aspx">
@@ -126,8 +126,7 @@
                                 </div>
                             </div>
                         </div>
-                        <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
-                        </ul>
+                        
 
 
 
@@ -190,7 +189,7 @@
             </div>--%>
 
             <!-- Hero -->
-            <section class="section-header pb-8 pb-lg-8 mb-4 mb-lg-6 bg-primary text-white">
+            <section class="section-header pb-2 pb-lg-2 mb-2 mb-lg-2  text-white">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 text-center">

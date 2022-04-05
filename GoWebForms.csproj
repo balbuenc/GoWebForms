@@ -282,7 +282,6 @@
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="asignaciones.aspx" />
-    <Content Include="facturas_back.aspx" />
     <Content Include="proveedores.aspx" />
     <Content Include="formulas.aspx" />
     <Content Include="parametros.aspx" />
@@ -2122,13 +2121,6 @@
     </Compile>
     <Compile Include="asignaciones.aspx.designer.cs">
       <DependentUpon>asignaciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="facturas_back.aspx.cs">
-      <DependentUpon>facturas_back.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="facturas_back.aspx.designer.cs">
-      <DependentUpon>facturas_back.aspx</DependentUpon>
     </Compile>
     <Compile Include="proveedores.aspx.cs">
       <DependentUpon>proveedores.aspx</DependentUpon>

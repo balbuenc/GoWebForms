@@ -74,7 +74,7 @@
     </head>
 
     <body>
-        <header class="header-global">
+        <header class="header-global navbar-theme-primary">
             <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-dark navbar-theme-primary">
                 <div class="container">
                     <a class="navbar-brand @@logo_classes" href="../../home.aspx">
@@ -96,8 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        <ul class="navbar-nav navbar-nav-hover justify-content-center js-navbar">
-                        </ul>
+                       
 
                         <div class="btn-group">
                             <div class="dropdown">
@@ -149,7 +148,7 @@
             </div>--%>
 
             <!-- Hero -->
-            <section class="section-header pb-8 pb-lg-8 mb-4 mb-lg-6 bg-primary text-white">
+            <section class="section-header pb-2 pb-lg-2 mb-2 mb-lg-2  text-white">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 text-center">
