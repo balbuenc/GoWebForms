@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace GoWebForms
 {
-    public partial class facturas : System.Web.UI.Page
+    public partial class facturas_back : System.Web.UI.Page
     {
         protected DataTable FeatureMatrix;
         int CanView = 1;
@@ -645,19 +645,5 @@ namespace GoWebForms
             Response.Redirect("facturas.aspx");
         }
 
-        protected void PendientesButton_Click(object sender, EventArgs e)
-        {
-            MultiViewPager.ActiveViewIndex = 0;
-        }
-
-        protected void FactorizadasButton_Click(object sender, EventArgs e)
-        {
-            MultiViewPager.ActiveViewIndex = 1;
-        }
-
-        protected void CobranzasButton_Click(object sender, EventArgs e)
-        {
-            MultiViewPager.ActiveViewIndex = 2;
-        }
     }
 }
