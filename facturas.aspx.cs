@@ -397,6 +397,11 @@ namespace GoWebForms
                 RequestFactoring(e.CommandArgument.ToString(), "DEPOSITADO");
                 CobranzasListView.DataBind();
             }
+            if (e.CommandName == "Cobrar")
+            {
+                RequestFactoring(e.CommandArgument.ToString(), "COBRADO");
+                CobranzasListView.DataBind();
+            }
         }
 
         protected void RequestFactoring(string IdInvoice, string status)

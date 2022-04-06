@@ -468,8 +468,8 @@
                                                                         </div>
                                                                     </div>
 
-                                                                   
-                                                                  
+
+
 
                                                                     <div class="row">
                                                                         <div class="col-3">
@@ -647,7 +647,7 @@
                                                                             <asp:TextBox ID="txtconcepto" runat="server" Text='<%# Bind("concepto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
-                                                                   <%-- <div class="row">
+                                                                    <%-- <div class="row">
                                                                         <div class="col-3">%ADELANTO</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
@@ -777,11 +777,11 @@
                                                     <th id="tblhead_monto_adelanto" runat="server">ADELANTO</th>
                                                     <th id="tblhead_descuento" runat="server">DESCUENTO</th>
                                                     <th id="tblhead_fecha_desembolso" runat="server">FEC. DESEMBOLSO</th>
-
+                                                    <th id="tblhead_fecha_cobro" runat="server">FEC. COBRO</th>
                                                     <th id="tblhead_estado" runat="server">ESTADO</th>
                                                     <th>...</th>
                                                     <th>...</th>
-
+                                                    <th>...</th>
                                                 </thead>
                                                 <tbody>
                                                     <tr runat="server" id="itemPlaceholder" />
@@ -800,7 +800,7 @@
                                             <td id="clm_cliente" runat="server">
                                                 <asp:Label ID="lblid_cliente" runat="server" Text='<%# Eval("cliente") %>' /></td>
                                             <td id="clm_fecha_vencimiento" runat="server">
-                                                <asp:Label ID="lblfecha_cobro" runat="server" Text='<%# Eval("fecha_vencimiento") %>' /></td>
+                                                <asp:Label ID="lblfecha_vencimiento" runat="server" Text='<%# Eval("fecha_vencimiento") %>' /></td>
                                             <td id="clm_monto" runat="server">
                                                 <asp:Label ID="lblmonto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto")) %>' /></td>
                                             <td id="clm_moneda" runat="server">
@@ -810,7 +810,9 @@
                                             <td id="clm_descuento" runat="server">
                                                 <asp:Label ID="lbl_descuento" runat="server" Text='<%#:string.Format("{0:N0}", Eval("descuento"))  %>' /></td>
                                             <td id="clm_fecha_desembolso" runat="server">
-                                                <asp:Label ID="lblfecha_vencimiento" runat="server" Text='<%# Eval("fecha_desembolso") %>' /></td>
+                                                <asp:Label ID="lblfecha_desembolso" runat="server" Text='<%# Eval("fecha_desembolso") %>' /></td>
+                                            <td id="Td1" runat="server">
+                                                <asp:Label ID="lblfecha_cobro" runat="server" Text='<%# Eval("fecha_cobro") %>' /></td>
                                             <td id="clm_estado" runat="server">
                                                 <asp:Label ID="lblestado" runat="server" Text='<%# Eval("estado") %>' /></td>
 
@@ -826,7 +828,11 @@
                                                      <i class="fa fa-money-bill"></i>
                                                 </asp:LinkButton>
                                             </td>
-
+                                            <td>
+                                                <asp:LinkButton runat="server" ID="CobrarFacturaBtn" CommandName="Cobrar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Cobrar">
+                                                     <i class="fa-regular fa-credit-card"></i>
+                                                </asp:LinkButton>
+                                            </td>
 
                                         </tr>
                                     </ItemTemplate>
@@ -840,7 +846,7 @@
                                         <td id="clm_cliente" runat="server">
                                             <asp:Label ID="lblid_cliente" runat="server" Text='<%# Eval("cliente") %>' /></td>
                                         <td id="clm_fecha_vencimiento" runat="server">
-                                            <asp:Label ID="lblfecha_cobro" runat="server" Text='<%# Eval("fecha_vencimiento") %>' />
+                                            <asp:Label ID="lblfecha_vencimiento" runat="server" Text='<%# Eval("fecha_vencimiento") %>' />
                                         </td>
                                         <td id="clm_monto" runat="server">
                                             <asp:Label ID="lblmonto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto")) %>' /></td>
@@ -851,7 +857,9 @@
                                         <td id="clm_descuento" runat="server">
                                             <asp:Label ID="lbl_descuento" runat="server" Text='<%#:string.Format("{0:N0}", Eval("descuento"))  %>' /></td>
                                         <td id="clm_fecha_desembolso" runat="server">
-                                            <asp:TextBox ID="lblfecha_deembolso" runat="server" Text='<%# Bind("fecha_desembolso") %>' TextMode="Date" /></td>
+                                            <asp:TextBox ID="lblfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso") %>' TextMode="Date" /></td>
+                                        <td id="Td2" runat="server">
+                                            <asp:TextBox ID="lblfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro") %>' TextMode="Date" /></td>
                                         <td id="clm_estado" runat="server">
                                             <asp:Label ID="lblestado" runat="server" Text='<%# Eval("estado") %>' /></td>
 
@@ -880,11 +888,171 @@
 
 
                         <asp:View ID="ConciliacionesPage" runat="server">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <h3><span class="badge badge-info">Conciliaciones</span></h3>
+                            <section class="container-fluid">
+                                <div class="page-header encabezado small">
+                                    <div class="container-fluid">
+                                        <asp:Panel runat="server" DefaultButton="SearchBtn">
+                                            <div class="row">
+                                                <div class="col-4 font-weight-bold">
+                                                    Palabra clave
+                                                </div>
+                                                <div class="col-2 font-weight-bold">
+                                                    Criterio
+                                                </div>
+                                                <div class="col-6">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Font-Size="Small"></asp:TextBox>
+                                                </div>
+                                                <div class="col-2">
+                                                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" Font-Size="Small">
+                                                        <asp:ListItem Text="Cliente" Value="CLIENTE"></asp:ListItem>
+                                                        <asp:ListItem Text="Proveedor" Value="PROVEEDOR"></asp:ListItem>
+                                                        <asp:ListItem Text="Nro. factura" Value="FACTURA"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="btn-group btn-shadow">
+                                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="LinkButton2" onserverclick="SearchBtn_ServerClick" ToolTip="Buscar" Font-Size="Small">
+                                                            <div class="form-row">
+                                                            <asp:Label Text="Buscar" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label>
+                                                            <i class="fas fa-search fa-sm" style="padding:5px"></i>
+                                                            </div>
+                                                        </asp:LinkButton>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </asp:Panel>
+                                    </div>
+                                    <div class="row">
+                                        <asp:Label ID="Label2" runat="server" Visible="False" CssClass="form-control" />
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="row pie small" style="padding-left: 15px">
+                                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="CobranzasListView" QueryStringField="pageNumber" PageSize="30">
+                                        <Fields>
+                                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
+                                            <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
+                                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary  btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
+                                        </Fields>
+                                    </asp:DataPager>
+                                </div>
+
+
+                                <asp:ListView ID="ConciliacionesListView"
+                                    runat="server"
+                                    DataSourceID="ConciliacionDS"
+                                    DataKeyNames="id_factura">
+                                    <LayoutTemplate>
+                                        <div class="table table-responsive">
+                                            <table class="table table-sm  table-striped  table-hover small">
+                                                <caption>
+                                                    <h3><span class="badge">FACTURAS</span></h3>
+                                                </caption>
+                                                <thead class="table-dark" id="tbl_head" runat="server">
+                                                    <th id="tblhead_id_factura" runat="server">ID</th>
+                                                    <th id="tblhead_proveedor" runat="server">PROVEEDOR</th>
+                                                    <th id="tblhead_nro_factura" runat="server">NRO. FACTURA</th>
+                                                    <th id="tblhead_cliente" runat="server">CLIENTE</th>
+
+                                                    <th id="tblhead_fecha_vencimiento" runat="server">FEC. VENCIMIENTO</th>
+                                                    <th id="tblhead_monto" runat="server">MONTO</th>
+                                                    <th id="tblhead_moneda" runat="server">MONEDA</th>
+
+                                                    <th id="tblhead_monto_adelanto" runat="server">ADELANTO</th>
+                                                    <th id="tblhead_descuento" runat="server">DESCUENTO</th>
+                                                    <th id="tblhead_fecha_desembolso" runat="server">FEC. DESEMBOLSO</th>
+                                                    <th id="tblhead_fecha_cobro" runat="server">FEC. COBRO</th>
+                                                     <th id="tbl_diferencia" runat="server">DIFERENCIA</th>
+                                                    <th id="tblhead_estado" runat="server">ESTADO</th>
+                                                  
+                                                   
+                                                </thead>
+                                                <tbody>
+                                                    <tr runat="server" id="itemPlaceholder" />
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td id="clm_id_factura" runat="server">
+                                                <asp:Label ID="lblid_factura" runat="server" Text='<%# Eval("id_factura") %>' /></td>
+                                            <td id="clm_proveedor" runat="server">
+                                                <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
+                                            <td id="clm_nro_factura" runat="server">
+                                                <asp:Label ID="lblnro_factura" runat="server" Text='<%# Eval("nro_factura") %>' /></td>
+                                            <td id="clm_cliente" runat="server">
+                                                <asp:Label ID="lblid_cliente" runat="server" Text='<%# Eval("cliente") %>' /></td>
+                                            <td id="clm_fecha_vencimiento" runat="server">
+                                                <asp:Label ID="lblfecha_vencimiento" runat="server" Text='<%# Eval("fecha_vencimiento") %>' /></td>
+                                            <td id="clm_monto" runat="server">
+                                                <asp:Label ID="lblmonto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto")) %>' /></td>
+                                            <td id="clm_moneda" runat="server">
+                                                <asp:Label ID="lblid_moneda" runat="server" Text='<%# Eval("moneda") %>' /></td>
+                                            <td id="clm_monto_adelanto" runat="server">
+                                                <asp:Label ID="lblmonto_adelanto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto_adelanto"))  %>' /></td>
+                                            <td id="clm_descuento" runat="server">
+                                                <asp:Label ID="lbl_descuento" runat="server" Text='<%#:string.Format("{0:N0}", Eval("descuento"))  %>' /></td>
+                                            <td id="clm_fecha_desembolso" runat="server">
+                                                <asp:Label ID="lblfecha_desembolso" runat="server" Text='<%# Eval("fecha_desembolso") %>' /></td>
+                                            <td id="Td1" runat="server">
+                                                <asp:Label ID="lblfecha_cobro" runat="server" Text='<%# Eval("fecha_cobro") %>' /></td>
+                                             <td id="Td3" runat="server">
+                                                <asp:Label ID="Label3" runat="server" Text='<%#:string.Format("{0:N0}", Eval("diferencia"))  %>' /></td>
+                                            <td id="clm_estado" runat="server">
+                                                <asp:Label ID="lblestado" runat="server" Text='<%# Eval("estado") %>' /></td>
+
+
+                                         
+
+                                          
+
+
+                                        </tr>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <td id="clm_id_factura" runat="server">
+                                            <asp:Label ID="lblid_factura" runat="server" Text='<%# Bind("id_factura") %>' /></td>
+                                        <td id="clm_proveedor" runat="server">
+                                            <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
+                                        <td id="clm_nro_factura" runat="server">
+                                            <asp:Label ID="lblnro_factura" runat="server" Text='<%# Eval("nro_factura") %>' /></td>
+                                        <td id="clm_cliente" runat="server">
+                                            <asp:Label ID="lblid_cliente" runat="server" Text='<%# Eval("cliente") %>' /></td>
+                                        <td id="clm_fecha_vencimiento" runat="server">
+                                            <asp:Label ID="lblfecha_vencimiento" runat="server" Text='<%# Eval("fecha_vencimiento") %>' />
+                                        </td>
+                                        <td id="clm_monto" runat="server">
+                                            <asp:Label ID="lblmonto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto")) %>' /></td>
+                                        <td id="clm_moneda" runat="server">
+                                            <asp:Label ID="lblid_moneda" runat="server" Text='<%# Eval("moneda") %>' /></td>
+                                        <td id="clm_monto_adelanto" runat="server">
+                                            <asp:Label ID="lblmonto_adelanto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto_adelanto"))  %>' /></td>
+                                        <td id="clm_descuento" runat="server">
+                                            <asp:Label ID="lbl_descuento" runat="server" Text='<%#:string.Format("{0:N0}", Eval("descuento"))  %>' /></td>
+                                        <td id="clm_fecha_desembolso" runat="server">
+                                            <asp:TextBox ID="lblfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso") %>' TextMode="Date" /></td>
+                                        <td id="Td2" runat="server">
+                                            <asp:TextBox ID="lblfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro") %>' TextMode="Date" /></td>
+                                        <td id="clm_estado" runat="server">
+                                            <asp:Label ID="lblestado" runat="server" Text='<%# Eval("estado") %>' /></td>
+
+
+
+                                    </EditItemTemplate>
+                                    <InsertItemTemplate>
+                                    </InsertItemTemplate>
+                                </asp:ListView>
+
+
+
+                            </section>
                         </asp:View>
 
                     </asp:MultiView>
@@ -949,11 +1117,30 @@
                 <asp:SqlDataSource ID="CobranzaDS"
                     runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                     SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure"
-                    UpdateCommand="update go.facturas set fecha_desembolso = @fecha_desembolso where id_factura = @id_factura" UpdateCommandType="Text">
+                    UpdateCommand="update go.facturas set fecha_desembolso = @fecha_desembolso, fecha_cobro = @fecha_cobro  where id_factura = @id_factura" UpdateCommandType="Text">
 
                     <UpdateParameters>
                         <asp:Parameter Name="id_factura" Type="Int32" />
                         <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
+                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
+                    </UpdateParameters>
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="txtCobranzaSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
+                        <asp:ControlParameter ControlID="CobranzaSearchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+                        <asp:ControlParameter ControlID="lblState" PropertyName="Text" Name="state" />
+                        <asp:SessionParameter SessionField="USERNAME" Name="user" DbType="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+
+
+                <asp:SqlDataSource ID="ConciliacionDS"
+                    runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure">
+
+                    <UpdateParameters>
+                        <asp:Parameter Name="id_factura" Type="Int32" />
+                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
+                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
                     </UpdateParameters>
                     <SelectParameters>
                         <asp:ControlParameter ControlID="txtCobranzaSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
