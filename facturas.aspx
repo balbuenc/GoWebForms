@@ -468,32 +468,8 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="row">
-                                                                        <div class="col-3">
-                                                                            FEC. DESEMBOLSO
-                                                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5"
-                                                                 ControlToValidate="txtfecha_desembolso"
-                                                                 Display="Static"
-                                                                 ErrorMessage="*"
-                                                                 runat="server" />--%>
-                                                                        </div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-3">
-                                                                            FEC. COBRO
-                                                           <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
-                                                                 ControlToValidate="txtfecha_cobro"
-                                                                 Display="Static"
-                                                                 ErrorMessage="*"
-                                                                 runat="server" />--%>
-                                                                        </div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
-                                                                        </div>
-                                                                    </div>
+                                                                   
+                                                                  
 
                                                                     <div class="row">
                                                                         <div class="col-3">
@@ -633,10 +609,10 @@
                                                                             <asp:TextBox ID="txtfecha_vencimiento" runat="server" Text='<%# Bind("fecha_vencimiento", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
+                                                                    <%--<div class="row">
                                                                         <div class="col-3">FEC. DESEMBOLSO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
+                                                                            <asp:TextBox ID="txtfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" Enabled="false" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
@@ -644,7 +620,7 @@
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
                                                                         </div>
-                                                                    </div>
+                                                                    </div>--%>
                                                                     <div class="row">
                                                                         <div class="col-3">MONTO</div>
                                                                         <div class="col-9">
@@ -671,7 +647,7 @@
                                                                             <asp:TextBox ID="txtconcepto" runat="server" Text='<%# Bind("concepto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
+                                                                   <%-- <div class="row">
                                                                         <div class="col-3">%ADELANTO</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
@@ -684,7 +660,7 @@
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
-                                                                    </div>
+                                                                    </div>--%>
                                                                 </div>
 
                                                                 <hr />
