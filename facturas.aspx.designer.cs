@@ -123,22 +123,31 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.LinkButton PendientesButton;
 
         /// <summary>
-        /// Control CobranzassButton.
+        /// Control CobranzasButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CobranzassButton;
+        protected global::System.Web.UI.WebControls.LinkButton CobranzasButton;
 
         /// <summary>
-        /// Control ConicliacionesButton.
+        /// Control ConciliacionesButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ConicliacionesButton;
+        protected global::System.Web.UI.WebControls.LinkButton ConciliacionesButton;
+
+        /// <summary>
+        /// Control lblState.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblState;
 
         /// <summary>
         /// Control MultiViewPager.
@@ -285,49 +294,13 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.FormView EditFormView;
 
         /// <summary>
-        /// Control FacturaDS.
+        /// Control CobranzasPage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FacturaDS;
-
-        /// <summary>
-        /// Control FacturaInsertDS_DDL.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FacturaInsertDS_DDL;
-
-        /// <summary>
-        /// Control ProveedorInsertDS_DDL.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorInsertDS_DDL;
-
-        /// <summary>
-        /// Control MonedaInsertDS_DDL.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource MonedaInsertDS_DDL;
-
-        /// <summary>
-        /// Control FactorizadasPage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View FactorizadasPage;
+        protected global::System.Web.UI.WebControls.View CobranzasPage;
 
         /// <summary>
         /// Control TextBox1.
@@ -438,21 +411,48 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.FormView FormView2;
 
         /// <summary>
-        /// Control FactorizadasDS.
+        /// Control ConciliacionesPage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FactorizadasDS;
+        protected global::System.Web.UI.WebControls.View ConciliacionesPage;
 
         /// <summary>
-        /// Control CobranzasPage.
+        /// Control FacturaDS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View CobranzasPage;
+        protected global::System.Web.UI.WebControls.SqlDataSource FacturaDS;
+
+        /// <summary>
+        /// Control FacturaInsertDS_DDL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource FacturaInsertDS_DDL;
+
+        /// <summary>
+        /// Control ProveedorInsertDS_DDL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorInsertDS_DDL;
+
+        /// <summary>
+        /// Control MonedaInsertDS_DDL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource MonedaInsertDS_DDL;
     }
 }

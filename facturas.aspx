@@ -127,7 +127,7 @@
                             </div>
                         </div>
 
-                      
+
 
 
                         <div class="btn-group">
@@ -179,26 +179,26 @@
                         </div>
                     </div>
                 </div>
-               <%-- <div class="pattern bottom"></div>--%>
+                <%-- <div class="pattern bottom"></div>--%>
             </section>
 
             <div class="container-fluid" id="MainContainer">
                 <div class="row" id="PageControlNavigator">
-                    <div class="col-6">
+                    <div class="col-4">
                         <div class="btn-group btn-shadow">
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="PendientesButton" ToolTip="Facturas pendientes" Font-Size="Small">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="PendientesButton" ToolTip="Facturas pendientes" Font-Size="Small" OnClick="PendientesButton_Click">
                                                 <div class="form-row">
                                                 <asp:Label Text="Pendientes" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label>
                                                     <i class="fas fa-file-invoice" style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="CobranzassButton" ToolTip="Facturas factorizadas" Font-Size="Small" >
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="CobranzasButton" ToolTip="Facturas factorizadas" Font-Size="Small" OnClick="CobranzasButton_Click">
                                                 <div class="form-row">
                                                 <asp:Label  Text="Cobranzas" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-file-invoice-dollar"  style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="ConicliacionesButton" ToolTip="Cobranzas" Font-Size="Small">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="ConciliacionesButton" ToolTip="Cobranzas" Font-Size="Small" OnClick="ConciliacionesButton_Click">
                                                 <div class="form-row">
                                                 <asp:Label  Text="Conciliación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-receipt"  style="padding:5px"></i>
@@ -206,18 +206,15 @@
                             </asp:LinkButton>
                         </div>
                     </div>
+                    <div class="col-2">
+                        <asp:Label ID="lblState" runat="server" CssClass="badge badge-danger badge-pill" Text="PENDIENTE"></asp:Label>
+                    </div>
 
                 </div>
                 <div class="row" id="PagesContainer">
                     <asp:MultiView ID="MultiViewPager" runat="server" ActiveViewIndex="0">
                         <asp:View ID="PendientesPage" runat="server">
                             <section class="container-fluid">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h3><span class="badge badge-warning">Pendientes</span></h3>
-                                    </div>
-
-                                </div>
                                 <div class="page-header encabezado small">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -403,6 +400,11 @@
                                     </EditItemTemplate>
                                     <InsertItemTemplate>
                                     </InsertItemTemplate>
+                                    <EmptyDataTemplate>
+                                        <div class="row">
+                                            <h3><span class="badge badge-warning" >No se registran facturas</span></h3>
+                                        </div>
+                                    </EmptyDataTemplate>
                                 </asp:ListView>
 
                                 <!-- #region Modals -->
@@ -739,68 +741,11 @@
                                 </div>
 
                                 <!-- #endregion -->
-                                <!-- #region DataSources -->
-                                <asp:SqlDataSource ID="FacturaDS"
-                                    runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                                    InsertCommand="go.sp_FacturaS_insert" InsertCommandType="StoredProcedure"
-                                    SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure">
-                                    <DeleteParameters>
-                                        <asp:Parameter Name="id_factura" Type="Int32" />
-                                    </DeleteParameters>
-                                    <InsertParameters>
-
-                                        <asp:Parameter Name="id_proveedor" Type="Int32" />
-                                        <asp:Parameter Name="id_cliente" Type="Int32" />
-                                        <asp:Parameter Name="nro_factura" Type="String" />
-                                        <asp:Parameter Name="fecha_emision" Type="DateTime" />
-                                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
-                                        <asp:Parameter Name="monto" Type="Decimal" />
-                                        <asp:Parameter Name="id_moneda" Type="Int32" />
-                                        <asp:Parameter Name="concepto" Type="String" />
-                                        <asp:Parameter Name="porcentaje_adelanto" Type="Decimal" DefaultValue="0" />
-                                        <asp:Parameter Name="fecha_vencimiento" Type="DateTime" />
-                                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
-                                        <asp:Parameter Name="descuento" Type="Decimal" />
-                                    </InsertParameters>
-                                    <UpdateParameters>
-                                        <asp:Parameter Name="id_factura" Type="Int32" />
-                                        <asp:Parameter Name="id_proveedor" Type="Int32" />
-                                        <asp:Parameter Name="id_cliente" Type="Int32" />
-                                        <asp:Parameter Name="nro_factura" Type="String" />
-                                        <asp:Parameter Name="fecha_emision" Type="DateTime" />
-                                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
-                                        <asp:Parameter Name="monto" Type="Decimal" />
-                                        <asp:Parameter Name="id_moneda" Type="Int32" />
-                                        <asp:Parameter Name="concepto" Type="String" />
-                                        <asp:Parameter Name="porcentaje_adelanto" Type="Decimal" />
-                                        <asp:Parameter Name="fecha_vencimiento" Type="DateTime" />
-                                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
-                                        <asp:Parameter Name="descuento" Type="Decimal" />
-                                    </UpdateParameters>
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
-                                        <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
-
-                                <asp:SqlDataSource ID="FacturaInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                                    SelectCommand="select id_cliente, razon_social from go.clientes  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
-
-                                <asp:SqlDataSource ID="ProveedorInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                                    SelectCommand="select id_proveedor, razon_social from go.proveedores  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
-
-                                <asp:SqlDataSource ID="MonedaInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                                    SelectCommand="select id_moneda, moneda from go.monedas  order by moneda " SelectCommandType="Text"></asp:SqlDataSource>
-                                <!-- #endregion -->
+                               
                             </section>
                         </asp:View>
-                        <asp:View ID="FactorizadasPage" runat="server">
+                        <asp:View ID="CobranzasPage" runat="server">
                             <section class="container-fluid">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h3><span class="badge badge-warning">Factorizadas</span></h3>
-                                    </div>
-                                </div>
                                 <div class="page-header encabezado small">
                                     <div class="container-fluid">
                                         <asp:Panel runat="server" DefaultButton="SearchBtn">
@@ -870,7 +815,7 @@
 
                                 <asp:ListView ID="FactorizadasListView"
                                     runat="server"
-                                    DataSourceID="FactorizadasDS"
+                                    DataSourceID="FacturaDS"
                                     DataKeyNames="id_factura">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
@@ -984,7 +929,7 @@
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <asp:FormView ID="FormView1" runat="server" DataSourceID="FactorizadasDS" Width="100%"
+                                                        <asp:FormView ID="FormView1" runat="server" DataSourceID="FacturaDS" Width="100%"
                                                             CellPadding="4" DataKeyNames="id_factura" ForeColor="#333333"
                                                             DefaultMode="Insert"
                                                             OnItemInserted="FormView1_ItemInserted">
@@ -1307,14 +1252,30 @@
                                 </div>
 
                                 <!-- #endregion -->
-                                <!-- #region DataSources -->
-                                <asp:SqlDataSource ID="FactorizadasDS"
+                              
+                            </section>
+                        </asp:View>
+                        <asp:View ID="ConciliacionesPage" runat="server">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <h3><span class="badge badge-info">Cobranzas</span></h3>
+                                </div>
+                            </div>
+                        </asp:View>
+
+                    </asp:MultiView>
+                </div>
+
+                 <!-- #region DataSources -->
+                                <asp:SqlDataSource ID="FacturaDS"
                                     runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                                    SelectCommand="go.sp_Facturas_Factorizadas_get_all" SelectCommandType="StoredProcedure">
+                                    InsertCommand="go.sp_FacturaS_insert" InsertCommandType="StoredProcedure"
+                                    SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure">
                                     <DeleteParameters>
                                         <asp:Parameter Name="id_factura" Type="Int32" />
                                     </DeleteParameters>
                                     <InsertParameters>
+
                                         <asp:Parameter Name="id_proveedor" Type="Int32" />
                                         <asp:Parameter Name="id_cliente" Type="Int32" />
                                         <asp:Parameter Name="nro_factura" Type="String" />
@@ -1346,24 +1307,20 @@
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
                                         <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
+                                        <asp:ControlParameter ControlID="lblState" PropertyName="Text" Name="state" />
+                                        <asp:SessionParameter SessionField="USERNAME" Name="user" DbType="String" />
                                     </SelectParameters>
                                 </asp:SqlDataSource>
 
+                                <asp:SqlDataSource ID="FacturaInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                                    SelectCommand="select id_cliente, razon_social from go.clientes  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
 
+                                <asp:SqlDataSource ID="ProveedorInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                                    SelectCommand="select id_proveedor, razon_social from go.proveedores  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
 
+                                <asp:SqlDataSource ID="MonedaInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                                    SelectCommand="select id_moneda, moneda from go.monedas  order by moneda " SelectCommandType="Text"></asp:SqlDataSource>
                                 <!-- #endregion -->
-                            </section>
-                        </asp:View>
-                        <asp:View ID="CobranzasPage" runat="server">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <h3><span class="badge badge-info">Cobranzas</span></h3>
-                                </div>
-                            </div>
-                        </asp:View>
-
-                    </asp:MultiView>
-                </div>
 
             </div>
 
