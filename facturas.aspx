@@ -1165,7 +1165,7 @@
                             </a>
                             <div class="dropdown mb-4 mb-lg-0">
                                 <p>Asunción, Paraguay</p>
-                                <p>Teléfono de contacto -  +595986118816</p>
+                                <p>Teléfono de contacto -  +595985678599</p>
                                 <p>Mail de contacto -  hola@gofactoring.com.py</p>
                             </div>
                         </div>

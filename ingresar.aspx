@@ -265,7 +265,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                         <div class="dropdown mb-4 mb-lg-0">
                             <p>Asunción, Paraguay</p>
-                            <p>Teléfono de contacto -  +595986118816</p>
+                            <p>Teléfono de contacto -  +595985678599</p>
                             <p>Mail de contacto -  hola@gofactoring.com.py</p>
                             <!--<a id="langsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle footer-language-link">
                         <img src="../assets/img/flags/united-states-of-america.svg" alt="USA Flag" class="language-flag"> English

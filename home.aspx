@@ -644,7 +644,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     <div class="collapse" id="panel-5">
                                         <div class="pt-3">
                                             <p class="mb-0">
-                                                GoFactoring, con el objetivo de integración a sistemas de gestión integral (ERP) cuenta con APIS de integración que operan con sistemas de clase mundial como SAP, Dynamics AX y otros. Si estas en una etapa inicial y tu empresa no cuenta aun con un ERP, brindamos APIs de migración de información basados en archivos estándares de intercambio con formatos abiertos Ej.: CSV, XML, JSON.
+                                                GoFactoring, con el objetivo de integración a sistemas de gestión integral (ERP) cuenta con APIS de integración que operan con sistemas de clase mundial como SAP, Dynamics AX y otros. Si estas en una etapa inicial y tu empresa no cuenta aún con un ERP, brindamos APIs de migración de información basados en archivos estándares de intercambio con formatos abiertos Ej.: CSV, XML, JSON.
                                             </p>
                                         </div>
                                     </div>
@@ -795,7 +795,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h2 class="mb-4">Clientes</h2>
                 <p class="lead mb-5">Unirse a <span class="font-weight-bolder">100+</span> usuarios</p>
                 <a href="#" class="icon icon-lg text-gray mr-3">
-                   <img src="../assets/img/brand/sertec.png">
+                   <%--<img src="../assets/img/brand/sertec.png">--%>
                 </a>
                 <!--<a href="#" class="icon icon-lg text-gray mr-3">
                 <img src="https://connectamericas.com/sites/default/files/content-idb/verifiedbadge.png" />
@@ -883,7 +883,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <!--<p class="my-4">Un aliado para tu negocio</p>-->
                 <div class="dropdown mb-4 mb-lg-0">
                     <p>Asunción, Paraguay</p>
-                    <p>Teléfono de contacto -  +595986118816</p>
+                    <p>Teléfono de contacto -  +595985678599</p>
                     <p>Mail de contacto -  hola@gofactoring.com.py</p>
                     <!--<a id="langsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle footer-language-link">
                         <img src="../assets/img/flags/united-states-of-america.svg" alt="USA Flag" class="language-flag"> English
@@ -900,7 +900,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h6>Información</h6>
                 <ul class="links-vertical">
                     <li><a target="_blank" href="politicas.html">Política de Privacidad</a></li>
-                    <li><a target="_blank" href="legal.html">Información Legales</a></li>
+                    <li><a target="_blank" href="legal.html">Términos y condiciones</a></li>
                     <li><a target="_blank" href="novedades.html">Novedades</a></li>
                 </ul>
                 
