@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="parametros.aspx.cs" Inherits="GoWebForms.parametros" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="registro.aspx.cs" Inherits="GoWebForms.registro" %>
 
 <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -96,33 +96,8 @@
                                 </div>
                             </div>
                         </div>
-                      
 
-                          <div class="btn-group">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Factoring
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                    <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
-                                    <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
-                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li id="li_formulas" runat="server"><a class="dropdown-item" href="Formulas.aspx">Formulas</a></li>
-                                    <li id="li_variables" runat="server"><a class="dropdown-item" href="Variables.aspx">Variables</a></li>
-                                    <li id="li_parameters" runat="server"><a class="dropdown-item" href="Parametros.aspx">Parámetros</a></li>
-                                    <li id="li_asignaciones" runat="server"><a class="dropdown-item" href="Asignaciones.aspx">Asignaciones</a></li>
-                                </ul>
-                            </div>
-                            <button runat="server" id="BtnUser" class="btn btn-sm btn-primary" title="">
-                                <i class="fas fa-user"></i>
-                            </button>
-                            <button runat="server" id="BtnLogout" class="btn btn-sm btn-primary" title="Cerrar sesión" onserverclick="BtnLogout_Click">
-                                <i class="fas fa-sign-out-alt"></i>Salir
-                            </button>
-                        </div>
+
 
 
                         <div class="d-lg-block @@cta_button_classes js-login1">
@@ -140,7 +115,7 @@
         </header>
         <main>
 
-         <%--   <div class="preloader bg-soft flex-column justify-content-center align-items-center">
+            <%--   <div class="preloader bg-soft flex-column justify-content-center align-items-center">
                 <div class="loader-element">
                     <span class="loader-animated-dot"></span>
                     <img src="../assets/img/brand/gofactoring.png" height="40" alt="">
@@ -160,282 +135,54 @@
             <section class="container-fluid">
                 <div class="page-header encabezado small">
                     <div class="container-fluid">
-                        <asp:Panel runat="server" DefaultButton="SearchBtn">
-                            <div class="row">
-                                <div class="col-4 font-weight-bold">
-                                    Palabra clave
-                                </div>
-                                <div class="col-2 font-weight-bold">
-                                    Criterio
-                                </div>
-                                <div class="col-6">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <asp:TextBox ID="txtSearchKey" runat="server" CssClass="form-control" Font-Size="Small"></asp:TextBox>
-                                </div>
-                                <div class="col-2">
-                                    <asp:DropDownList ID="searchParameterDDL" runat="server" CssClass="form-control" Font-Size="Small">
-                                        <asp:ListItem Text="Parametro" Value="PARAMETRO"></asp:ListItem>
-
-                                    </asp:DropDownList>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="btn-group btn-shadow">
-                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="SearchBtn" onserverclick="SearchBtn_ServerClick" ToolTip="Buscar" Font-Size="Small">
-                                                <div class="form-row">
-                                                <asp:Label Text="Buscar" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label>
-                                                <i class="fas fa-search fa-sm" style="padding:5px"></i>
-                                                </div>
-                                        </asp:LinkButton>
-                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Parametro" Font-Size="Small">
-                                                <div class="form-row">
-                                                <asp:Label  Text="Agregar Parametro" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
-                                                <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
-                                                </div>
-                                        </asp:LinkButton>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </asp:Panel>
                     </div>
                     <div class="row">
                         <asp:Label ID="ErrorLabel" runat="server" Visible="False" CssClass="form-control" />
                     </div>
                 </div>
 
-                <div class="row pie small" style="padding-left: 15px">
-                    <asp:DataPager ID="ParametroDataPager" runat="server" PagedControlID="ParametroListView" PageSize="30">
-                        <Fields>
-                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
-                            <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
-                            <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary  btn-sm" ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" LastPageText="Última" />
-                        </Fields>
-                    </asp:DataPager>
-                </div>
 
-                <asp:ListView ID="ParametroListView"
-                    runat="server"
-                    DataSourceID="ParametroDS"
-                    DataKeyNames="id_parametro"
-                    OnItemCommand="ListView_ItemCommand">
-                    <LayoutTemplate>
-                        <div class="table table-responsive">
-                            <table class="table table-sm  table-striped  table-hover small">
-                                <caption>
-                                    <h3><span class="badge">PARAMETROS</span></h3>
-                                </caption>
-                                <thead class="table-dark" id="tbl_head" runat="server">
-                                    <th id="tblhead_id_parametro" runat="server">ID</th>
-                                    <th id="tblhead_parametro" runat="server">PARÁMETRO</th>
-                                    <th id="tblhead_valor" runat="server">VALOR</th>
-                                    <th id="Th1" runat="server">FÓRMULA</th>
-                                    <th>...</th>
-                                    <th>...</th>
-                                    <th>...</th>
-                                </thead>
-                                <tbody>
-                                    <tr runat="server" id="itemPlaceholder" />
-                                </tbody>
-                            </table>
+                <asp:Panel ID="Panel1" runat="server">
+                    <div class="container">
+                        <div class="row">
+                            <div class="label label-info" style="text-align: right">
+                                <h5>Registro de proveedores</h5>
+                            </div>
                         </div>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblid_parametro" runat="server" Text='<%# Eval("id_parametro") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblparametro" runat="server" Text='<%# Eval("parametro") %>' /></td>
-                            <td>
-                                <asp:Label ID="lblvalor" runat="server" Text='<%# Eval("valor") %>' /></td>
-                              <td>
-                                <asp:Label ID="lblformula" runat="server" Text='<%# Eval("formula") %>' /></td>
+                        <div class="row">
+                            <div class="col-2">
+                                <h5>NOMBRES</h5>
+                            </div>
+                            <div class="col-6">
+                                <asp:TextBox ID="TextNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <h5>CORREO</h5>
+                            </div>
+                            <div class="col-6">
+                                <asp:TextBox ID="TextCorreo" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <h5>RUC</h5>
+                            </div>
+                            <div class="col-6">
+                                <asp:TextBox ID="TextRUC" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
 
-                            <td>
-                                <asp:LinkButton runat="server" ID="EditParametroBtn" CommandName="Editar" CommandArgument='<%# Eval("id_parametro")%>' ToolTip="Editar">
-                                    <i class="fa fa-keyboard fa-sm"></i>
-                                </asp:LinkButton>
-                            </td>
-
-                            <td>
-                                <asp:LinkButton runat="server" ID="RequestParametroBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_parametro")%>' ToolTip="Quiero factorizar" Visible="false">
-                                    <i class="fas fa-american-sign-language-interpreting"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="FactoringParametroBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_parametro")%>' ToolTip="Factorizar" Visible="false">
-                                    <i class="fas fa-vote-yea"></i>
-                                </asp:LinkButton>
-                            </td>
-
-                            <td>
-                                <asp:LinkButton runat="server" ID="DeleteParametroBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_parametro")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
-                                    <i class="fas fa-trash-alt"></i>
-                                </asp:LinkButton>
-                            </td>
-
-                        </tr>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                    </InsertItemTemplate>
-                </asp:ListView>
-
-                <!-- #region Modals -->
-                <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <b id="addModalLabel">Agregar un nuevo Parametro.</b>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <asp:FormView ID="InsertFormView" runat="server" DataSourceID="ParametroDS" Width="100%"
-                                            CellPadding="4" DataKeyNames="id_parametro" ForeColor="#333333"
-                                            DefaultMode="Insert"
-                                            OnItemInserted="FormView1_ItemInserted">
-                                            <EditItemTemplate>
-                                            </EditItemTemplate>
-                                            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                            <InsertItemTemplate>
-                                                <div class="container-fluid">
-
-                                                    <div class="row">
-                                                        <div class="col-3">ID</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtid_parametro" runat="server" Text='<%# Bind("id_parametro") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">PARÁMETRO</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtparametro" runat="server" Text='<%# Bind("parametro") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">VALOR</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtvalor" runat="server" Text='<%# Bind("valor") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                     <div class="row">
-                                                        <div class="col-3"><b>FORMULA</b></div>
-                                                        <div class="col-9">
-                                                            <asp:DropDownList ID="IdFormulaDDL"
-                                                                runat="server"
-                                                                DataSourceID="FormulasDS_DDL"
-                                                                DataTextField="formula"
-                                                                DataValueField="id_formula"
-                                                                CssClass="form-control form-control-sm"
-                                                                SelectedValue='<%# Bind("id_formula") %>'>
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <hr />
-                                                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Aceptar" CssClass="btn btn-success" />
-                                                <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
-                                            </InsertItemTemplate>
-                                            <ItemTemplate>
-                                            </ItemTemplate>
-
-
-
-                                        </asp:FormView>
-                                    </div>
-                                    <div class="modal-footer">
-                                    </div>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                            <div class="col-6">
+                                <asp:Button ID="BtnRegistrar" runat="server" Text="Registrarse" CssClass="btn btn-primary rounded-pill" />
+                            </div>
+                        </div>
                     </div>
+                </asp:Panel>
 
-
-                </div>
-
-
-                <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                            <ContentTemplate>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <b id="editModalLabel">Modificar Parametro.</b>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                            CellPadding="4" DataKeyNames="id_parametro" ForeColor="#333333"
-                                            DefaultMode="Edit"
-                                            OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
-                                            <EditItemTemplate>
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="col-3">ID</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtid_parametro" runat="server" Text='<%# Bind("id_parametro") %>' CssClass="form-control mitad" Enabled="false" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">PARÁMETRO</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtparametro" runat="server" Text='<%# Bind("parametro") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-3">VALOR</div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtvalor" runat="server" Text='<%# Bind("valor") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>
-                                                     <div class="row">
-                                                        <div class="col-3">FÓRMULA</div>
-                                                        <div class="col-9">
-                                                            <asp:DropDownList ID="IdFormulaDDL"
-                                                                runat="server"
-                                                                DataSourceID="FormulasDS_DDL"
-                                                                DataTextField="formula"
-                                                                DataValueField="id_formula"
-                                                                CssClass="form-control form-control-sm"
-                                                                SelectedValue='<%# Bind("id_formula") %>'>
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <hr />
-
-                                                <asp:LinkButton ID="AcceptButton" runat="server" CausesValidation="False" CommandName="Update" Text="Aceptar" CssClass="btn btn-success" />
-                                                <asp:LinkButton ID="CancelButton" runat="server" CausesValidation="False" CommandName="Cancelar" Text="Cancelar" CssClass="btn btn-danger" OnClick="CancelButton_Click" />
-                                            </EditItemTemplate>
-                                            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                                            <InsertItemTemplate>
-                                            </InsertItemTemplate>
-                                            <ItemTemplate>
-                                            </ItemTemplate>
-
-
-
-                                        </asp:FormView>
-                                    </div>
-                                    <div class="modal-footer">
-                                    </div>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                    </div>
-
-
-                </div>
 
                 <!-- #endregion -->
                 <!-- #region DataSources -->
@@ -447,7 +194,7 @@
                         <asp:Parameter Name="id_parametro" Type="Int32" />
                     </DeleteParameters>
                     <InsertParameters>
-                      
+
                         <asp:Parameter Name="parametro" Type="String" />
                         <asp:Parameter Name="valor" Type="String" />
                         <asp:Parameter Name="id_formula" Type="Int32" />
@@ -459,12 +206,10 @@
                         <asp:Parameter Name="id_formula" Type="Int32" />
                     </UpdateParameters>
                     <SelectParameters>
-                        <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
-                        <asp:ControlParameter ControlID="searchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
                     </SelectParameters>
                 </asp:SqlDataSource>
 
-                 <asp:SqlDataSource ID="FormulasDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                <asp:SqlDataSource ID="FormulasDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                     SelectCommand="select id_formula, upper(titulo) as formula from go.formulas" SelectCommandType="Text"></asp:SqlDataSource>
 
                 <!-- #endregion -->

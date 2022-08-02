@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="facturas.aspx.cs" Inherits="GoWebForms.facturas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="documentos.aspx.cs" Inherits="GoWebForms.documentos" %>
 
 <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -111,7 +111,7 @@
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                                     <li id="li_providers" runat="server"><a class="dropdown-item active" href="Proveedores.aspx">Proveedores</a></li>
                                     <li id="li_cliente" runat="server"><a class="dropdown-item" href="Clientes.aspx">Clientes</a></li>
-                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Facturas">Facturas</a></li>
+                                    <li id="li_invoices" runat="server"><a class="dropdown-item" href="Documentos">Documentos</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
@@ -129,7 +129,6 @@
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
 
                                     <li id="li3" runat="server"><a class="dropdown-item" href="SIFEN/documentos.aspx">Documentos Electronicos</a></li>
-                                    
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
@@ -150,7 +149,7 @@
                             </button>
                         </div>
 
-                        
+
 
 
                         <div class="d-lg-block @@cta_button_classes js-login1">
@@ -182,21 +181,21 @@
                 <div class="row" id="PageControlNavigator">
                     <div class="col-4">
                         <div class="btn-group btn-shadow">
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="PendientesButton" ToolTip="Facturas pendientes" Font-Size="Small" OnClick="PendientesButton_Click">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="PendientesButton" ToolTip="Documentos pendientes" Font-Size="Small" OnClick="PendientesButton_Click">
                                                 <div class="form-row">
                                                 <asp:Label Text="Pendientes" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label>
                                                     <i class="fas fa-file-invoice" style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="CobranzasButton" ToolTip="Facturas factorizadas" Font-Size="Small" OnClick="CobranzasButton_Click">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="AprobadosButton" ToolTip="Documentos factorizadas" Font-Size="Small" OnClick="AprobadosButton_Click">
                                                 <div class="form-row">
-                                                <asp:Label  Text="Cobranzas" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
+                                                <asp:Label  Text="Aprobados" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-file-invoice-dollar"  style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
-                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="ConciliacionesButton" ToolTip="Cobranzas" Font-Size="Small" OnClick="ConciliacionesButton_Click">
+                            <asp:LinkButton CssClass="btn btn-cyan btn-border" runat="server" ID="RechazadosButton" ToolTip="Aprobados" Font-Size="Small" OnClick="RechazadosButton_Click">
                                                 <div class="form-row">
-                                                <asp:Label  Text="Conciliación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
+                                                <asp:Label  Text="Rechazados" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-receipt"  style="padding:5px"></i>
                                                 </div>
                             </asp:LinkButton>
@@ -257,18 +256,18 @@
                                                 <i class="fas fa-search fa-sm" style="padding:5px"></i>
                                                 </div>
                                                         </asp:LinkButton>
-                                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Factura" Font-Size="Small">
+                                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="AddRegistroBtn" data-toggle="modal" data-target="#addModal" ToolTip="Agregar Documento" Font-Size="Small">
                                                 <div class="form-row">
-                                                <asp:Label  Text="Agregar Factura" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
+                                                <asp:Label  Text="Agregar Documento" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                                 </div>
                                                         </asp:LinkButton>
-                                                        <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="SimulationBtn" ToolTip="Generar Simulación" Font-Size="Small" OnClick="SimulationBtn_Click">
+                                                       <%-- <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="SimulationBtn" ToolTip="Generar Simulación" Font-Size="Small" OnClick="SimulationBtn_Click">
                                                 <div class="form-row">
                                                 <asp:Label  Text="Simulación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
                                                 <i class="fas fa-camera fa-sm"  style="padding:5px"></i>
                                                 </div>
-                                                        </asp:LinkButton>
+                                                        </asp:LinkButton>--%>
                                                     </div>
                                                 </div>
 
@@ -281,7 +280,7 @@
                                 </div>
 
                                 <div class="row pie small" style="padding-left: 15px">
-                                    <asp:DataPager ID="FacturaDataPager" runat="server" PagedControlID="FacturaListView" QueryStringField="pageNumber" PageSize="30">
+                                    <asp:DataPager ID="DocumentoDataPager" runat="server" PagedControlID="DocumentoListView" QueryStringField="pageNumber" PageSize="30">
                                         <Fields>
                                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -291,14 +290,14 @@
                                 </div>
 
 
-                                <asp:ListView ID="FacturaListView"
+                                <asp:ListView ID="DocumentoListView"
                                     runat="server"
-                                    DataSourceID="FacturaDS"
-                                    DataKeyNames="id_factura"
-                                    OnItemDataBound="FacturaListView_ItemDataBound"
+                                    DataSourceID="DocumentoDS"
+                                    DataKeyNames="id_documento_electronico"
+                                    OnItemDataBound="DocumentoListView_ItemDataBound"
                                     OnItemCommand="ListView_ItemCommand"
-                                    OnPreRender="FacturaListView_PreRender"
-                                    OnDataBound="FacturaListView_DataBound">
+                                    OnPreRender="DocumentoListView_PreRender"
+                                    OnDataBound="DocumentoListView_DataBound">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
                                             <table class="table table-sm  table-striped  table-hover small">
@@ -306,22 +305,26 @@
                                                     <h3><span class="badge">FACTURAS</span></h3>
                                                 </caption>
                                                 <thead class="table-dark" id="tbl_head" runat="server">
-                                                    <th id="tblhead_id_factura" runat="server">ID</th>
-                                                    <th id="tblhead_proveedor" runat="server">PROVEEDOR</th>
-                                                    <th id="tblhead_nro_factura" runat="server">NRO. FACTURA</th>
-                                                    <th id="tblhead_cliente" runat="server">CLIENTE</th>
-                                                    <th id="tblhead_fecha_emision" runat="server">FEC. EMISIÓN</th>
-                                                    <th id="tblhead_fecha_vencimiento" runat="server">FEC. VENCIMIENTO</th>
-                                                    <th id="tblhead_monto" runat="server">MONTO</th>
-                                                    <th id="tblhead_moneda" runat="server">MONEDA</th>
-                                                    <th id="tblhead_concepto" runat="server">CONCEPTO</th>
-                                                    <th id="tblhead_porcentaje_adelanto" runat="server">%ADELANTO</th>
-                                                    <th id="tblhead_monto_adelanto" runat="server">ADELANTO</th>
-                                                    <th id="tblhead_descuento" runat="server">DESCUENTO</th>
-                                                    <th id="tblhead_fecha_desembolso" runat="server">FEC. DESEMBOLSO</th>
-                                                    <th id="tblhead_fecha_cobro" runat="server">FEC. COBRO</th>
-                                                    <th id="tblhead_dias" runat="server">DIAS</th>
-                                                    <th id="tblhead_estado" runat="server">ESTADO</th>
+                                                    <th id="tblid_documento_electronico" runat="server">ID</th>
+                                                    <th id="tbltipoDocumento" runat="server">TIPO DOCUMENTO</th>
+                                                    <th id="tblestablecimiento" runat="server">ESTABLECIMIENTO</th>
+                                                    <th id="tblcodigoSeguridadAleatorio" runat="server">COD. SEGURIDAD</th>
+                                                    <th id="tblpunto" runat="server">PUNTO</th>
+                                                    <th id="tblnumero" runat="server">NUMERO</th>
+                                                    <th id="tbldescripcion" runat="server">DESCRIPCION</th>
+                                                    <th id="tblobservacion" runat="server">OBSERVACION</th>
+                                                    <th id="tbltipoContribuyente" runat="server">TIPO CONTRIBUYENTE</th>
+                                                    <th id="tblfecha" runat="server">FECHA</th>
+                                                    <th id="tbltipoEmision" runat="server">TIPO EMISION</th>
+                                                    <th id="tbltipoTransaccion" runat="server">TIPO TRANSACCION</th>
+                                                    <th id="tbltipoImpuesto" runat="server">TIPO IMPUESTO</th>
+                                                    <th id="tblmoneda" runat="server">MONEDA</th>
+                                                    <th id="tblcondicionAnticipo" runat="server">CONDICION ANTICIPO</th>
+                                                    <th id="tblcondicionTipoCambio" runat="server">TIPO CAMBIO</th>
+                                                    <th id="tblcambio" runat="server">CAMBIO</th>
+                                                 
+                                                    <th id="tbdata" runat="server">Sifen</th>
+
                                                     <th>...</th>
                                                     <th>...</th>
                                                     <th>...</th>
@@ -334,59 +337,64 @@
                                     </LayoutTemplate>
                                     <ItemTemplate>
                                         <tr>
-                                            <td id="clm_id_factura" runat="server">
-                                                <asp:Label ID="lblid_factura" runat="server" Text='<%# Eval("id_factura") %>' /></td>
-                                            <td id="clm_proveedor" runat="server">
-                                                <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
-                                            <td id="clm_nro_factura" runat="server">
-                                                <asp:Label ID="lblnro_factura" runat="server" Text='<%# Eval("nro_factura") %>' /></td>
-                                            <td id="clm_cliente" runat="server">
-                                                <asp:Label ID="lblid_cliente" runat="server" Text='<%# Eval("cliente") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblid_documento_electronico" runat="server" Text='<%# Eval("id_documento_electronico") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbltipoDocumento" runat="server" Text='<%# Eval("tipoDocumento") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblestablecimiento" runat="server" Text='<%# Eval("establecimiento") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblcodigoSeguridadAleatorio" runat="server" Text='<%# Eval("codigoSeguridadAleatorio") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblpunto" runat="server" Text='<%# Eval("punto") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblnumero" runat="server" Text='<%# Eval("numero") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbldescripcion" runat="server" Text='<%# Eval("descripcion") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblobservacion" runat="server" Text='<%# Eval("observacion") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbltipoContribuyente" runat="server" Text='<%# Eval("tipoContribuyente") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblfecha" runat="server" Text='<%# Eval("fecha") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbltipoEmision" runat="server" Text='<%# Eval("tipoEmision") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbltipoTransaccion" runat="server" Text='<%# Eval("tipoTransaccion") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lbltipoImpuesto" runat="server" Text='<%# Eval("tipoImpuesto") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblmoneda" runat="server" Text='<%# Eval("moneda") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblcondicionAnticipo" runat="server" Text='<%# Eval("condicionAnticipo") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblcondicionTipoCambio" runat="server" Text='<%# Eval("condicionTipoCambio") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="lblcambio" runat="server" Text='<%# Eval("cambio") %>' /></td>
+                                          
+                                             <td>
+                                                <asp:Label ID="lbldata" runat="server" Text='<%# Eval("data") %>' /></td>
 
-                                            <td id="clm_fecha_emision" runat="server">
-                                                <asp:Label ID="lblfecha_emision" runat="server" Text='<%# Eval("fecha_emision") %>' /></td>
-                                            <td id="clm_fecha_vencimiento" runat="server">
-                                                <asp:Label ID="lblfecha_cobro" runat="server" Text='<%# Eval("fecha_vencimiento") %>' /></td>
 
-                                            <td id="clm_monto" runat="server">
-                                                <asp:Label ID="lblmonto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto")) %>' /></td>
-                                            <td id="clm_moneda" runat="server">
-                                                <asp:Label ID="lblid_moneda" runat="server" Text='<%# Eval("moneda") %>' /></td>
-                                            <td id="clm_concepto" runat="server">
-                                                <asp:Label ID="lblconcepto" runat="server" Text='<%# Eval("concepto") %>' /></td>
-                                            <td id="clm_porcentaje_adelanto" runat="server">
-                                                <asp:Label ID="lblporcentaje_adelanto" runat="server" Text='<%#:string.Format("{0:N2}", Eval("porcentaje_adelanto")) %>' /></td>
-                                            <td id="clm_monto_adelanto" runat="server">
-                                                <asp:Label ID="lblmonto_adelanto" runat="server" Text='<%#:string.Format("{0:N0}", Eval("monto_adelanto"))  %>' /></td>
-                                            <td id="clm_descuento" runat="server">
-                                                <asp:Label ID="lbl_descuento" runat="server" Text='<%#:string.Format("{0:N0}", Eval("descuento"))  %>' /></td>
-                                            <td id="clm_fecha_desembolso" runat="server">
-                                                <asp:Label ID="lblfecha_vencimiento" runat="server" Text='<%# Eval("fecha_desembolso") %>' /></td>
-                                            <td id="clm_fecha_cobro" runat="server">
-                                                <asp:Label ID="lblfecha_desembolso" runat="server" Text='<%# Eval("fecha_cobro") %>' /></td>
-                                            <td id="clm_dias" runat="server">
-                                                <asp:Label ID="lbldias" runat="server" Text='<%# Eval("dias") %>' /></td>
-
-                                            <td id="clm_estado" runat="server">
-                                                <asp:Label ID="lblestado" runat="server" Text='<%# Eval("estado") %>' /></td>
 
 
                                             <td>
-                                                <asp:LinkButton runat="server" ID="EditFacturaBtn" CommandName="Editar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Editar">
+                                                <asp:LinkButton runat="server" ID="EditDocumentoBtn" CommandName="Editar" CommandArgument='<%# Eval("id_documento_electronico")%>'
+                                                    ToolTip="Editar">
                                                     <i class="fa fa-keyboard fa-sm"></i>
                                                 </asp:LinkButton>
                                             </td>
 
                                             <td>
-                                                <asp:LinkButton runat="server" ID="RequestFacturaBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Quiero factorizar" Visible="false">
+                                                <asp:LinkButton runat="server" ID="RequestDocumentoBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Enviar a SIFEN" Visible="true">
                                                     <i class="fas fa-american-sign-language-interpreting"></i>
                                                 </asp:LinkButton>
-                                                <asp:LinkButton runat="server" ID="FactoringFacturaBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Aprobar" Visible="false">
+                                                <asp:LinkButton runat="server" ID="FactoringDocumentoBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Aprobar" Visible="false">
                                                     <i class="fas fa-vote-yea"></i>
                                                 </asp:LinkButton>
                                             </td>
                                             <td>
-                                                <asp:LinkButton runat="server" ID="DeleteFacturaBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
+                                                <asp:LinkButton runat="server" ID="DeleteDocumentoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </asp:LinkButton>
                                             </td>
@@ -398,7 +406,7 @@
                                     </InsertItemTemplate>
                                     <EmptyDataTemplate>
                                         <div class="row">
-                                            <h3><span class="badge badge-warning">No se registran facturas</span></h3>
+                                            <h3><span class="badge badge-warning">No se registran DE</span></h3>
                                         </div>
                                     </EmptyDataTemplate>
                                 </asp:ListView>
@@ -410,12 +418,12 @@
                                             <ContentTemplate>
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <b id="addModalLabel">Agregar un nuevo Factura.</b>
+                                                        <b id="addModalLabel">Agregar un nuevo Documento.</b>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <asp:FormView ID="InsertFormView" runat="server" DataSourceID="FacturaDS" Width="100%"
-                                                            CellPadding="4" DataKeyNames="id_factura" ForeColor="#333333"
+                                                        <asp:FormView ID="InsertFormView" runat="server" DataSourceID="DocumentoDS" Width="100%"
+                                                            CellPadding="4" DataKeyNames="id_documento_electronico" ForeColor="#333333"
                                                             DefaultMode="Insert"
                                                             OnItemInserted="FormView1_ItemInserted">
                                                             <EditItemTemplate>
@@ -426,122 +434,121 @@
                                                                 <div class="container-fluid">
 
                                                                     <div class="row">
-                                                                        <div class="col-3">PROVEEDOR</div>
+                                                                        <div class="col-3">ID</div>
                                                                         <div class="col-9">
-                                                                            <asp:DropDownList ID="IdProveedorDDL"
-                                                                                runat="server"
-                                                                                DataSourceID="ProveedorInsertDS_DDL"
-                                                                                DataTextField="razon_social"
-                                                                                DataValueField="id_proveedor"
-                                                                                CssClass="form-control form-control-sm"
-                                                                                SelectedValue='<%# Bind("id_proveedor") %>'>
-                                                                            </asp:DropDownList>
+                                                                            <asp:TextBox ID="txtid_documento_electronico" runat="server" Text='<%# Eval("id_documento_electronico") %>' CssClass="form-control" Enabled="false" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">CLIENTE</div>
+                                                                        <div class="col-3">TIPO DOCUMENTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:DropDownList ID="IdClienteDDL"
-                                                                                runat="server"
-                                                                                DataSourceID="FacturaInsertDS_DDL"
-                                                                                DataTextField="razon_social"
-                                                                                DataValueField="id_cliente"
-                                                                                CssClass="form-control form-control-sm"
-                                                                                SelectedValue='<%# Bind("id_cliente") %>'>
-                                                                            </asp:DropDownList>
+                                                                            <asp:TextBox ID="txttipoDocumento" runat="server" Text='<%# Bind("tipoDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">
-                                                                            NRO. FACTURA
-                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3"
-                                                                 ControlToValidate="txtnro_factura"
-                                                                 Display="Static"
-                                                                 ErrorMessage="*"
-                                                                 runat="server" />
-                                                                        </div>
+                                                                        <div class="col-3">establecimiento</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtnro_factura" runat="server" Text='<%# Bind("nro_factura") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:TextBox ID="txtestablecimiento" runat="server" Text='<%# Bind("establecimiento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">
-                                                                            FEC. EMISIÓN
-                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                                                                 ControlToValidate="txtfecha_emision"
-                                                                 Display="Static"
-                                                                 ErrorMessage="*"
-                                                                 runat="server" />
-                                                                        </div>
+                                                                        <div class="col-3">CODIGO SEGURIDADA</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_emision" runat="server" Text='<%# Bind("fecha_emision") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
+                                                                            <asp:TextBox ID="txtcodigoSeguridadAleatorio" runat="server" Text='<%# Bind("codigoSeguridadAleatorio") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">
-                                                                            FEC. VENCIMIENTO
-                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6"
-                                                                 ControlToValidate="txtfecha_vencimiento"
-                                                                 Display="Static"
-                                                                 ErrorMessage="*"
-                                                                 runat="server" />
-                                                                        </div>
+                                                                        <div class="col-3">PUNTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_vencimiento" runat="server" Text='<%# Bind("fecha_vencimiento") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
+                                                                            <asp:TextBox ID="txtpunto" runat="server" Text='<%# Bind("punto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
-
-
-
-
                                                                     <div class="row">
-                                                                        <div class="col-3">
-                                                                            MONTO
-                                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator4"
-                                                                  ControlToValidate="txtmonto"
-                                                                  Display="Static"
-                                                                  ErrorMessage="*"
-                                                                  runat="server" />
-                                                                        </div>
+                                                                        <div class="col-3">NUMERO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtmonto" runat="server" Text='<%# Bind("monto") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Number" />
+                                                                            <asp:TextBox ID="txtnumero" runat="server" Text='<%# Bind("numero") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">DESCRIPCION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">OBSERVACION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtobservacion" runat="server" Text='<%# Bind("observacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO CONTRIBUYENTE</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoContribuyente" runat="server" Text='<%# Bind("tipoContribuyente") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">FECHA</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtfecha" runat="server" Text='<%# Bind("fecha") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO EMISION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoEmision" runat="server" Text='<%# Bind("tipoEmision") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO TRANSACCION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoTransaccion" runat="server" Text='<%# Bind("tipoTransaccion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO IMPUESTO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoImpuesto" runat="server" Text='<%# Bind("tipoImpuesto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-3">MONEDA</div>
                                                                         <div class="col-9">
-                                                                            <asp:DropDownList ID="IdMonedaDDL"
-                                                                                runat="server"
-                                                                                DataSourceID="MonedaInsertDS_DDL"
-                                                                                DataTextField="moneda"
-                                                                                DataValueField="id_moneda"
-                                                                                CssClass="form-control form-control-sm"
-                                                                                SelectedValue='<%# Bind("id_moneda") %>'>
-                                                                            </asp:DropDownList>
+                                                                            <asp:TextBox ID="txtmoneda" runat="server" Text='<%# Bind("moneda") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">CONCEPTO</div>
+                                                                        <div class="col-3">CONDICION ANTICIPO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtconcepto" runat="server" Text='<%# Bind("concepto") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:TextBox ID="txtcondicionAnticipo" runat="server" Text='<%# Bind("condicionAnticipo") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
-                                                                    <%--  <div class="row">
-                                                        <div class="col-3">
-                                                            %ADELANTO
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>'  CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>--%>
-                                                                    <%-- <div class="row">
-                                                        <div class="col-3">
-                                                            DESCUENTO
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                        </div>
-                                                    </div>--%>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO CAMBIO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtcondicionTipoCambio" runat="server" Text='<%# Bind("condicionTipoCambio") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">CAMBIO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtcambio" runat="server" Text='<%# Bind("cambio") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">ID_CLIENTE</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtid_cliente" runat="server" Text='<%# Bind("id_cliente") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">ID_USUARIO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtid_usuario" runat="server" Text='<%# Bind("id_usuario") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+
+
                                                                 </div>
 
                                                                 <hr />
@@ -572,12 +579,12 @@
                                             <ContentTemplate>
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <b id="editModalLabel">Modificar Factura.</b>
+                                                        <b id="editModalLabel">Modificar Documento.</b>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <asp:FormView ID="EditFormView" runat="server" Width="100%"
-                                                            CellPadding="4" DataKeyNames="id_factura" ForeColor="#333333"
+                                                            CellPadding="4" DataKeyNames="id_documento_electronico" ForeColor="#333333"
                                                             DefaultMode="Edit"
                                                             OnModeChanging="EditFormView_ModeChanging" OnItemUpdating="EditFormView_ItemUpdating" OnItemUpdated="EditFormView_ItemUpdated">
                                                             <EditItemTemplate>
@@ -585,105 +592,114 @@
                                                                     <div class="row">
                                                                         <div class="col-3">ID</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtid_factura" runat="server" Text='<%# Bind("id_factura") %>' CssClass="form-control" Font-Size="X-Small" Enabled="false" />
+                                                                            <asp:TextBox ID="txtid_documento_electronico" runat="server" Text='<%# Bind("id_documento_electronico") %>' CssClass="form-control" Enabled="false" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3"><b>PROVEEDOR</b></div>
+                                                                        <div class="col-3">TIPO DOCUMENTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:DropDownList ID="IdProveedorDDL"
-                                                                                runat="server"
-                                                                                DataSourceID="ProveedorInsertDS_DDL"
-                                                                                DataTextField="razon_social"
-                                                                                DataValueField="id_proveedor"
-                                                                                CssClass="form-control form-control-sm"
-                                                                                SelectedValue='<%# Bind("id_proveedor") %>'>
-                                                                            </asp:DropDownList>
+                                                                            <asp:TextBox ID="txttipoDocumento" runat="server" Text='<%# Bind("tipoDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3"><b>CLIENTE</b></div>
+                                                                        <div class="col-3">establecimiento</div>
                                                                         <div class="col-9">
-                                                                            <asp:DropDownList ID="IdClienteDDL"
-                                                                                runat="server"
-                                                                                DataSourceID="FacturaInsertDS_DDL"
-                                                                                DataTextField="razon_social"
-                                                                                DataValueField="id_cliente"
-                                                                                CssClass="form-control form-control-sm"
-                                                                                SelectedValue='<%# Bind("id_cliente") %>'>
-                                                                            </asp:DropDownList>
+                                                                            <asp:TextBox ID="txtestablecimiento" runat="server" Text='<%# Bind("establecimiento") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">NRO. FACTURA</div>
+                                                                        <div class="col-3">CODIGO SEGURIDADA</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtnro_factura" runat="server" Text='<%# Bind("nro_factura") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:TextBox ID="txtcodigoSeguridadAleatorio" runat="server" Text='<%# Bind("codigoSeguridadAleatorio") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">FEC. EMISIÓN</div>
+                                                                        <div class="col-3">PUNTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_emision" runat="server" Text='<%# Bind("fecha_emision", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
+                                                                            <asp:TextBox ID="txtpunto" runat="server" Text='<%# Bind("punto") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">FEC. VENCIMIENTO</div>
+                                                                        <div class="col-3">NUMERO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_vencimiento" runat="server" Text='<%# Bind("fecha_vencimiento", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <%--<div class="row">
-                                                                        <div class="col-3">FEC. DESEMBOLSO</div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_desembolso" runat="server" Text='<%# Bind("fecha_desembolso", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" Enabled="false" />
+                                                                            <asp:TextBox ID="txtnumero" runat="server" Text='<%# Bind("numero") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">FEC. COBRO</div>
+                                                                        <div class="col-3">DESCRIPCION</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtfecha_cobro" runat="server" Text='<%# Bind("fecha_cobro", "{0:yyyy-MM-dd}") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Date" />
-                                                                        </div>
-                                                                    </div>--%>
-                                                                    <div class="row">
-                                                                        <div class="col-3">MONTO</div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtmonto" runat="server" Text='<%# Bind("monto") %>' CssClass="form-control" Font-Size="X-Small" TextMode="Number" />
+                                                                            <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">OBSERVACION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtobservacion" runat="server" Text='<%# Bind("observacion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO CONTRIBUYENTE</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoContribuyente" runat="server" Text='<%# Bind("tipoContribuyente") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">FECHA</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtfecha" runat="server" Text='<%# Bind("fecha") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO EMISION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoEmision" runat="server" Text='<%# Bind("tipoEmision") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO TRANSACCION</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoTransaccion" runat="server" Text='<%# Bind("tipoTransaccion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO IMPUESTO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txttipoImpuesto" runat="server" Text='<%# Bind("tipoImpuesto") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">MONEDA</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtmoneda" runat="server" Text='<%# Bind("moneda") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">CONDICION ANTICIPO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtcondicionAnticipo" runat="server" Text='<%# Bind("condicionAnticipo") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">TIPO CAMBIO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtcondicionTipoCambio" runat="server" Text='<%# Bind("condicionTipoCambio") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">CAMBIO</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtcambio" runat="server" Text='<%# Bind("cambio") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-3">Sifen</div>
+                                                                        <div class="col-9">
+                                                                            <asp:TextBox ID="txtdata" runat="server" Text='<%# Bind("data") %>' TextMode="MultiLine" Height="150px" CssClass="form-control" Font-Size="X-Small" />
+                                                                        </div>
+                                                                    </div>
+                                                                    
 
-                                                                    <div class="row">
-                                                                        <div class="col-3"><b>MONEDA</b></div>
-                                                                        <div class="col-9">
-                                                                            <asp:DropDownList ID="IdMonedaDDL"
-                                                                                runat="server"
-                                                                                DataSourceID="MonedaInsertDS_DDL"
-                                                                                DataTextField="moneda"
-                                                                                DataValueField="id_moneda"
-                                                                                CssClass="form-control form-control-sm"
-                                                                                SelectedValue='<%# Bind("id_moneda") %>'>
-                                                                            </asp:DropDownList>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-3">CONCEPTO</div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtconcepto" runat="server" Text='<%# Bind("concepto") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <%-- <div class="row">
-                                                                        <div class="col-3">%ADELANTO</div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtporcentaje_adelanto" runat="server" Text='<%# Bind("porcentaje_adelanto") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-3">
-                                                                            DESCUENTO
-                                                                        </div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtdescuento" runat="server" Text='<%# Bind("descuento") %>' Enabled="false" CssClass="form-control" Font-Size="X-Small" />
-                                                                        </div>
-                                                                    </div>--%>
+
                                                                 </div>
 
                                                                 <hr />
@@ -718,7 +734,7 @@
                         </asp:View>
 
 
-                        <asp:View ID="CobranzasPage" runat="server">
+                        <asp:View ID="AprobadosPage" runat="server">
                             <section class="container-fluid">
                                 <div class="page-header encabezado small">
                                     <div class="container-fluid">
@@ -765,7 +781,7 @@
                                 </div>
 
                                 <div class="row pie small" style="padding-left: 15px">
-                                    <asp:DataPager ID="CobranzasDataPager" runat="server" PagedControlID="CobranzasListView" QueryStringField="pageNumber" PageSize="30">
+                                    <asp:DataPager ID="AprobadosDataPager" runat="server" PagedControlID="AprobadosListView" QueryStringField="pageNumber" PageSize="30">
                                         <Fields>
                                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -775,12 +791,12 @@
                                 </div>
 
 
-                                <asp:ListView ID="CobranzasListView"
+                                <asp:ListView ID="AprobadosListView"
                                     runat="server"
                                     DataSourceID="CobranzaDS"
-                                    DataKeyNames="id_factura"
-                                    OnItemCommand="CobranzasListView_ItemCommand"
-                                    OnItemDataBound="CobranzasListView_ItemDataBound">
+                                    DataKeyNames="id_documento_electronico"
+                                    OnItemCommand="AprobadosListView_ItemCommand"
+                                    OnItemDataBound="AprobadosListView_ItemDataBound">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
                                             <table class="table table-sm  table-striped  table-hover small">
@@ -788,20 +804,26 @@
                                                     <h3><span class="badge">FACTURAS</span></h3>
                                                 </caption>
                                                 <thead class="table-dark" id="tbl_head" runat="server">
-                                                    <th id="tblhead_id_factura" runat="server">ID</th>
-                                                    <th id="tblhead_proveedor" runat="server">PROVEEDOR</th>
-                                                    <th id="tblhead_nro_factura" runat="server">NRO. FACTURA</th>
-                                                    <th id="tblhead_cliente" runat="server">CLIENTE</th>
+                                                    <th id="tblid_documento_electronico" runat="server">ID</th>
+                                                    <th id="tbltipoDocumento" runat="server">TIPO DOCUMENTO</th>
+                                                    <th id="tblestablecimiento" runat="server">ESTABLECIMIENTO</th>
+                                                    <th id="tblcodigoSeguridadAleatorio" runat="server">COD. SEGURIDAD</th>
+                                                    <th id="tblpunto" runat="server">PUNTO</th>
+                                                    <th id="tblnumero" runat="server">NUMERO</th>
+                                                    <th id="tbldescripcion" runat="server">DESCRIPCION</th>
+                                                    <th id="tblobservacion" runat="server">OBSERVACION</th>
+                                                    <th id="tbltipoContribuyente" runat="server">TIPO CONTRIBUYENTE</th>
+                                                    <th id="tblfecha" runat="server">FECHA</th>
+                                                    <th id="tbltipoEmision" runat="server">TIPO EMISION</th>
+                                                    <th id="tbltipoTransaccion" runat="server">TIPO TRANSACCION</th>
+                                                    <th id="tbltipoImpuesto" runat="server">TIPO IMPUESTO</th>
+                                                    <th id="tblmoneda" runat="server">MONEDA</th>
+                                                    <th id="tblcondicionAnticipo" runat="server">CONDICION ANTICIPO</th>
+                                                    <th id="tblcondicionTipoCambio" runat="server">TIPO CAMBIO</th>
+                                                    <th id="tblcambio" runat="server">CAMBIO</th>
+                                                    <th id="tblid_cliente" runat="server">ID_CLIENTE</th>
+                                                    <th id="tblid_usuario" runat="server">ID_USUARIO</th>
 
-                                                    <th id="tblhead_fecha_vencimiento" runat="server">FEC. VENCIMIENTO</th>
-                                                    <th id="tblhead_monto" runat="server">MONTO</th>
-                                                    <th id="tblhead_moneda" runat="server">MONEDA</th>
-
-                                                    <th id="tblhead_monto_adelanto" runat="server">ADELANTO</th>
-                                                    <th id="tblhead_descuento" runat="server">DESCUENTO</th>
-                                                    <th id="tblhead_fecha_desembolso" runat="server">FEC. DESEMBOLSO</th>
-                                                    <th id="tblhead_fecha_cobro" runat="server">FEC. COBRO</th>
-                                                    <th id="tblhead_estado" runat="server">ESTADO</th>
                                                     <th>...</th>
                                                     <th>...</th>
                                                     <th>...</th>
@@ -815,7 +837,7 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td id="clm_id_factura" runat="server">
-                                                <asp:Label ID="lblid_factura" runat="server" Text='<%# Eval("id_factura") %>' /></td>
+                                                <asp:Label ID="lblid_factura" runat="server" Text='<%# Eval("id_documento_electronico") %>' /></td>
                                             <td id="clm_proveedor" runat="server">
                                                 <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
                                             <td id="clm_nro_factura" runat="server">
@@ -841,18 +863,18 @@
 
 
                                             <td>
-                                                <asp:LinkButton runat="server" ID="EditFacturaBtn" CommandName="Edit" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Editar">
+                                                <asp:LinkButton runat="server" ID="EditDocumentoBtn" CommandName="Edit" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Editar">
                                                     <i class="fa fa-keyboard fa-sm"></i>
                                                 </asp:LinkButton>
                                             </td>
 
                                             <td>
-                                                <asp:LinkButton runat="server" ID="DepositarFacturaBtn" CommandName="Depositar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Depositar">
+                                                <asp:LinkButton runat="server" ID="DepositarDocumentoBtn" CommandName="Depositar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Depositar">
                                                      <i class="fa fa-money-bill"></i>
                                                 </asp:LinkButton>
                                             </td>
                                             <td>
-                                                <asp:LinkButton runat="server" ID="CobrarFacturaBtn" CommandName="Cobrar" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Cobrar">
+                                                <asp:LinkButton runat="server" ID="CobrarDocumentoBtn" CommandName="Cobrar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Cobrar">
                                                      <i class="fa-regular fa-credit-card"></i>
                                                 </asp:LinkButton>
                                             </td>
@@ -861,7 +883,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <td id="clm_id_factura" runat="server">
-                                            <asp:Label ID="lblid_factura" runat="server" Text='<%# Bind("id_factura") %>' /></td>
+                                            <asp:Label ID="lblid_factura" runat="server" Text='<%# Bind("id_documento_electronico") %>' /></td>
                                         <td id="clm_proveedor" runat="server">
                                             <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
                                         <td id="clm_nro_factura" runat="server">
@@ -888,13 +910,13 @@
 
 
                                         <td>
-                                            <asp:LinkButton runat="server" ID="EditFacturaBtn" CommandName="Update" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Aceptar">
+                                            <asp:LinkButton runat="server" ID="EditDocumentoBtn" CommandName="Update" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Aceptar">
                                                     <i class="fa fa-check fa-sm"></i>
                                             </asp:LinkButton>
                                         </td>
 
                                         <td>
-                                            <asp:LinkButton runat="server" ID="DepositarFacturaBtn" CommandName="Cancel" CommandArgument='<%# Eval("id_factura")%>' ToolTip="Cencelar">
+                                            <asp:LinkButton runat="server" ID="DepositarDocumentoBtn" CommandName="Cancel" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Cencelar">
                                                      <i class="fa fa-ban"></i>
                                             </asp:LinkButton>
                                         </td>
@@ -910,7 +932,7 @@
                         </asp:View>
 
 
-                        <asp:View ID="ConciliacionesPage" runat="server">
+                        <asp:View ID="RechazadosPage" runat="server">
                             <section class="container-fluid">
                                 <div class="page-header encabezado small">
                                     <div class="container-fluid">
@@ -957,7 +979,7 @@
                                 </div>
 
                                 <div class="row pie small" style="padding-left: 15px">
-                                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="CobranzasListView" QueryStringField="pageNumber" PageSize="30">
+                                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="AprobadosListView" QueryStringField="pageNumber" PageSize="30">
                                         <Fields>
                                             <asp:NextPreviousPagerField ButtonCssClass="btn btn-primary btn-sm" ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" FirstPageText="Primera" />
                                             <asp:NumericPagerField ButtonType="Button" CurrentPageLabelCssClass="btn btn-sm font-weight-bold  border" NextPreviousButtonCssClass="btn btn-default btn-sm" NumericButtonCssClass="btn btn-default btn-sm" />
@@ -967,10 +989,10 @@
                                 </div>
 
 
-                                <asp:ListView ID="ConciliacionesListView"
+                                <asp:ListView ID="RechazadosListView"
                                     runat="server"
                                     DataSourceID="ConciliacionDS"
-                                    DataKeyNames="id_factura">
+                                    DataKeyNames="id_documento_electronico">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
                                             <table class="table table-sm  table-striped  table-hover small">
@@ -1005,7 +1027,7 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td id="clm_id_factura" runat="server">
-                                                <asp:Label ID="lblid_factura" runat="server" Text='<%# Eval("id_factura") %>' /></td>
+                                                <asp:Label ID="lblid_factura" runat="server" Text='<%# Eval("id_documento_electronico") %>' /></td>
                                             <td id="clm_proveedor" runat="server">
                                                 <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
                                             <td id="clm_nro_factura" runat="server">
@@ -1041,7 +1063,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <td id="clm_id_factura" runat="server">
-                                            <asp:Label ID="lblid_factura" runat="server" Text='<%# Bind("id_factura") %>' /></td>
+                                            <asp:Label ID="lblid_factura" runat="server" Text='<%# Bind("id_documento_electronico") %>' /></td>
                                         <td id="clm_proveedor" runat="server">
                                             <asp:Label ID="lblid_proveedor" runat="server" Text='<%# Eval("proveedor") %>' /></td>
                                         <td id="clm_nro_factura" runat="server">
@@ -1082,41 +1104,58 @@
                 </div>
 
                 <!-- #region DataSources -->
-                <asp:SqlDataSource ID="FacturaDS"
+                <asp:SqlDataSource ID="DocumentoDS"
                     runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    InsertCommand="go.sp_FacturaS_insert" InsertCommandType="StoredProcedure"
-                    SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure">
+                    InsertCommand="ws_sifen.dbo.sp_DocumentosElectronicos_insert" InsertCommandType="StoredProcedure"
+                    SelectCommand="ws_sifen.dbo.sp_DocumentosElectronicos_get_all" SelectCommandType="StoredProcedure">
                     <DeleteParameters>
-                        <asp:Parameter Name="id_factura" Type="Int32" />
+                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
                     </DeleteParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="id_proveedor" Type="Int32" />
+                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
+                        <asp:Parameter Name="tipoDocumento" Type="Int32" />
+                        <asp:Parameter Name="establecimiento" Type="String" />
+                        <asp:Parameter Name="codigoSeguridadAleatorio" Type="String" />
+                        <asp:Parameter Name="punto" Type="String" />
+                        <asp:Parameter Name="numero" Type="String" />
+                        <asp:Parameter Name="descripcion" Type="String" />
+                        <asp:Parameter Name="observacion" Type="String" />
+                        <asp:Parameter Name="tipoContribuyente" Type="Int32" />
+                        <asp:Parameter Name="fecha" Type="DateTime" />
+                        <asp:Parameter Name="tipoEmision" Type="Int32" />
+                        <asp:Parameter Name="tipoTransaccion" Type="Int32" />
+                        <asp:Parameter Name="tipoImpuesto" Type="Int32" />
+                        <asp:Parameter Name="moneda" Type="String" />
+                        <asp:Parameter Name="condicionAnticipo" Type="Int32" />
+                        <asp:Parameter Name="condicionTipoCambio" Type="Int32" />
+                        <asp:Parameter Name="cambio" Type="Decimal" />
                         <asp:Parameter Name="id_cliente" Type="Int32" />
-                        <asp:Parameter Name="nro_factura" Type="String" />
-                        <asp:Parameter Name="fecha_emision" Type="DateTime" />
-                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
-                        <asp:Parameter Name="monto" Type="Decimal" />
-                        <asp:Parameter Name="id_moneda" Type="Int32" />
-                        <asp:Parameter Name="concepto" Type="String" />
-                        <asp:Parameter Name="porcentaje_adelanto" Type="Decimal" DefaultValue="0" />
-                        <asp:Parameter Name="fecha_vencimiento" Type="DateTime" />
-                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
-                        <asp:Parameter Name="descuento" Type="Decimal" />
+                        <asp:Parameter Name="id_usuario" Type="Int32" />
+                        <asp:Parameter Name="id_certificado" Type="Int32" />
+
                     </InsertParameters>
                     <UpdateParameters>
-                        <asp:Parameter Name="id_factura" Type="Int32" />
-                        <asp:Parameter Name="id_proveedor" Type="Int32" />
+                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
+                        <asp:Parameter Name="tipoDocumento" Type="Int32" />
+                        <asp:Parameter Name="establecimiento" Type="String" />
+                        <asp:Parameter Name="codigoSeguridadAleatorio" Type="String" />
+                        <asp:Parameter Name="punto" Type="String" />
+                        <asp:Parameter Name="numero" Type="String" />
+                        <asp:Parameter Name="descripcion" Type="String" />
+                        <asp:Parameter Name="observacion" Type="String" />
+                        <asp:Parameter Name="tipoContribuyente" Type="Int32" />
+                        <asp:Parameter Name="fecha" Type="DateTime" />
+                        <asp:Parameter Name="tipoEmision" Type="Int32" />
+                        <asp:Parameter Name="tipoTransaccion" Type="Int32" />
+                        <asp:Parameter Name="tipoImpuesto" Type="Int32" />
+                        <asp:Parameter Name="moneda" Type="String" />
+                        <asp:Parameter Name="condicionAnticipo" Type="Int32" />
+                        <asp:Parameter Name="condicionTipoCambio" Type="Int32" />
+                        <asp:Parameter Name="cambio" Type="Decimal" />
                         <asp:Parameter Name="id_cliente" Type="Int32" />
-                        <asp:Parameter Name="nro_factura" Type="String" />
-                        <asp:Parameter Name="fecha_emision" Type="DateTime" />
-                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
-                        <asp:Parameter Name="monto" Type="Decimal" />
-                        <asp:Parameter Name="id_moneda" Type="Int32" />
-                        <asp:Parameter Name="concepto" Type="String" />
-                        <asp:Parameter Name="porcentaje_adelanto" Type="Decimal" />
-                        <asp:Parameter Name="fecha_vencimiento" Type="DateTime" />
-                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
-                        <asp:Parameter Name="descuento" Type="Decimal" />
+                        <asp:Parameter Name="id_usuario" Type="Int32" />
+                        <asp:Parameter Name="id_certificado" Type="Int32" />
+
                     </UpdateParameters>
                     <SelectParameters>
                         <asp:ControlParameter ControlID="txtSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
@@ -1126,7 +1165,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
 
-                <asp:SqlDataSource ID="FacturaInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                <asp:SqlDataSource ID="DocumentoInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
                     SelectCommand="select id_cliente, razon_social from go.clientes  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
 
                 <asp:SqlDataSource ID="ProveedorInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
@@ -1139,11 +1178,11 @@
 
                 <asp:SqlDataSource ID="CobranzaDS"
                     runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure"
-                    UpdateCommand="update go.facturas set fecha_desembolso = @fecha_desembolso, fecha_cobro = @fecha_cobro  where id_factura = @id_factura" UpdateCommandType="Text">
+                    SelectCommand="go.sp_Documentos_get_all" SelectCommandType="StoredProcedure"
+                    UpdateCommand="update go.facturas set fecha_desembolso = @fecha_desembolso, fecha_cobro = @fecha_cobro  where id_documento_electronico = @id_documento_electronico" UpdateCommandType="Text">
 
                     <UpdateParameters>
-                        <asp:Parameter Name="id_factura" Type="Int32" />
+                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
                         <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
                         <asp:Parameter Name="fecha_cobro" Type="DateTime" />
                     </UpdateParameters>
@@ -1158,10 +1197,10 @@
 
                 <asp:SqlDataSource ID="ConciliacionDS"
                     runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="go.sp_Facturas_get_all" SelectCommandType="StoredProcedure">
+                    SelectCommand="go.sp_Documentos_get_all" SelectCommandType="StoredProcedure">
 
                     <UpdateParameters>
-                        <asp:Parameter Name="id_factura" Type="Int32" />
+                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
                         <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
                         <asp:Parameter Name="fecha_cobro" Type="DateTime" />
                     </UpdateParameters>
@@ -1548,9 +1587,9 @@
                 let innerBodyHtml = "";
 
                 response.forEach(invoice => {
-                    const { id_factura, razon_social, ruc, fecha_alta, direccion } = invoice;
+                    const { id_documento_electronico, razon_social, ruc, fecha_alta, direccion } = invoice;
 
-                    innerBodyHtml = innerBodyHtml + `<tr> <td>${id_factura}</td> <td>${ruc}</td> <td>${razon_social}</td>     <td type='date'>${fecha_alta}</td> <td>${direccion}</td>   <td><a href="/Proveedores.html?client=${id_factura}" class="button">Ver proveedores</a></td>  <tr>`;
+                    innerBodyHtml = innerBodyHtml + `<tr> <td>${id_documento_electronico}</td> <td>${ruc}</td> <td>${razon_social}</td>     <td type='date'>${fecha_alta}</td> <td>${direccion}</td>   <td><a href="/Proveedores.html?client=${id_documento_electronico}" class="button">Ver proveedores</a></td>  <tr>`;
                 });
 
                 tableBodyElem.innerHTML = innerBodyHtml;

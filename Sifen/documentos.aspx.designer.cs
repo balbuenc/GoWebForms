@@ -11,7 +11,7 @@ namespace GoWebForms
 {
 
 
-    public partial class facturas
+    public partial class documentos
     {
 
         /// <summary>
@@ -150,22 +150,22 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.LinkButton PendientesButton;
 
         /// <summary>
-        /// CobranzasButton control.
+        /// AprobadosButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CobranzasButton;
+        protected global::System.Web.UI.WebControls.LinkButton AprobadosButton;
 
         /// <summary>
-        /// ConciliacionesButton control.
+        /// RechazadosButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ConciliacionesButton;
+        protected global::System.Web.UI.WebControls.LinkButton RechazadosButton;
 
         /// <summary>
         /// lblState control.
@@ -249,15 +249,6 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.LinkButton AddRegistroBtn;
 
         /// <summary>
-        /// SimulationBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SimulationBtn;
-
-        /// <summary>
         /// ErrorLabel control.
         /// </summary>
         /// <remarks>
@@ -267,22 +258,22 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
 
         /// <summary>
-        /// FacturaDataPager control.
+        /// DocumentoDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager FacturaDataPager;
+        protected global::System.Web.UI.WebControls.DataPager DocumentoDataPager;
 
         /// <summary>
-        /// FacturaListView control.
+        /// DocumentoListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView FacturaListView;
+        protected global::System.Web.UI.WebControls.ListView DocumentoListView;
 
         /// <summary>
         /// UpdatePanel1 control.
@@ -321,13 +312,13 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.FormView EditFormView;
 
         /// <summary>
-        /// CobranzasPage control.
+        /// AprobadosPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View CobranzasPage;
+        protected global::System.Web.UI.WebControls.View AprobadosPage;
 
         /// <summary>
         /// txtCobranzaSearchKey control.
@@ -366,31 +357,31 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// CobranzasDataPager control.
+        /// AprobadosDataPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager CobranzasDataPager;
+        protected global::System.Web.UI.WebControls.DataPager AprobadosDataPager;
 
         /// <summary>
-        /// CobranzasListView control.
+        /// AprobadosListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CobranzasListView;
+        protected global::System.Web.UI.WebControls.ListView AprobadosListView;
 
         /// <summary>
-        /// ConciliacionesPage control.
+        /// RechazadosPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View ConciliacionesPage;
+        protected global::System.Web.UI.WebControls.View RechazadosPage;
 
         /// <summary>
         /// TextBox1 control.
@@ -438,31 +429,31 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.DataPager DataPager1;
 
         /// <summary>
-        /// ConciliacionesListView control.
+        /// RechazadosListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ConciliacionesListView;
+        protected global::System.Web.UI.WebControls.ListView RechazadosListView;
 
         /// <summary>
-        /// FacturaDS control.
+        /// DocumentoDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FacturaDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource DocumentoDS;
 
         /// <summary>
-        /// FacturaInsertDS_DDL control.
+        /// DocumentoInsertDS_DDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FacturaInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource DocumentoInsertDS_DDL;
 
         /// <summary>
         /// ProveedorInsertDS_DDL control.

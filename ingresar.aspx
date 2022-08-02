@@ -166,7 +166,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <div class="d-lg-block @@cta_button_classes">
                     <a href="ingresar.aspx" class="btn btn-sm btn-docs btn-outline-white animate-up-2"><i class="fas fa-sign-in-alt"></i>Ingresar</a>
-                    <a href="registro.html" target="_blank" class="btn btn-sm btn-secondary animate-up-2"><i class="fas fa-user-plus"></i>Registrarse</a>
+                    <a href="registro.aspx" target="_blank" class="btn btn-sm btn-secondary animate-up-2"><i class="fas fa-user-plus"></i>Registrarse</a>
                 </div>
                 <div class="d-flex d-lg-none align-items-center">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"

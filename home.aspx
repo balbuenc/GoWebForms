@@ -471,7 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 <div class="row sim_padding align-middle">
 
                                     <div class="col-lg-12 text-right col-sm-12 col-xs-12 simbot" style="text-align: right;float: right;">
-                                        <a class="btn btn-primary rounded-pill sim_buttom_text all-news-btn elementor-button-link elementor-button elementor-size-sm" style="background-color:#f15051; border-color:#f15051; padding:18px" href="registro.html" target="_parent">Comenzar </a>
+                                        <a class="btn btn-primary rounded-pill sim_buttom_text all-news-btn elementor-button-link elementor-button elementor-size-sm" style="background-color:#f15051; border-color:#f15051; padding:18px" href="registro.aspx" target="_parent">Comenzar </a>
                                     </div>
                                 </div>
             

@@ -37,7 +37,7 @@ $(document).ready(function () {
         if (user?.authorized) {
             loginElements.innerHTML = '<span class="btn btn-sm btn-docs btn-outline-white animate-up-2">' + user.user + ' </span><span target="_blank" class="btn btn-sm btn-secondary animate-up-2 js-logout" > <i class="fas fa-sign-in-alt"></i> Cerrar sesión</span> ';
         } else {
-            loginElements.innerHTML = '<a href="ingresar.aspx" class="btn btn-sm btn-docs btn-outline-white animate-up-2"><i class="fas fa-sign-in-alt"></i> Ingresar</a><a href="registro.html" target="_blank" class="btn btn-sm btn-secondary animate-up-2" > <i class="fas fa-user-plus"></i> Registrarse</a>';
+            loginElements.innerHTML = '<a href="ingresar.aspx" class="btn btn-sm btn-docs btn-outline-white animate-up-2"><i class="fas fa-sign-in-alt"></i> Ingresar</a><a href="registro.aspx" target="_blank" class="btn btn-sm btn-secondary animate-up-2" > <i class="fas fa-user-plus"></i> Registrarse</a>';
         }
     }
     //logout
