@@ -262,12 +262,7 @@
                                                 <i class="fas fa-plus fa-sm"  style="padding:5px"></i>
                                                 </div>
                                                         </asp:LinkButton>
-                                                       <%-- <asp:LinkButton CssClass="btn btn-primary btn-border" runat="server" ID="SimulationBtn" ToolTip="Generar Simulación" Font-Size="Small" OnClick="SimulationBtn_Click">
-                                                <div class="form-row">
-                                                <asp:Label  Text="Simulación" CssClass="btn-label d-none  d-xl-block d-lg-block" runat="server" Font-Size="Small"></asp:Label> 
-                                                <i class="fas fa-camera fa-sm"  style="padding:5px"></i>
-                                                </div>
-                                                        </asp:LinkButton>--%>
+                                                       
                                                     </div>
                                                 </div>
 
@@ -302,7 +297,7 @@
                                         <div class="table table-responsive">
                                             <table class="table table-sm  table-striped  table-hover small">
                                                 <caption>
-                                                    <h3><span class="badge">FACTURAS</span></h3>
+                                                    <h3><span class="badge">Documentos Electrónicos</span></h3>
                                                 </caption>
                                                 <thead class="table-dark" id="tbl_head" runat="server">
                                                     <th id="tblid_documento_electronico" runat="server">ID</th>
@@ -322,8 +317,7 @@
                                                     <th id="tblcondicionAnticipo" runat="server">CONDICION ANTICIPO</th>
                                                     <th id="tblcondicionTipoCambio" runat="server">TIPO CAMBIO</th>
                                                     <th id="tblcambio" runat="server">CAMBIO</th>
-                                                 
-                                                    <th id="tbdata" runat="server">Sifen</th>
+                                                    <th id="tbdata" runat="server">Respuesta</th>
 
                                                     <th>...</th>
                                                     <th>...</th>
@@ -371,27 +365,20 @@
                                                 <asp:Label ID="lblcondicionTipoCambio" runat="server" Text='<%# Eval("condicionTipoCambio") %>' /></td>
                                             <td>
                                                 <asp:Label ID="lblcambio" runat="server" Text='<%# Eval("cambio") %>' /></td>
-                                          
-                                             <td>
+
+                                            <td>
                                                 <asp:Label ID="lbldata" runat="server" Text='<%# Eval("data") %>' /></td>
-
-
-
-
                                             <td>
                                                 <asp:LinkButton runat="server" ID="EditDocumentoBtn" CommandName="Editar" CommandArgument='<%# Eval("id_documento_electronico")%>'
                                                     ToolTip="Editar">
                                                     <i class="fa fa-keyboard fa-sm"></i>
                                                 </asp:LinkButton>
                                             </td>
-
                                             <td>
                                                 <asp:LinkButton runat="server" ID="RequestDocumentoBtn" CommandName="Solicitar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Enviar a SIFEN" Visible="true">
                                                     <i class="fas fa-american-sign-language-interpreting"></i>
                                                 </asp:LinkButton>
-                                                <asp:LinkButton runat="server" ID="FactoringDocumentoBtn" CommandName="Factorizar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Aprobar" Visible="false">
-                                                    <i class="fas fa-vote-yea"></i>
-                                                </asp:LinkButton>
+
                                             </td>
                                             <td>
                                                 <asp:LinkButton runat="server" ID="DeleteDocumentoBtn" CommandName="Eliminar" CommandArgument='<%# Eval("id_documento_electronico")%>' ToolTip="Eliminar" OnClientClick="return confirm('Desea eliminar el registro?');">
@@ -418,7 +405,7 @@
                                             <ContentTemplate>
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <b id="addModalLabel">Agregar un nuevo Documento.</b>
+                                                        <b id="addModalLabel">Generar nuevo DE.</b>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
                                                     <div class="modal-body">
@@ -431,8 +418,7 @@
                                                             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                                             <InsertItemTemplate>
-                                                                <div class="container-fluid">
-
+                                                                <div class="container-fluid small">
                                                                     <div class="row">
                                                                         <div class="col-3">ID</div>
                                                                         <div class="col-9">
@@ -442,41 +428,62 @@
                                                                     <div class="row">
                                                                         <div class="col-3">TIPO DOCUMENTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txttipoDocumento" runat="server" Text='<%# Bind("tipoDocumento") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idTiposDocumento_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="TiposDocumentoDS_DDL"
+                                                                                DataTextField="Descripcion"
+                                                                                DataValueField="tipoDocumento"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("tipoDocumento") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">establecimiento</div>
+                                                                        <div class="col-3">ESTABLECIMIENTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtestablecimiento" runat="server" Text='<%# Bind("establecimiento") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idEstablecimientos_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="EstablecimientosDS_DDL"
+                                                                                DataTextField="Establecimiento"
+                                                                                DataValueField="codigo"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("establecimiento") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">CODIGO SEGURIDADA</div>
+                                                                        <div class="col-3">COD. SEGURIDAD</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtcodigoSeguridadAleatorio" runat="server" Text='<%# Bind("codigoSeguridadAleatorio") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">PUNTO</div>
+                                                                        <div class="col-3">PUNTO EXP.</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtpunto" runat="server" Text='<%# Bind("punto") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idPuntosExpedicion_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="PuntosExpedicionDS_DDL"
+                                                                                DataTextField="PuntoExpedicion"
+                                                                                DataValueField="codigo"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("punto") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">NUMERO</div>
+                                                                        <div class="col-3">NÚMERO</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtnumero" runat="server" Text='<%# Bind("numero") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">DESCRIPCION</div>
+                                                                        <div class="col-3">DESCRIPCIÓN</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtdescripcion" runat="server" Text='<%# Bind("descripcion") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">OBSERVACION</div>
+                                                                        <div class="col-3">OBSERVACIÓN</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtobservacion" runat="server" Text='<%# Bind("observacion") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
@@ -484,7 +491,14 @@
                                                                     <div class="row">
                                                                         <div class="col-3">TIPO CONTRIBUYENTE</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txttipoContribuyente" runat="server" Text='<%# Bind("tipoContribuyente") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idTiposContibuyente_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="TiposContribuyenteDS_DDL"
+                                                                                DataTextField="TipoContribuyente"
+                                                                                DataValueField="tipo"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("TipoContribuyente") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
@@ -494,21 +508,42 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">TIPO EMISION</div>
+                                                                        <div class="col-3">TIPO EMISIÓN</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txttipoEmision" runat="server" Text='<%# Bind("tipoEmision") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idTiposEmision_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="TiposEmisionDS_DDL"
+                                                                                DataTextField="TipoEmision"
+                                                                                DataValueField="tipo"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("tipoEmision") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">TIPO TRANSACCION</div>
+                                                                        <div class="col-3">TIPO TRANSACCIÓN</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txttipoTransaccion" runat="server" Text='<%# Bind("tipoTransaccion") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idTiposTransaccion_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="TiposTransaccionDS_DDL"
+                                                                                DataTextField="TipoTransaccion"
+                                                                                DataValueField="tipo"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("tipoTransaccion") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-3">TIPO IMPUESTO</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txttipoImpuesto" runat="server" Text='<%# Bind("tipoImpuesto") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="isTiposImpuesto_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="TiposImpuestoDS_DDL"
+                                                                                DataTextField="TipoImpuesto"
+                                                                                DataValueField="tipo"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("tipoImpuesto") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
@@ -518,7 +553,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-3">CONDICION ANTICIPO</div>
+                                                                        <div class="col-3">COND. ANTICIPO</div>
                                                                         <div class="col-9">
                                                                             <asp:TextBox ID="txtcondicionAnticipo" runat="server" Text='<%# Bind("condicionAnticipo") %>' CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
@@ -538,17 +573,16 @@
                                                                     <div class="row">
                                                                         <div class="col-3">ID_CLIENTE</div>
                                                                         <div class="col-9">
-                                                                            <asp:TextBox ID="txtid_cliente" runat="server" Text='<%# Bind("id_cliente") %>' CssClass="form-control" Font-Size="X-Small" />
+                                                                            <asp:DropDownList ID="idClientes_DDL"
+                                                                                runat="server"
+                                                                                DataSourceID="ClientesDS_DDL"
+                                                                                DataTextField="cliente"
+                                                                                DataValueField="id_cliente"
+                                                                                CssClass="form-control form-control-sm"
+                                                                                SelectedValue='<%# Bind("id_cliente") %>'>
+                                                                            </asp:DropDownList>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-3">ID_USUARIO</div>
-                                                                        <div class="col-9">
-                                                                            <asp:TextBox ID="txtid_usuario" runat="server" Text='<%# Bind("id_usuario") %>' CssClass="form-control" Font-Size="X-Small" />
-                                                                        </div>
-                                                                    </div>
-
-
                                                                 </div>
 
                                                                 <hr />
@@ -697,7 +731,7 @@
                                                                             <asp:TextBox ID="txtdata" runat="server" Text='<%# Bind("data") %>' TextMode="MultiLine" Height="150px" CssClass="form-control" Font-Size="X-Small" />
                                                                         </div>
                                                                     </div>
-                                                                    
+
 
 
                                                                 </div>
@@ -793,7 +827,7 @@
 
                                 <asp:ListView ID="AprobadosListView"
                                     runat="server"
-                                    DataSourceID="CobranzaDS"
+                                    DataSourceID="DocumentoDS"
                                     DataKeyNames="id_documento_electronico"
                                     OnItemCommand="AprobadosListView_ItemCommand"
                                     OnItemDataBound="AprobadosListView_ItemDataBound">
@@ -991,7 +1025,7 @@
 
                                 <asp:ListView ID="RechazadosListView"
                                     runat="server"
-                                    DataSourceID="ConciliacionDS"
+                                    DataSourceID="DocumentoDS"
                                     DataKeyNames="id_documento_electronico">
                                     <LayoutTemplate>
                                         <div class="table table-responsive">
@@ -1112,7 +1146,7 @@
                         <asp:Parameter Name="id_documento_electronico" Type="Int32" />
                     </DeleteParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
+                     
                         <asp:Parameter Name="tipoDocumento" Type="Int32" />
                         <asp:Parameter Name="establecimiento" Type="String" />
                         <asp:Parameter Name="codigoSeguridadAleatorio" Type="String" />
@@ -1130,8 +1164,7 @@
                         <asp:Parameter Name="condicionTipoCambio" Type="Int32" />
                         <asp:Parameter Name="cambio" Type="Decimal" />
                         <asp:Parameter Name="id_cliente" Type="Int32" />
-                        <asp:Parameter Name="id_usuario" Type="Int32" />
-                        <asp:Parameter Name="id_certificado" Type="Int32" />
+                      
 
                     </InsertParameters>
                     <UpdateParameters>
@@ -1165,52 +1198,34 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
 
-                <asp:SqlDataSource ID="DocumentoInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="select id_cliente, razon_social from go.clientes  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
-
-                <asp:SqlDataSource ID="ProveedorInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="select id_proveedor, razon_social from go.proveedores  order by razon_social " SelectCommandType="Text"></asp:SqlDataSource>
-
-                <asp:SqlDataSource ID="MonedaInsertDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="select id_moneda, moneda from go.monedas  order by moneda " SelectCommandType="Text"></asp:SqlDataSource>
 
 
+                <asp:SqlDataSource ID="TiposDocumentoDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select tipoDocumento, Descripcion from ws_sifen.dbo.TiposDocumentoElectronicos order by tipoDocumento " SelectCommandType="Text"></asp:SqlDataSource>
 
-                <asp:SqlDataSource ID="CobranzaDS"
-                    runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="go.sp_Documentos_get_all" SelectCommandType="StoredProcedure"
-                    UpdateCommand="update go.facturas set fecha_desembolso = @fecha_desembolso, fecha_cobro = @fecha_cobro  where id_documento_electronico = @id_documento_electronico" UpdateCommandType="Text">
+                <asp:SqlDataSource ID="EstablecimientosDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select codigo, codigo + ' - ' + denominacion as establecimiento from ws_sifen.dbo.Establecimientos order by codigo " SelectCommandType="Text"></asp:SqlDataSource>
 
-                    <UpdateParameters>
-                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
-                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
-                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
-                    </UpdateParameters>
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="txtCobranzaSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
-                        <asp:ControlParameter ControlID="CobranzaSearchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
-                        <asp:ControlParameter ControlID="lblState" PropertyName="Text" Name="state" />
-                        <asp:SessionParameter SessionField="USERNAME" Name="user" DbType="String" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
+                <asp:SqlDataSource ID="PuntosExpedicionDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select codigo, codigo + ' - ' + punto as PuntoExpedicion from ws_sifen.dbo.PuntosExpedicion order by codigo " SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="TiposContribuyenteDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select tipo, cast(tipo as varchar(10)) + ' - ' + TipoContribuyenteDescripcion as TipoContribuyente from ws_sifen.dbo.TiposContribuyente order by tipo" SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="TiposEmisionDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select tipo, cast(tipo as varchar(10)) + ' - ' + TipoEmisionDescripcion as TipoEmision from ws_sifen.dbo.TiposEmision order by tipo" SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="TiposTransaccionDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select tipo, cast(tipo as varchar(10)) + ' - ' + TipoTransaccion as TipoTransaccion from ws_sifen.dbo.Tipostransaccion order by tipo" SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="TiposImpuestoDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select tipo, cast(tipo as varchar(10)) + ' - ' + TipoImpuesto as TipoImpuesto from ws_sifen.dbo.TiposImpuesto order by tipo" SelectCommandType="Text"></asp:SqlDataSource>
+
+                <asp:SqlDataSource ID="ClientesDS_DDL" runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
+                    SelectCommand="select id_cliente, razonSocial + ' - ' + ruc as cliente from ws_sifen.dbo.Clientes order by razonSocial" SelectCommandType="Text"></asp:SqlDataSource>
 
 
-                <asp:SqlDataSource ID="ConciliacionDS"
-                    runat="server" ConnectionString="<%$ ConnectionStrings:AlmacenesConnectionString %>"
-                    SelectCommand="go.sp_Documentos_get_all" SelectCommandType="StoredProcedure">
 
-                    <UpdateParameters>
-                        <asp:Parameter Name="id_documento_electronico" Type="Int32" />
-                        <asp:Parameter Name="fecha_desembolso" Type="DateTime" />
-                        <asp:Parameter Name="fecha_cobro" Type="DateTime" />
-                    </UpdateParameters>
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="txtCobranzaSearchKey" PropertyName="Text" Name="key" DefaultValue="*" />
-                        <asp:ControlParameter ControlID="CobranzaSearchParameterDDL" PropertyName="SelectedValue" Name="parameter" />
-                        <asp:ControlParameter ControlID="lblState" PropertyName="Text" Name="state" />
-                        <asp:SessionParameter SessionField="USERNAME" Name="user" DbType="String" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
                 <!-- #endregion -->
 
             </div>

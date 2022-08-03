@@ -607,37 +607,6 @@ namespace GoWebForms
             }
         }
 
-        protected void SimulationBtn_Click(object sender, EventArgs e)
-        {
-            SqlCommand cmd = new SqlCommand();
-            SqlConnection conn = new SqlConnection(DocumentoDS.ConnectionString);
-            try
-            {
-                cmd.Connection = conn;
-
-                cmd.CommandText = "go.sp_generate_simulation";
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-                if(Request.QueryString["pageNumber"] != null)
-                {
-                    Response.Redirect("documentos.aspx?pageNumber=" + Request.QueryString["pageNumber"]);
-                }
-                else
-                {
-                    Response.Redirect("documentos.aspx?pageNumber=1" );
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
 
         // Import CSV Data 
         // Funtions for here implements CSV file upload tos SQL

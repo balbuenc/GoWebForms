@@ -447,48 +447,75 @@ namespace GoWebForms
         protected global::System.Web.UI.WebControls.SqlDataSource DocumentoDS;
 
         /// <summary>
-        /// DocumentoInsertDS_DDL control.
+        /// TiposDocumentoDS_DDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DocumentoInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource TiposDocumentoDS_DDL;
 
         /// <summary>
-        /// ProveedorInsertDS_DDL control.
+        /// EstablecimientosDS_DDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ProveedorInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource EstablecimientosDS_DDL;
 
         /// <summary>
-        /// MonedaInsertDS_DDL control.
+        /// PuntosExpedicionDS_DDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource MonedaInsertDS_DDL;
+        protected global::System.Web.UI.WebControls.SqlDataSource PuntosExpedicionDS_DDL;
 
         /// <summary>
-        /// CobranzaDS control.
+        /// TiposContribuyenteDS_DDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource CobranzaDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource TiposContribuyenteDS_DDL;
 
         /// <summary>
-        /// ConciliacionDS control.
+        /// TiposEmisionDS_DDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ConciliacionDS;
+        protected global::System.Web.UI.WebControls.SqlDataSource TiposEmisionDS_DDL;
+
+        /// <summary>
+        /// TiposTransaccionDS_DDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TiposTransaccionDS_DDL;
+
+        /// <summary>
+        /// TiposImpuestoDS_DDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TiposImpuestoDS_DDL;
+
+        /// <summary>
+        /// ClientesDS_DDL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ClientesDS_DDL;
     }
 }
