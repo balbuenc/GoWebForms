@@ -146,12 +146,12 @@ namespace GoWebForms
                 ErrorLabel.Text = "Inserted Successfully";
             }
 
-            Response.Redirect("documentos.aspx");
+            Response.Redirect("documentos.aspx?state=pendiente");
         }
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("documentos.aspx");
+            Response.Redirect("documentos.aspx?state=pendiente");
         }
         protected void EditFormView_ModeChanging(object sender, FormViewModeEventArgs e)
         {
@@ -161,7 +161,7 @@ namespace GoWebForms
         protected void BtnLogout_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
-            Response.Redirect("../../ingresar.aspx", true);
+            Response.Redirect("ingresar.aspx", true);
         }
 
         protected void DocumentoListView_ItemDataBound(object sender, ListViewItemEventArgs e)
@@ -169,73 +169,40 @@ namespace GoWebForms
             LinkButton EditDocumentoBtn = (LinkButton)e.Item.FindControl("EditDocumentoBtn");
             LinkButton DeleteDocumentoBtn = (LinkButton)e.Item.FindControl("DeleteDocumentoBtn");
             LinkButton RequestDocumentoBtn = (LinkButton)e.Item.FindControl("RequestDocumentoBtn");
-            LinkButton FactoringDocumentoBtn = (LinkButton)e.Item.FindControl("FactoringDocumentoBtn");
-
-            //if (e.Item.ItemType == ListViewItemType.DataItem)
-            //{
-            //    System.Data.DataRowView rowView = e.Item.DataItem as System.Data.DataRowView;
-            //    string currentInvoiceStatus = rowView["estado"].ToString();
-            //    if (currentInvoiceStatus == "PENDIENTE")
-            //    {
-            //        RequestDocumentoBtn.Visible = true;
-            //        EditDocumentoBtn.Visible = true;
-            //        DeleteDocumentoBtn.Visible = true;
-            //        FactoringDocumentoBtn.Visible = false;
-            //    }
-            //    else if (currentInvoiceStatus == "SOLICITADA")
-            //    {
-            //        RequestDocumentoBtn.Visible = false;
-            //        EditDocumentoBtn.Visible = false;
-            //        DeleteDocumentoBtn.Visible = false;
-
-            //        if (Session["UserRole"].ToString() == "INVERSOR" || Session["UserRole"].ToString() == "CLIENTE")
-            //        {
-            //            FactoringDocumentoBtn.Visible = true;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        RequestDocumentoBtn.Visible = false;
-            //        EditDocumentoBtn.Visible = false;
-            //        DeleteDocumentoBtn.Visible = false;
-            //        FactoringDocumentoBtn.Visible = false;
-            //    }
-            //}
-
-        }
-
-        protected void AprobadosListView_ItemDataBound(object sender, ListViewItemEventArgs e)
-        {
-            LinkButton EditDocumentoBtn = (LinkButton)e.Item.FindControl("EditDocumentoBtn");
-           
-            LinkButton DepositarDocumentoBtn = (LinkButton)e.Item.FindControl("DepositarDocumentoBtn");
+            LinkButton KudeBTN = (LinkButton)e.Item.FindControl("KudeBTN");
 
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {
                 System.Data.DataRowView rowView = e.Item.DataItem as System.Data.DataRowView;
                 string currentInvoiceStatus = rowView["estado"].ToString();
-                if (currentInvoiceStatus == "APROBADA")
+                if (currentInvoiceStatus == "PENDIENTE")
                 {
-                    if (Session["UserRole"].ToString() == "INVERSOR" || Session["UserRole"].ToString() == "CLIENTE")
-                    {
-                        EditDocumentoBtn.Visible = true;
-                        DepositarDocumentoBtn.Visible = true;
-                    }
-                    else
-                    {
-                        EditDocumentoBtn.Visible = false;
-                        DepositarDocumentoBtn.Visible = false;
-                    }
+                    RequestDocumentoBtn.ToolTip = "Enviar a la SIFEN";
+                    RequestDocumentoBtn.Visible = true;
+                    EditDocumentoBtn.Visible = true;
+                    DeleteDocumentoBtn.Visible = true;
+                    KudeBTN.Visible = true;
                 }
-                else
+                else if (currentInvoiceStatus == "APROBADO")
                 {
+                    RequestDocumentoBtn.Visible = false;
                     EditDocumentoBtn.Visible = false;
-                    DepositarDocumentoBtn.Visible = false;
+                    DeleteDocumentoBtn.Visible = false;
+                    KudeBTN.Visible = true;
+                }
+                else if (currentInvoiceStatus == "RECCHAZADO")
+                {
+                    RequestDocumentoBtn.ToolTip = "Reintentar";
+                    RequestDocumentoBtn.Visible = true;
+                    EditDocumentoBtn.Visible = true;
+                    DeleteDocumentoBtn.Visible = true;
+                    KudeBTN.Visible = false;
                 }
             }
 
         }
 
+      
 
         protected void GetRecordToUpdate(String ID)
         {
@@ -268,7 +235,7 @@ namespace GoWebForms
             SqlCommand cmd = new SqlCommand();
             SqlConnection con = new SqlConnection(DocumentoDS.ConnectionString);
 
-            cmd = new SqlCommand("go.[sp_Documentos_delete]", con);
+            cmd = new SqlCommand("ws_sifen.dbo.[sp_DocumentosElectronicos_delete]", con);
             cmd.Parameters.Add(new SqlParameter("@id_documento_electronico", ID));
 
 
@@ -292,25 +259,25 @@ namespace GoWebForms
             {
                 //Obtengo los valores de los campos a editar
                 TextBox txtid_documento_electronico = (TextBox)EditFormView.FindControl("txtid_documento_electronico");
-                TextBox txttipoDocumento = (TextBox)EditFormView.FindControl("txttipoDocumento");
-                TextBox txtestablecimiento = (TextBox)EditFormView.FindControl("txtestablecimiento");
+                DropDownList idTiposDocumento_DDL = (DropDownList)EditFormView.FindControl("idTiposDocumento_DDL");
+                DropDownList idEstablecimientos_DDL = (DropDownList)EditFormView.FindControl("idEstablecimientos_DDL");
                 TextBox txtcodigoSeguridadAleatorio = (TextBox)EditFormView.FindControl("txtcodigoSeguridadAleatorio");
-                TextBox txtpunto = (TextBox)EditFormView.FindControl("txtpunto");
+                DropDownList txtpunto = (DropDownList)EditFormView.FindControl("idPuntosExpedicion_DDL");
                 TextBox txtnumero = (TextBox)EditFormView.FindControl("txtnumero");
                 TextBox txtdescripcion = (TextBox)EditFormView.FindControl("txtdescripcion");
                 TextBox txtobservacion = (TextBox)EditFormView.FindControl("txtobservacion");
-                TextBox txttipoContribuyente = (TextBox)EditFormView.FindControl("txttipoContribuyente");
+                DropDownList idTiposContibuyente_DDL = (DropDownList)EditFormView.FindControl("idTiposContibuyente_DDL");
                 TextBox txtfecha = (TextBox)EditFormView.FindControl("txtfecha");
-                TextBox txttipoEmision = (TextBox)EditFormView.FindControl("txttipoEmision");
-                TextBox txttipoTransaccion = (TextBox)EditFormView.FindControl("txttipoTransaccion");
-                TextBox txttipoImpuesto = (TextBox)EditFormView.FindControl("txttipoImpuesto");
-                TextBox txtmoneda = (TextBox)EditFormView.FindControl("txtmoneda");
+                DropDownList idTiposEmision_DDL = (DropDownList)EditFormView.FindControl("idTiposEmision_DDL");
+                DropDownList idTiposTransaccion_DDL = (DropDownList)EditFormView.FindControl("idTiposTransaccion_DDL");
+                DropDownList idTiposImpuesto_DDL = (DropDownList)EditFormView.FindControl("idTiposImpuesto_DDL");
+                DropDownList idMonedas_DDL = (DropDownList)EditFormView.FindControl("idMonedas_DDL");
                 TextBox txtcondicionAnticipo = (TextBox)EditFormView.FindControl("txtcondicionAnticipo");
                 TextBox txtcondicionTipoCambio = (TextBox)EditFormView.FindControl("txtcondicionTipoCambio");
                 TextBox txtcambio = (TextBox)EditFormView.FindControl("txtcambio");
-                TextBox txtid_cliente = (TextBox)EditFormView.FindControl("txtid_cliente");
-              
+                DropDownList idClientes_DDL = (DropDownList)EditFormView.FindControl("idClientes_DDL");
                 TextBox txtdata = (TextBox)EditFormView.FindControl("txtdata");
+                DropDownList idEstados_DDL = (DropDownList)EditFormView.FindControl("idEstados_DDL");
 
                 //DateTime isoDateTime = DateTime.ParseExact(txtCalendar.Value, format, CultureInfo.InvariantCulture);
 
@@ -322,19 +289,19 @@ namespace GoWebForms
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@id_documento_electronico", txtid_documento_electronico.Text);
-                cmd.Parameters.AddWithValue("@tipoDocumento", txttipoDocumento.Text);
-                cmd.Parameters.AddWithValue("@establecimiento", txtestablecimiento.Text);
+                cmd.Parameters.AddWithValue("@tipoDocumento", idTiposImpuesto_DDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@establecimiento", idEstablecimientos_DDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@codigoSeguridadAleatorio", txtcodigoSeguridadAleatorio.Text);
                 cmd.Parameters.AddWithValue("@punto", txtpunto.Text);
                 cmd.Parameters.AddWithValue("@numero", txtnumero.Text);
                 cmd.Parameters.AddWithValue("@descripcion", txtdescripcion.Text);
                 cmd.Parameters.AddWithValue("@observacion", txtobservacion.Text);
-                cmd.Parameters.AddWithValue("@tipoContribuyente", txttipoContribuyente.Text);
+                cmd.Parameters.AddWithValue("@tipoContribuyente", idTiposContibuyente_DDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@fecha", txtfecha.Text);
-                cmd.Parameters.AddWithValue("@tipoEmision", txttipoEmision.Text);
-                cmd.Parameters.AddWithValue("@tipoTransaccion", txttipoTransaccion.Text);
-                cmd.Parameters.AddWithValue("@tipoImpuesto", txttipoImpuesto.Text);
-                cmd.Parameters.AddWithValue("@moneda", txtmoneda.Text);
+                cmd.Parameters.AddWithValue("@tipoEmision", idTiposEmision_DDL.Text);
+                cmd.Parameters.AddWithValue("@tipoTransaccion", idTiposTransaccion_DDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@tipoImpuesto", idTiposImpuesto_DDL.SelectedValue);
+                cmd.Parameters.AddWithValue("@moneda", idMonedas_DDL.SelectedValue);
                 cmd.Parameters.AddWithValue("@condicionAnticipo", txtcondicionAnticipo.Text);
                 cmd.Parameters.AddWithValue("@condicionTipoCambio", txtcondicionTipoCambio.Text);
                 cmd.Parameters.AddWithValue("@cambio", Convert.ToDecimal(txtcambio.Text));
@@ -342,7 +309,7 @@ namespace GoWebForms
                 cmd.Parameters.AddWithValue("@id_usuario", 1);
                 cmd.Parameters.AddWithValue("@id_certificado", 1);
                 cmd.Parameters.AddWithValue("@data", txtdata.Text);
-
+                cmd.Parameters.AddWithValue("@id_estado", idEstados_DDL.SelectedValue);
 
 
                 conn.Open();
@@ -353,7 +320,7 @@ namespace GoWebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "",
                 "$('#editModal').modal('hide');", true);
 
-                Response.Redirect("Documentos.aspx");
+                Response.Redirect("Documentos.aspx?state=pendiente");
 
 
             }
@@ -397,21 +364,14 @@ namespace GoWebForms
                 RequestFactoring(e.CommandArgument.ToString(), "APROBADA");
                 DocumentoListView.DataBind();
             }
+            else if (e.CommandName == "Imprimir")
+            {
+                String Url = "http://www.gofactoring.com.py/ReportServer/Pages/ReportViewer.aspx?%2fSifenSSRS%2fFacturaDTE&rs:Command=Render&id=" + e.CommandArgument.ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Open", "window.open('" + Url + "');", true);
+            }
         }
 
-        protected void AprobadosListView_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Depositar")
-            {
-                RequestFactoring(e.CommandArgument.ToString(), "DEPOSITADO");
-                AprobadosListView.DataBind();
-            }
-            if (e.CommandName == "Cobrar")
-            {
-                RequestFactoring(e.CommandArgument.ToString(), "COBRADO");
-                AprobadosListView.DataBind();
-            }
-        }
+      
 
         protected void RequestFactoring(string IdInvoice, string status)
         {
@@ -663,25 +623,25 @@ namespace GoWebForms
                 conn.Close();
             }
 
-            Response.Redirect("documentos.aspx");
+            Response.Redirect("documentos.aspx?state=pendiente");
         }
 
         protected void PendientesButton_Click(object sender, EventArgs e)
         {
-            lblState.Text = "PENDIENTE";
-            MultiViewPager.ActiveViewIndex = 0;
+            lblState.Text = "PENDIENTES";
+            Response.Redirect("documentos.aspx?state=pendiente");
         }
 
         protected void AprobadosButton_Click(object sender, EventArgs e)
         {
-            lblState.Text = "COBRANZAS";
-            MultiViewPager.ActiveViewIndex = 1;
+            lblState.Text = "APROBADOS";
+            Response.Redirect("documentos.aspx?state=aprobado");
         }
 
         protected void RechazadosButton_Click(object sender, EventArgs e)
         {
-            lblState.Text = "CONCILIACIONES";
-            MultiViewPager.ActiveViewIndex = 2;
+            lblState.Text = "RECHAZADOS";
+            Response.Redirect("documentos.aspx?state=rechazado");
         }
     }
 }

@@ -124,11 +124,11 @@
 
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    SIFEN
+                                    Documentos Electrónicos
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
 
-                                    <li id="li3" runat="server"><a class="dropdown-item" href="SIFEN/documentos.aspx">Documentos Electronicos</a></li>
+                                    <li id="li3" runat="server"><a class="dropdown-item" href="documentos.aspx?state=pendiente">Documentos Electrónicos</a></li>
                                     
                                     <li>
                                         <hr class="dropdown-divider">

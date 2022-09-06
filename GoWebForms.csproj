@@ -282,11 +282,11 @@
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="asignaciones.aspx" />
+    <Content Include="documentos.aspx" />
     <Content Include="registro.aspx" />
     <Content Include="proveedores.aspx" />
     <Content Include="formulas.aspx" />
     <Content Include="parametros.aspx" />
-    <Content Include="Sifen\documentos.aspx" />
     <Content Include="variables.aspx" />
     <Content Include="facturas.aspx" />
     <Content Include="favicon.ico" />
@@ -2124,6 +2124,13 @@
     <Compile Include="asignaciones.aspx.designer.cs">
       <DependentUpon>asignaciones.aspx</DependentUpon>
     </Compile>
+    <Compile Include="documentos.aspx.cs">
+      <DependentUpon>documentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="documentos.aspx.designer.cs">
+      <DependentUpon>documentos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="registro.aspx.cs">
       <DependentUpon>registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2151,13 +2158,6 @@
     </Compile>
     <Compile Include="parametros.aspx.designer.cs">
       <DependentUpon>parametros.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sifen\documentos.aspx.cs">
-      <DependentUpon>documentos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sifen\documentos.aspx.designer.cs">
-      <DependentUpon>documentos.aspx</DependentUpon>
     </Compile>
     <Compile Include="variables.aspx.cs">
       <DependentUpon>variables.aspx</DependentUpon>
@@ -2216,6 +2216,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
+    <Folder Include="Sifen\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
